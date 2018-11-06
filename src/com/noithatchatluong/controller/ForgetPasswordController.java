@@ -9,16 +9,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/login")
-public class LoginController extends HttpServlet {
+@WebServlet("/forgetpassword")
+public class ForgetPasswordController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public LoginController() {
+	public ForgetPasswordController() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/templates/login.jsp");
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/templates/forgetpassword.jsp");
 		dispatcher.forward(request, response);
 	}
 
