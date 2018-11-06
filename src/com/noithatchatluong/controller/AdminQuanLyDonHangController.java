@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/admincapnhatthongtin")
-public class AdminCapNhatThongTinController extends HttpServlet {
+@WebServlet("/adminquanlydonhang")
+public class AdminQuanLyDonHangController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public AdminCapNhatThongTinController() {
+    public AdminQuanLyDonHangController() {
         super();
     }
 
