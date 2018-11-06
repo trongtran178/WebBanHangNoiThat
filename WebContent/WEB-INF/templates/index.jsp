@@ -103,7 +103,7 @@ file
 	<div class="colorlib-loader"></div>
 
 	<div id="page">
-		<jsp:include page = "_menu.jsp"></jsp:include>
+			<jsp:include page = "_menu.jsp"></jsp:include>
 		<aside id="colorlib-hero">
 			<div class="flexslider">
 				<ul class="slides">

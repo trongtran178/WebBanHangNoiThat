@@ -4,14 +4,17 @@
 	<div class="container">
 		<div class="row row-pb-md">
 			<div class="col-md-3 colorlib-widget">
-				<h4>About Store</h4>
-				<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia
-					reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
+				<h4>Về chúng tôi</h4>
+				<p>Noithatchatluong là một công ty nhiệt huyết dành nhiều quan tâm cho cuộc sống của mỗi gia đình.<br><br>
+					Noithatchatluong thiết kết và phát triển các dòng sản phẩm của riêng mình lấy cảm hứng từ mọi phương diện văn hóa Việt Nam.<br><br>
+					Chúng tôi đã và đang nỗ lực từng ngày để giúp khách hàng "biến ngôi nhà thành tổ ấm"
+				
+				</p>
 				<p>
 				<ul class="colorlib-social-icons">
 					<li><a href="#"><i class="icon-twitter"></i></a></li>
 					<li><a href="#"><i class="icon-facebook"></i></a></li>
-					<li><a href="#"><i class="icon-linkedin"></i></a></li>
+					<li><a href="#"><i class= "icon-linkedin"></i></a></li>
 					<li><a href="#"><i class="icon-dribbble"></i></a></li>
 				</ul>
 				</p>
@@ -31,7 +34,7 @@
 				</p>
 			</div>
 			<div class="col-md-2 colorlib-widget">
-				<h4>Information</h4>
+				<h4>Thông tin</h4>
 				<p>
 				<ul class="colorlib-footer-links">
 					<li><a href="#">About us</a></li>
@@ -53,13 +56,13 @@
 			</div>
 
 			<div class="col-md-3">
-				<h4>Contact Information</h4>
+				<h4>Thông tin liên hệ</h4>
 				<ul class="colorlib-footer-links">
-					<li>291 South 21th Street, <br> Suite 721 New York NY
+					<li>01 Võ Văn Ngân, phường Linh Chiểu, quận Thủ Đức, TP.Hồ Chí Minh<br> Suite 721 New York NY
 						10016
 					</li>
-					<li><a href="tel://1234567920">+ 1235 2355 98</a></li>
-					<li><a href="mailto:info@yoursite.com">info@yoursite.com</a></li>
+					<li><a href="tel://1234567920">+ 0911 066 089</a></li>
+					<li><a href="mailto:noithatchatluong@furnituremail.com">noithatchatluong@furnituremail.com</a></li>
 					<li><a href="#">yoursite.com</a></li>
 				</ul>
 			</div>
