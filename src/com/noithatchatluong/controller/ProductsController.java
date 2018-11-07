@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(urlPatterns = "/products")
-public class ProductController extends HttpServlet {
+public class ProductsController extends HttpServlet {
 	/**
 	 * 
 	 */
