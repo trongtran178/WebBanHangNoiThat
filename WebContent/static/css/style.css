@@ -479,7 +479,8 @@ h1, h2, h3, h4, h5, h6, figure {
     display: block;
     height: 350px;
     margin-bottom: 20px;
-    position: relative; }
+    position: relative; 
+  }
     .product-entry .product-img .tag {
       position: absolute;
       top: 10px;
@@ -816,13 +817,13 @@ h1, h2, h3, h4, h5, h6, figure {
   padding-bottom: 1em;
   margin-bottom: 1em; }
   .product-cart .one-forth, .product-name .one-forth {
-    width: calc(100% - 520px);
+    width: calc(100% - 650px);
     height: 100px !important;
     display: table;
     float: left; }
     @media screen and (max-width: 768px) {
       .product-cart .one-forth, .product-name .one-forth {
-        width: calc(100% - 240px); } }
+        width: calc(100% - 300px); } }
   .product-cart .one-eight, .product-name .one-eight {
     width: 130px;
     height: 100px !important;
@@ -872,7 +873,9 @@ h1, h2, h3, h4, h5, h6, figure {
     display: block;
     width: 90px;
     height: 100px;
-    float: left; }
+    float: left; 
+    background-size: 100%;
+  }
     @media screen and (max-width: 768px) {
       .product-cart .product-img, .product-name .product-img {
         display: none; } }
