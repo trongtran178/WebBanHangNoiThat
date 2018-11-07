@@ -104,13 +104,13 @@
 							<h3>Đăng ký</h3>
 							<form method="POST" action="register" id = "registerForm">
 								<div class="row form-group">
-									<div class="col-md-6 padding-bottom">
+								<!-- 	<div class="col-md-6 padding-bottom">
 										<label for="fname">Tên</label> 
 										<input type="text" id="fname" name = "fname" class="form-control" placeholder="Nhập tên của bạn">
-									</div>
-									<div class="col-md-6">
-										<label for="lname">Họ</label> 
-										<input type="text" id="lname" name = "lname" class="form-control" placeholder="Nhập họ của bạn">
+									</div> -->
+									<div class="col-md-12">
+										<label for="fullname">Họ và tên </label> 
+										<input type="text" id="fullname" name = "fullname" class="form-control" placeholder="Nhập họ tên của bạn">
 									</div>
 								</div>
 
@@ -142,6 +142,9 @@
 								<div class="form-group text-center">
 									<input type="submit" value="Đăng ký" class="btn btn-primary">
 								</div>
+								<div class="col-md-12" style = "text-align:center;">
+									Nếu bạn có tài khoản, click <a href = "login">vào đây</a> để đăng nhập
+								</div>
 							</form>
 						</div>
 					</div>
@@ -162,8 +165,8 @@
 		$(document).ready(function() {
 			$("#registerForm").validate({
 				rules: {
-					fname: "required",
-					lname: "required",
+					fullname: "required",
+					
 					email: "required",
 					password: {
 						required: true,
@@ -178,8 +181,8 @@
 					
 				},
 				messages: {
-					fname: "Vui lòng nhập họ của bạn.",
-					lname: "Vui lòng nhập tên của bạn.",
+					fullname: "Vui lòng nhập họ và tên của bạn.",
+					
 					email: "Vui lòng không để trống email.",
 					password: {
 						required: "Vui lòng nhập mật khẩu",
