@@ -210,7 +210,7 @@
                 <div class="page-breadcrumb">
                     <div class="row">
                         <div class="col-5 align-self-center">
-                            <h4 class="page-title">Quản lý mod</h4>
+                            <h4 class="page-title">Quản lý khách hàng</h4>
                         </div>
                         <div class="col-7 align-self-center">
                             <div class="d-flex align-items-center justify-content-end">
@@ -219,7 +219,7 @@
                                         <li class="breadcrumb-item">
                                             <a href="#">Home</a>
                                         </li>
-                                        <li class="breadcrumb-item active" aria-current="page">Danh sách mod</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Danh sách khách hàng</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -239,7 +239,7 @@
                     <div class="row">
                         <!-- Quản lý hóa đơn -->
                         <div class="col-12">
-                            <h2>Danh sách mod</h2>
+                            <h2>Danh sách khách hàng</h2>
     
                             <div class="card">
                                 <div class="table-responsive m-t-20">
@@ -247,13 +247,16 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">STT</th>
-                                                <th scope="col">Username</th>
+                                                <th scope="col">Mã KH</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Họ Tên</th>
+                                                <th scope="col">SĐT</th>
+                                                <th scope="col">Địa chỉ</th>
                                                 <th scope="col">Mật khẩu</th>
-                                                <th scope="col">Quyền hạn</th>
+                                                <th scope="col">Ngày đăng ký</th>
+                                                <th scope="col">Đã đăng ký</th>
+                                                <th scope="col">Số người đã giới thiệu</th>
                                                 <th scope="col">Đang hoạt động</th>
-                                                <th scope="col">Xóa</th>
-                                                <th scope="col">Sửa</th>
-                                                
                                                 
                                                 
                                             </tr>
@@ -261,45 +264,64 @@
                                         <tbody>
                                             <tr>
                                                 <th scope="row">1</th>
-                                                <td>Hồ Anh Tú</td>
+                                                <td>KH001</td>
+                                                <td>ala@gmail.com</td>
+                                                <td>Huỳnh Tuấn Kiệt</td>
+                                                <td>0123456776</td>
+                                                <td>12/32-Lê Bá Thọ-Q1-HCM</td>
                                                 <td>123</td>
-                                                <td>admin</td>
+                                                <td>20/10/2018</td>
+                                                <td>True</td>
+                                                <td>4</td>
                                                 <td>True</td>
                                                 
+                                                
                                               
-                                                <td style="text-align: center;"><button class = "btn btn-danger">Xóa</button></td>
-                                                <td style="text-align: center;"><button class = "btn btn-danger">Sửa</button></td>
+                                               
+                                               
                                             </tr>
                                             <tr>
                                                 <th scope="row">2</th>
-                                                <td>Hồ Anh Tú</td>
+                                                 <td>KH001</td>
+                                                <td>ala@gmail.com</td>
+                                                <td>Huỳnh Tuấn Kiệt</td>
+                                                <td>0123456776</td>
+                                                <td>12/32-Lê Bá Thọ-Q1-HCM</td>
                                                 <td>123</td>
-                                                <td>admin</td>
+                                                <td>20/10/2018</td>
                                                 <td>True</td>
-                                                <td style="text-align: center;"><button class = "btn btn-danger">Xóa</button></td>
-                                                <td style="text-align: center;"><button class = "btn btn-danger">Sửa</button></td>
+                                                <td>4</td>
+                                                <td>True</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">3</th>
-                                                <td>Hồ Anh Tú</td>
+                                                 <td>KH001</td>
+                                                <td>ala@gmail.com</td>
+                                                <td>Huỳnh Tuấn Kiệt</td>
+                                                <td>0123456776</td>
+                                                <td>12/32-Lê Bá Thọ-Q1-HCM</td>
                                                 <td>123</td>
-                                                <td>admin</td>
+                                                <td>20/10/2018</td>
                                                 <td>True</td>
-                                                <td style="text-align: center;"><button class = "btn btn-danger">Xóa</button></td>
-                                                <td style="text-align: center;"><button class = "btn btn-danger">Sửa</button></td>
+                                                <td>4</td>
+                                                <td>True</td>
                                             </tr>
                                             <tr>
                                             	<th scope="row">4</th>
-                                                <td>Hồ Anh Tú</td>
+                                                  <td>KH001</td>
+                                                <td>ala@gmail.com</td>
+                                                <td>Huỳnh Tuấn Kiệt</td>
+                                                <td>0123456776</td>
+                                                <td>12/32-Lê Bá Thọ-Q1-HCM</td>
                                                 <td>123</td>
-                                                <td>admin</td>
+                                                <td>20/10/2018</td>
                                                 <td>True</td>
-                                                <td style="text-align: center;"><button class = "btn btn-danger">Xóa</button></td>
-                                                <td style="text-align: center;"><button class = "btn btn-danger">Sửa</button></td>
+                                                <td>4</td>
+                                                <td>True</td>
                                                 </tr>
                                         </tbody>
                                     </table>
-                                    <td style="text-align: center;"><button class = "btn btn-danger">Thêm</button></td>
+                                    
                                 </div>
                             </div>
                         </div>
