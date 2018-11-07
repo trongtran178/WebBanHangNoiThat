@@ -18,7 +18,8 @@ public class AdminCapNhatThongTinController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/templates/admin_quanlydonhang.jsp");
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/templates/admin_capnhatthongtin.jsp");
+
 		dispatcher.forward(request, response);
 	}
 
