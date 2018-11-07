@@ -27,6 +27,7 @@
 						<li><a href="cart.html"><i class="icon-shopping-cart"></i>
 								Cart [0]</a></li>
 						<li><a href="login.html">Đăng nhập</a></li>
+						<li><a href="register">Đăng ký</a></li>
 					</ul>
 				</div>
 			</div>
