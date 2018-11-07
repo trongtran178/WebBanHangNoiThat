@@ -25,7 +25,7 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700"
 	rel="stylesheet">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- Animate.css -->
 <link rel="stylesheet" href="static/css/animate.css">
 <!-- Icomoon Icon Fonts-->
@@ -57,7 +57,36 @@
 <!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-
+<style>
+	.labelTen{
+		width: 19.33333% !important;
+	}
+	.inputNhapTen{
+		width: 74.666667% !important;
+	}
+	#TenKhachHang{
+		margin-top: -5px;
+		border-radius: 6px;
+	}
+	@media (min-width: 992px) {
+		.editSpaceOfMuaThemButton {
+			width: 14% !important;
+		}
+	}
+	
+.total-wrap .form-control {
+    height: 40px;
+    border: 1px solid #f0f0f0 !important;
+    margin-bottom: 10px;
+     text-align: left; 
+}
+	.iconThongTinKhachHang {
+		font-size: 20px;
+		color: blue;
+		margin-right: 10px;
+	}
+	
+</style>
 </head>
 <body>
 	<div class="colorlib-loader"></div>
@@ -249,14 +278,55 @@
 				</div>
 			</div>
 			<div class="row">
+				<div class = "col-md-1">
+				
+				</div>
 				<div class="col-md-10 col-md-offset-1">
 					<div class="total-wrap">
 						<div class="row">
-							<div class="col-md-3">
+							<div class="col-md-3 editSpaceOfMuaThemButton">
 								<button type="button" class="btn btn-info">Mua thêm</button>
 							</div>
 							<div class="col-md-3">
-								<button type="button" class="btn btn-success">Thanh toán</button>
+								<button type="button" class="btn btn-success" data-toggle="modal" data-target="#CustomerInformationModal">Thanh toán</button>
+							</div>
+							<div class = "modal fade" id = "CustomerInformationModal" aria-labelledby="gridSystemModalLabel" role="dialog">
+								<div class = "modal-dialog" role="document">
+									<div class = "modal-content">
+										<div class = "modal-header">
+								          <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+								          <h4 class="modal-title"><i class = "fa fa-info-circle iconThongTinKhachHang" style = "font-size: 20px; color: blue;"></i>Nhập thông tin quý khách</h4>											
+										</div>
+										<div class = "modal-body">
+											<form>
+									          <div class="form-group">
+									            <label for="TenKhachHang" class="control-label">Họ và tên:</label>
+									            <input type="text" class="form-control" id="TenKhachHang" placeholder="Nhập họ và tên...">
+									          </div>	
+									          <div class="form-group">
+									            <label for="Email" class="control-label">Email:</label>
+									            <input type="email" class="form-control" id="TenKhachHang" placeholder ="Nhập email...">
+									          </div>
+									          <div class="form-group">
+									            <label for="Address" class="control-label">Địa chỉ:</label>
+									            <input type="email" class="form-control" id="address" placeholder ="Nhập địa chỉ...">
+									          </div>									          
+									          <div class="form-group">
+									            <label for="SDT" class="control-label">Số điện thoại:</label>
+									            <input type="text" class="form-control" id="phonenumber" placeholder="Nhập số điện thoại">
+									          </div>
+									           									        									          																				
+											</form>
+											
+															
+
+										</div>
+										<div class="modal-footer">
+									        <button style = "border-radius: 7px;" type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+									        <button style = "border-radius: 7px;" type="button" class="btn btn-info">Lưu thông tin</button>
+									      </div>										
+									</div>
+								</div>
 							</div>
 							<div class="col-md-6 text-center">
 								<div class="total">
