@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Đăng ký</title>
+<title>Sản phẩm của chúng tôi</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="" />
 <meta name="keywords" content="" />
@@ -58,14 +58,9 @@
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 <style>
-	#colorlib-hero {
+/* 	#colorlib-hero {
 		margin-bottom: 2em;
-	}
-    label.error {
-        display: inline-block;
-        color:red;
-        width: 200px;
-    }
+	} */
 </style>
 </head>
 <body>
@@ -83,9 +78,9 @@
 								<div
 									class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
 									<div class="slider-text-inner text-center">
-										<h1>Đăng ký</h1>
+										<h1>Sản phẩm</h1>
 										<h2 class="bread">
-											<span><a href="index.html">Home</a></span> <span>Đăng ký</span>
+											<span><a href="index.html">Home</a></span> <span>Sản phẩm</span>
 										</h2>
 									</div>
 								</div>
@@ -104,13 +99,13 @@
 							<h3>Đăng ký</h3>
 							<form method="POST" action="register" id = "registerForm">
 								<div class="row form-group">
-								<!-- 	<div class="col-md-6 padding-bottom">
+									<div class="col-md-6 padding-bottom">
 										<label for="fname">Tên</label> 
 										<input type="text" id="fname" name = "fname" class="form-control" placeholder="Nhập tên của bạn">
-									</div> -->
-									<div class="col-md-12">
-										<label for="fullname">Họ và tên </label> 
-										<input type="text" id="fullname" name = "fullname" class="form-control" placeholder="Nhập họ tên của bạn">
+									</div>
+									<div class="col-md-6">
+										<label for="lname">Họ</label> 
+										<input type="text" id="lname" name = "lname" class="form-control" placeholder="Nhập họ của bạn">
 									</div>
 								</div>
 
@@ -142,9 +137,6 @@
 								<div class="form-group text-center">
 									<input type="submit" value="Đăng ký" class="btn btn-primary">
 								</div>
-								<div class="col-md-12" style = "text-align:center;">
-									Nếu bạn có tài khoản, click <a href = "login">vào đây</a> để đăng nhập
-								</div>
 							</form>
 						</div>
 					</div>
@@ -165,8 +157,8 @@
 		$(document).ready(function() {
 			$("#registerForm").validate({
 				rules: {
-					fullname: "required",
-					
+					fname: "required",
+					lname: "required",
 					email: "required",
 					password: {
 						required: true,
@@ -181,8 +173,8 @@
 					
 				},
 				messages: {
-					fullname: "Vui lòng nhập họ và tên của bạn.",
-					
+					fname: "Vui lòng nhập họ của bạn.",
+					lname: "Vui lòng nhập tên của bạn.",
 					email: "Vui lòng không để trống email.",
 					password: {
 						required: "Vui lòng nhập mật khẩu",
