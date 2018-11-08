@@ -152,7 +152,6 @@
 			</div>
 		</div>
 
-		<div id="map" class="colorlib-map"></div>
 
 		<jsp:include page = "_footer.jsp"></jsp:include>
 	</div>
@@ -228,9 +227,9 @@
 	<script src="static/js/additional-methods.min.js"></script> -->
 	
 	<!-- Google Map -->
-	<script
+<!-- 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
-	<script src="static/js/google_map.js"></script>
+	<script src="static/js/google_map.js"></script> -->
 	<!-- Main -->
 	<script src="static/js/main.js"></script>
 </body>

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/home")
+@WebServlet(urlPatterns =  "/home")
 public class HomeController extends HttpServlet {
 
 	@Override
@@ -17,6 +17,7 @@ public class HomeController extends HttpServlet {
 			throws ServletException, IOException {
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/templates/index.jsp");
 		dispatcher.forward(request, response);
+		
 
 	}
 

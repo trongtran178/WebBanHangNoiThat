@@ -285,10 +285,10 @@
 					<div class="total-wrap">
 						<div class="row">
 							<div class="col-md-3 editSpaceOfMuaThemButton">
-								<button type="button" class="btn btn-info">Mua thêm</button>
+								<button style = "border-radius: 7px;" type="button" class="btn btn-info">Mua thêm</button>
 							</div>
 							<div class="col-md-3">
-								<button type="button" class="btn btn-success" data-toggle="modal" data-target="#CustomerInformationModal">Thanh toán</button>
+								<button style = "border-radius: 7px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#CustomerInformationModal">Thanh toán</button>
 							</div>
 							<div class = "modal fade" id = "CustomerInformationModal" aria-labelledby="gridSystemModalLabel" role="dialog">
 								<div class = "modal-dialog" role="document">
@@ -554,7 +554,7 @@
 
 		<!--  -->
 
-		<div id="map" class="colorlib-map"></div>
+		<!-- <div id="map" class="colorlib-map"></div> -->
 
 		<jsp:include page = "_footer.jsp"></jsp:include>
 	</div>
