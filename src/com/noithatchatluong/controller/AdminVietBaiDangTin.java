@@ -18,7 +18,7 @@ public class AdminVietBaiDangTin extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/templates/admin_vietbai_dangtin.jsp");
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/templates/admin_vietbai_dangtin2.jsp");
 		dispatcher.forward(request, response);
 	}
 
