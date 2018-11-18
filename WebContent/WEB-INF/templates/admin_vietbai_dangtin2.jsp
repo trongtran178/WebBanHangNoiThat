@@ -232,7 +232,7 @@
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Bread crumb and right sidebar toggle -->
-                <!-- ============================================================== -->
+                <!-- ==============================	================================ -->
                 <!-- ============================================================== -->
                 <!-- Container fluid  -->
                 <!-- ============================================================== -->
@@ -290,7 +290,7 @@
                                                 <td>Ở đây chúng tôi đã nhập về mẫu bàn kim loại cứng nhất thế giới, nó có vẻ cứng thật và nó sẽ tiếp tục cứng cho tới khi nào tui không cho nó cứng nưa hiểu chưa ahihi</td>
                                                 <td></td>
                                                 <td>20/11/2018</td>
-                                                <td style="text-align: center;"><button class = "btn btn-danger">Xóa</button></td>
+                                                <td style="text-align: center;"><button onclick = "confirmDelete()" class = "btn btn-danger">Xóa</button></td>
                                                 <td style="text-align: center;"><button class = "btn btn-danger">Sửa</button></td>
                                             </tr>
                                             <tr>
@@ -313,176 +313,7 @@
                         <!-- Quản lý chi tiết hóa đơn -->
     
                            
-                        <!-- <div class="col-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Breakpoint Specific</h4>
-                                    <h6 class="card-subtitle">Use <code>.table-responsive{-sm|-md|-lg|-xl}</code> as needed to create responsive tables up to a particular breakpoint. From that breakpoint and up, the table will behave normally and not scroll horizontally.</h6>
-                                    <div class="table-responsive-sm">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">#</th>
-                                                    <th scope="col">Heading</th>
-                                                    <th scope="col">Heading</th>
-                                                    <th scope="col">Heading</th>
-                                                    <th scope="col">Heading</th>
-                                                    <th scope="col">Heading</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">2</th>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">3</th>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="table-responsive-md">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">#</th>
-                                                    <th scope="col">Heading</th>
-                                                    <th scope="col">Heading</th>
-                                                    <th scope="col">Heading</th>
-                                                    <th scope="col">Heading</th>
-                                                    <th scope="col">Heading</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">2</th>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">3</th>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="table-responsive-lg">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">#</th>
-                                                    <th scope="col">Heading</th>
-                                                    <th scope="col">Heading</th>
-                                                    <th scope="col">Heading</th>
-                                                    <th scope="col">Heading</th>
-                                                    <th scope="col">Heading</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">2</th>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">3</th>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="table-responsive-xl">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">#</th>
-                                                    <th scope="col">Heading</th>
-                                                    <th scope="col">Heading</th>
-                                                    <th scope="col">Heading</th>
-                                                    <th scope="col">Heading</th>
-                                                    <th scope="col">Heading</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">2</th>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">3</th>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                    <td>Cell</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-    
+            
                         <!-- ============================================================== -->
                         <!-- End PAge Content -->
                         <!-- ============================================================== -->
@@ -530,6 +361,19 @@
             <script src="static/admin/dist/js/sidebarmenu.js"></script>
             <!--Custom JavaScript -->
             <script src="static/admin/dist/js/custom.min.js"></script>
+            
+            <script>
+            	function confirmDelete() {
+            		var res = confirm("Bạn chắc chắn muốn xóa bài viết này ? ");
+            		if(res == true) {
+            			alert("Xóa thành công");
+            		} else {
+            			alert("Hihi");
+            		}
+            		
+            	}
+            </script>
+            
     </body>
     
     </html>
