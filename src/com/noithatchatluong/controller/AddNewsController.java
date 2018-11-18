@@ -9,17 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/adminvietbaidangtin")
-public class AdminVietBaiDangTin extends HttpServlet {
+@WebServlet("/addnews")
+public class AddNewsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public AdminVietBaiDangTin() {
+    public AddNewsController() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/templates/admin_vietbai_dangtin.jsp");
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/templates/admin_vietbai_dangtin2.jsp");
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/templates/addnews.jsp");
 		dispatcher.forward(request, response);
 	}
 
