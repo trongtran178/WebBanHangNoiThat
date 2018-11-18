@@ -14,8 +14,7 @@
 <!-- Favicon icon -->
 <link rel="icon" type="image/png" sizes="16x16"
 	href="../../assets/images/favicon.png">
-<title>Nice admin Template - The Ultimate Multipurpose admin
-	template</title>
+<title>Trang sửa tin tức</title>
 <!-- Custom CSS -->
 <link href="static/admin/dist/css/style.min.css" rel="stylesheet">
 
@@ -39,6 +38,16 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+<style>
+	body {
+	    color: #73879C;
+	    background: #f4f4f4;
+	    font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
+	    font-size: 13px;
+	    font-weight: 400;
+	    line-height: 1.471;
+	}
+</style>
 </head>
 
 <body>
@@ -248,13 +257,33 @@
 					<div class="">
 						<input type="hidden" name="id" />
 					</div>
-					<label>Tiêu đề</label> <input type="text" name="title" /> <br>
-					Nội dung
+					<label>Tiêu đề</label> <input value = "MOCHI – Ý TƯỞNG THIẾT KẾ CHUỖI CỬA HÀNG BÁNH NHẬT ĐỘC ĐÁO" style = "border-radius: 5px;" class = "form-control" type="text" name="title" /> <br>
+					<label>Nội dung</label>
 					<textarea class="ckeditor" id="editor" name="content" cols="80"
-						rows="10"></textarea>
-					<br> <span>File đính kèm : </span> <br> <br>
-					<button type="submit">Sửa tin tức</button>
-					<button type="submit">Thêm tin tức</button>
+						rows="10">Thiết kế cửa hàng Nhật,  món ăn Nhật dường như không còn xa lạ với mọi người, nhất là đối với những ai đã, đang và sẽ kinh doanh cửa hàng, tiệm bánh.  Có khá nhiều phong cách thiết kế nội thất cửa hàng như phong cách thiết kế hiện đại, phong cách cổ điển…nhưng có thể thấy nhà hàng, cửa hàng kiểu nhật đang khá được ưa chuộng trên thị trường khi mà càng ngày càng xuất hiện nhiều dạng chuỗi hệ thống thương hiệu bánh, nhượng quyền. Hãy cùng Starlight tìm hiểu về không gian nội thất cửa hàng mochi – ý tưởng thiết kế chuỗi cửa hàng bánh nhật độc đáo trong bài chia sẻ dưới đây.<br>
+						June
+19
+2018
+207
+0
+MOCHI – Ý TƯỞNG THIẾT KẾ CHUỖI CỬA HÀNG BÁNH NHẬT ĐỘC ĐÁO
+By OanhIn STARLIGHT, THI CÔNG NỘI THẤT, THIẾT KẾ NỘI THẤT, THIẾT KẾ NỘI THẤT NHÀ HÀNG
+MOCHI – Ý TƯỞNG THIẾT KẾ CHUỖI CỬA HÀNG BÁNH NHẬT ĐỘC ĐÁO
+Thiết kế cửa hàng Nhật,  món ăn Nhật dường như không còn xa lạ với mọi người, nhất là đối với những ai đã, đang và sẽ kinh doanh cửa hàng, tiệm bánh.  Có khá nhiều phong cách thiết kế nội thất cửa hàng như phong cách thiết kế hiện đại, phong cách cổ điển…nhưng có thể thấy nhà hàng, cửa hàng kiểu nhật đang khá được ưa chuộng trên thị trường khi mà càng ngày càng xuất hiện nhiều dạng chuỗi hệ thống thương hiệu bánh, nhượng quyền. Hãy cùng Starlight tìm hiểu về không gian nội thất cửa hàng mochi – ý tưởng thiết kế chuỗi cửa hàng bánh nhật độc đáo trong bài chia sẻ dưới đây.
+
+mochi-y-tuong-thiet-ke-chuoi-cua-hang-banh-doc-dao
+
+Mochi là thương hiệu bánh nhật khá nổi tiếng trên thị trường với sự phát triển về thương hiệu và thị phần, chuỗi cửa hàng ngày càng mở rộng trong các trung tâm thương mại lớn, trong các khu đô thị, trên các tuyến phố lớn tại Việt Nam. Mochi Sweet tại Vạn Hạnh Mall Hồ Chí Minh được thiết kế và thi công nhanh chóng chính xác bởi Starlight.<br>
+Thương hiệu bánh nhật không chỉ được nhắc đến với sản phẩm của chính họ mà còn ấn tượng với khách hàng bởi không gian nội thất được thiết kế hiện đại, độc đáo.<br>
+
+	
+					</textarea>
+					<br> 
+					<span>File đính kèm : </span>
+					<input type = "file"/>
+					<br><br><br>
+					<!-- <button class = "btn btn-primary" type="submit">Sửa tin tức</button> -->
+					<button class = "btn btn-primary" type="submit">Sửa tin tức</button>
 					 <br> <br>
 				</form>
 

@@ -226,7 +226,7 @@
 			</div>
 		</div>
 
-		<div id="colorlib-subscribe">
+<!-- 		<div id="colorlib-subscribe">
 			<div class="overlay"></div>
 			<div class="container">
 				<div class="row">
@@ -249,7 +249,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<jsp:include page = "_footer.jsp"></jsp:include>
 	</div>
 
