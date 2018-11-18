@@ -134,8 +134,9 @@
 						</div>
 						<div class = "row">
 							<div class = " col-xs-3 col-md-4 col-sm-2">
-								<img src = "static/images/slideimages/slide3.jpg"  style = "max-width:none;" witdh = "40" height = "50" />
+								<img src = "static/images/slideimages/slide3.jpg"  style = "max-width:none;" width = "80" height = "60" />
 							</div>
+						
 							<div class = "col-xs-9 col-md-8 col-sm-10">
 								<h5>
 									Những ý tưởng kinh doanh quán cafe độc đáo
@@ -145,8 +146,9 @@
 						</div>
 						<div class = "row">
 							<div class = " col-xs-3 col-md-4 col-sm-2">
-								<img src = "static/images/slideimages/slide3.jpg"  style = "max-width:none;" witdh = "40" height = "50" />
+								<img src = "static/images/slideimages/slide3.jpg"  style = "max-width:none;" width = "80" height = "60" />
 							</div>
+						
 							<div class = "col-xs-9 col-md-8 col-sm-10">
 								<h5>
 									Những ý tưởng kinh doanh quán cafe độc đáo
@@ -156,8 +158,9 @@
 						</div>
 						<div class = "row">
 							<div class = " col-xs-3 col-md-4 col-sm-2">
-								<img src = "static/images/slideimages/slide3.jpg"  style = "max-width:none;" witdh = "40" height = "50" />
+								<img src = "static/images/slideimages/slide3.jpg"  style = "max-width:none;" width = "80" height = "60" />
 							</div>
+						
 							<div class = "col-xs-9 col-md-8 col-sm-10">
 								<h5>
 									Những ý tưởng kinh doanh quán cafe độc đáo
@@ -167,15 +170,16 @@
 						</div>
 						<div class = "row">
 							<div class = " col-xs-3 col-md-4 col-sm-2">
-								<img src = "static/images/slideimages/slide3.jpg"  style = "max-width:none;" witdh = "40" height = "50" />
+								<img src = "static/images/slideimages/slide3.jpg"  style = "max-width:none;" width = "80" height = "60" />
 							</div>
+						
 							<div class = "col-xs-9 col-md-8 col-sm-10">
 								<h5>
 									Những ý tưởng kinh doanh quán cafe độc đáo
 								</h5>
 								<h6 style = "color: grey;">June 28, 2018</h6>
 							</div>
-						</div>	
+						</div>
 						<br><br><br><br>					
 						<div class = "row">
 							<h3>Đọc nhiều nhất</h3>
@@ -183,8 +187,9 @@
 						</div>
 						<div class = "row">
 							<div class = " col-xs-3 col-md-4 col-sm-2">
-								<img src = "static/images/slideimages/slide3.jpg"  style = "max-width:none;" witdh = "40" height = "50" />
+								<img src = "static/images/slideimages/slide3.jpg"  style = "max-width:none;" width = "80" height = "60" />
 							</div>
+						
 							<div class = "col-xs-9 col-md-8 col-sm-10">
 								<h5>
 									Những ý tưởng kinh doanh quán cafe độc đáo
@@ -194,8 +199,9 @@
 						</div>	
 						<div class = "row">
 							<div class = " col-xs-3 col-md-4 col-sm-2">
-								<img src = "static/images/slideimages/slide3.jpg"  style = "max-width:none;" witdh = "40" height = "50" />
+								<img src = "static/images/slideimages/slide3.jpg"  style = "max-width:none;" width = "80" height = "60" />
 							</div>
+						
 							<div class = "col-xs-9 col-md-8 col-sm-10">
 								<h5>
 									Những ý tưởng kinh doanh quán cafe độc đáo
@@ -205,15 +211,16 @@
 						</div>	
 						<div class = "row">
 							<div class = " col-xs-3 col-md-4 col-sm-2">
-								<img src = "static/images/slideimages/slide3.jpg"  style = "max-width:none;" witdh = "40" height = "50" />
+								<img src = "static/images/slideimages/slide3.jpg"  style = "max-width:none;" width = "80" height = "60" />
 							</div>
+						
 							<div class = "col-xs-9 col-md-8 col-sm-10">
 								<h5>
 									Những ý tưởng kinh doanh quán cafe độc đáo
 								</h5>
 								<h6 style = "color: grey;">696969 view</h6>
 							</div>
-						</div>	
+						</div>
 					</div>
 				</div>
 			</div>
