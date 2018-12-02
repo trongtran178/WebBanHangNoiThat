@@ -73,8 +73,8 @@
 			   			<div class="row">
 				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
 				   				<div class="slider-text-inner text-center">
-				   					<h1>About Us</h1>
-				   					<h2 class="bread"><span><a href="index.html">Home</a></span> <span>About</span></h2>
+				   					<h1>Về chúng tôi</h1>
+				   					<h2 class="bread"><span><a href="index.html">Home</a></span> <span>Về chúng tôi</span></h2>
 				   				</div>
 				   			</div>
 				   		</div>
@@ -91,20 +91,18 @@
 						<div class="col-one-forth">
 							<div class="row">
 								<div class="col-md-12 about">
-									<h2>About</h2>
-
+									<h2>Về chúng tôi</h2>
 									<ul>
-										<li><a href="#">History</a></li>
-										<li><a href="#">Staff</a></li>
-										<li><a href="#">Connect with us</a></li>
-										<li><a href="#">Faqs</a></li>
-										<li><a href="#">Career</a></li>
+										<li><a href="#">Lịch sử</a></li>
+										<li><a href="#">Đội ngũ</a></li>
+										<li><a href="#">Kết nối với chúng tôi</a></li>
+										<li><a href="#">Sự nghiệp</a></li>
 									</ul>
 								</div>
 							</div>
 						</div>
 						<div class="col-three-forth">
-							<h2>History</h2>
+							<h2>Lịch sử</h2>
 							<div class="row">
 								<div class="col-md-12">
 									<p>Chúng tôi luôn muốn mang đến cho bạn những điều tốt đẹp nhất, hãy sống để tận hưởng nội thất của chúng tôi</p>

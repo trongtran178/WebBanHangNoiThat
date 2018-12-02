@@ -129,6 +129,12 @@
 								</div>
 								<div class="row form-group">
 									<div class="col-md-12">
+										<label for="confirmpassword">Xác nhận mật khẩu</label> 
+										<input type="password" name = "confirmpassword" id="comfirmpassword" class="form-control" placeholder="Xác nhận mật khẩu">
+									</div>
+								</div>
+								<div class="row form-group">
+									<div class="col-md-12">
 										<label for="address">Địa chỉ</label> 
 										<input type="text" name = "address" id="address" class="form-control" placeholder="Nhập địa chỉ">
 									</div>
@@ -165,24 +171,33 @@
 			$("#registerForm").validate({
 				rules: {
 					fullname: "required",
-					
-					email: "required",
+					email: {
+						required: true,
+						email: true	
+					},
 					password: {
 						required: true,
 						minlength: 6,
 						maxlength: 18
 					},
+					confirmpassword: {
+						required: true,
+						minlength: 6,
+						maxlength: 18,
+						equalTo: "#password"
+					},
 					address: "required",
 					phonenumber: {
 						required: true,
 						number: true
-					}
-					
+					}					
 				},
 				messages: {
-					fullname: "Vui lòng nhập họ và tên của bạn.",
-					
-					email: "Vui lòng không để trống email.",
+					fullname: "Vui lòng nhập họ và tên của bạn.",				
+					email: {
+						 required: "Vui lòng nhập email !",
+						 email: "Vui lòng nhập email chính xác !"
+					},
 					password: {
 						required: "Vui lòng nhập mật khẩu",
 						minlength: "Mật khẩu không được ít hơn 6 kí tự",
