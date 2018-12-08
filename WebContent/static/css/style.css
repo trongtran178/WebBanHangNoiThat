@@ -1187,16 +1187,19 @@ h1, h2, h3, h4, h5, h6, figure {
       display: block;
       display: inline-block; }
     .color-wrap p.color-desc .color-1 {
-      background: #FFC300; }
+      background: #141414; }
     .color-wrap p.color-desc .color-2 {
-      background: #FDA831; }
+      background: #a05619; }
     .color-wrap p.color-desc .color-3 {
-      background: #EC610A; }
+      background: #427fbf; } 
     .color-wrap p.color-desc .color-4 {
-      background: #4A772F; }
+      background: #bfbdbb; }
     .color-wrap p.color-desc .color-5 {
       background: #0E9577; }
-
+    .color-wrap p.color-desc .color-6 {
+      background: #d10000; }
+    .color-wrap p.color-desc .color-6 {
+      background: #ffe900; }
 .size-wrap {
   margin-bottom: 20px;
   position: relative; }
