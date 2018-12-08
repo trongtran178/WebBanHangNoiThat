@@ -141,4 +141,12 @@ public class KhachHang {
 		this.dangHoatDong = dangHoatDong;
 	}
 
+	public KhachHang(String email, String password) {
+		super();
+		this.email = email;
+		this.password = password;
+	}
+	
+	
+
 }
