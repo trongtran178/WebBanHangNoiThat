@@ -8,9 +8,9 @@
   <session-factory>
       <!-- Database connection settings -->
       <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-      <property name="connection.url">jdbc:mysql://localhost:3306/webbanhangnoithat</property>
+      <property name="connection.url">jdbc:mysql://localhost:3306/webnoithat</property>
       <property name="connection.username">root</property>
-      <property name="connection.password">123456</property>
+      <property name="connection.password">hoanhtu1998</property>
  
       <property name="connection.pool_size">1</property>
  	  <property name="hibernate.jdbc.time_zone">Asia/Ho_Chi_Minh</property>

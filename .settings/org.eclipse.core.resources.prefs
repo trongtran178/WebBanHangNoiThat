@@ -2,3 +2,5 @@ eclipse.preferences.version=1
 encoding//WebContent/WEB-INF/templates/about.jsp=UTF-8
 encoding//WebContent/WEB-INF/templates/personalinformation.jsp=UTF-8
 encoding//src/com/noithatchatluong/controller/HomeController.java=UTF-8
+encoding//src/com/noithatchatluong/jdbc/DAO/DataProvider.java=UTF-8
+encoding//src/com/noithatchatluong/utils/SendConfirmInformationAccountCustomerUtils.java=UTF-8

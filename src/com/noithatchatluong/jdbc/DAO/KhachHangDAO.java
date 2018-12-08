@@ -17,7 +17,7 @@ public class KhachHangDAO {
 	private String jdbcUsername;
 	private String jdbcPassword;
 	private Connection jdbcConnection;
-	
+	DataProvider data;
 	public KhachHangDAO(String jdbcURL, String jdbcUsername, String jdbcPassword) {
 		this.jdbcURL = jdbcURL;
 		this.jdbcUsername = jdbcUsername;
@@ -49,10 +49,11 @@ public class KhachHangDAO {
 		
 		String sql = "SELECT * FROM khachhang";
 		
-		connect();
-		
+		//connect();
+		data.getConnection();
 		Statement statement = jdbcConnection.createStatement();
 		ResultSet resultSet = statement.executeQuery(sql);
+		data.selectData(sql);
 		
 		while (resultSet.next()) {
 			String maKhachHang = resultSet.getString("MaKhachHang");
