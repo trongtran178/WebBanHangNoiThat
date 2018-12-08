@@ -10,38 +10,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.noithatchatluong.model.AdminUser;
 import com.noithatchatluong.model.KhachHang;
 
 public class KhachHangDAO {
-	private String jdbcURL;
-	private String jdbcUsername;
-	private String jdbcPassword;
-	private Connection jdbcConnection;
+	public DataProvider dataProvider;
 	
-	public KhachHangDAO(String jdbcURL, String jdbcUsername, String jdbcPassword) {
-		this.jdbcURL = jdbcURL;
-		this.jdbcUsername = jdbcUsername;
-		this.jdbcPassword = jdbcPassword;
-	}
-	
-	protected void connect() throws SQLException {
-		if (jdbcConnection == null || jdbcConnection.isClosed()) {
-			try {
-				Class.forName("com.mysql.jdbc.Driver");
-			} catch (ClassNotFoundException e) {
-				throw new SQLException(e);
-			}
-			jdbcConnection = DriverManager.getConnection(
-										jdbcURL, jdbcUsername, jdbcPassword);
-		}
-	}
-	
-	protected void disconnect() throws SQLException {
-		if (jdbcConnection != null && !jdbcConnection.isClosed()) {
-			jdbcConnection.close();
-		}
-	}
-	
+	public KhachHangDAO() {
+	}	
 	
 	
 	public List<KhachHang> listAllKhachHangs() throws SQLException {
@@ -49,9 +25,9 @@ public class KhachHangDAO {
 		
 		String sql = "SELECT * FROM khachhang";
 		
-		connect();
+		this.dataProvider.connect();
 		
-		Statement statement = jdbcConnection.createStatement();
+		Statement statement = this.dataProvider.jdbcConnection.createStatement();
 		ResultSet resultSet = statement.executeQuery(sql);
 		
 		while (resultSet.next()) {
@@ -64,7 +40,7 @@ public class KhachHangDAO {
 		resultSet.close();
 		statement.close();
 		
-		disconnect();
+		this.dataProvider.disconnect();
 		
 		return listKhachHang;
 	}
@@ -73,9 +49,9 @@ public class KhachHangDAO {
 	public boolean updateKhachHang(KhachHang khachhang) throws SQLException {
 		String sql = "UPDATE khachhang SET HoTen = ?, SDT = ?, DIaChi = ?, Password = ?";
 		sql += " WHERE MaKhachHang = ?";
-		connect();
+		this.dataProvider.connect();
 		
-		PreparedStatement statement = jdbcConnection.prepareStatement(sql);
+		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);
 		statement.setString(1, khachhang.getHoTen());
 		statement.setString(2, khachhang.getSoDienThoai());
 		statement.setString(3, khachhang.getDiaChi());
@@ -84,7 +60,7 @@ public class KhachHangDAO {
 
 		boolean rowUpdated = statement.executeUpdate() > 0;
 		statement.close();
-		disconnect();
+		this.dataProvider.disconnect();
 		return rowUpdated;		
 	}
 	
@@ -92,9 +68,9 @@ public class KhachHangDAO {
 		KhachHang khachhang = null;
 		String sql = "SELECT * FROM khachhang WHERE MaKhachHang = ?";
 		
-		connect();
+		this.dataProvider.connect();
 		
-		PreparedStatement statement = jdbcConnection.prepareStatement(sql);
+		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);
 		statement.setString(1, MaKhachHang);
 		
 		ResultSet resultSet = statement.executeQuery();
@@ -118,5 +94,42 @@ public class KhachHangDAO {
 		statement.close();
 		
 		return khachhang;
+	}
+	
+	public boolean checkPassword(KhachHang khachHang) throws SQLException {
+		String sql = "SELECT COUNT(*) FROM KhachHang WHERE email = ? AND password = ?";
+
+		this.dataProvider.connect();
+		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);
+		
+		statement.setString(1, khachHang.getEmail());
+		statement.setString(2, khachHang.getPassword());
+		
+		int count = statement.executeUpdate();
+		statement.close();
+		this.dataProvider.disconnect();
+		
+		if (count == 1)
+			return true;
+		
+		return false;
+	}
+	
+	public boolean updatePassword(KhachHang khachHang) throws SQLException {
+		String sql = "UPDATE AdminUser SET password = ? WHERE Email = ?";
+		
+		this.dataProvider = new DataProvider();
+		this.dataProvider.connect();
+		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);
+		
+		
+		statement.setString(1, khachHang.getPassword());
+		statement.setString(2, khachHang.getEmail());
+		
+		boolean rowUpdated = statement.executeUpdate() > 0;
+		statement.close();
+		this.dataProvider.disconnect();
+		
+		return rowUpdated;		
 	}
 }
