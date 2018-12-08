@@ -40,6 +40,7 @@ public class RegisterController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
+			KhachHangDAO khachHangDAO = new KhachHangDAO();
 			KhachHang khachHang = new KhachHang();
 			khachHang.setHoTen(request.getParameter("fullname"));
 			khachHang.setDiaChi(request.getParameter("address"));
@@ -52,7 +53,7 @@ public class RegisterController extends HttpServlet {
 			khachHang.setSoNguoiDaGioiThieu(0);
 			khachHang.setEmail(request.getParameter("email"));
 
-			boolean checkInsertCus = KhachHangDAO.themKhachHang(khachHang);
+			boolean checkInsertCus = khachHangDAO.themKhachHang(khachHang);
 
 			if (checkInsertCus == false) {
 				System.out.println("Thêm thất bại");

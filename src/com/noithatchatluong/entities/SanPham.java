@@ -1,23 +1,30 @@
 package com.noithatchatluong.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "SanPham")
 public class SanPham {
 
-	private int ID;
+	/**
+	 * 
+	 */
+	private Integer ID;
 	private String maSanPham;
 	private String tenSanPham;
 	private double donGia;
-	private String phanLoai;
 	private String moTa;
 	private double khuyenMai;
 	private float Cao;
@@ -26,22 +33,24 @@ public class SanPham {
 	private String chatLieu;
 	private String xuatXu;
 	private String mauSac;
-	private String hinhAnh;
-	private int soLuongDaBan;
+	private Integer soLuongDaBan;
 	private Date ngayNhap;
 	private boolean dangHoatDong;
+	private HangMucSanPham hangMucSanPham;
+	private String maHinhAnh;
 
 	@Id
-	@Column(name = "ID")
-	public int getID() {
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID", nullable = false)
+	public Integer getID() {
 		return ID;
 	}
 
-	public void setID(int ID) {
+	public void setID(Integer ID) {
 		this.ID = ID;
 	}
 
-	@Column(name = "SanPham", unique = true)
+	@Column(name = "MaSanPham", unique = true)
 	public String getMaSanPham() {
 		return maSanPham;
 	}
@@ -66,15 +75,6 @@ public class SanPham {
 
 	public void setDonGia(double donGia) {
 		this.donGia = donGia;
-	}
-
-	@Column(name = "PhanLoai")
-	public String getPhanLoai() {
-		return phanLoai;
-	}
-
-	public void setPhanLoai(String phanLoai) {
-		this.phanLoai = phanLoai;
 	}
 
 	@Column(name = "MoTa")
@@ -149,21 +149,12 @@ public class SanPham {
 		this.mauSac = mauSac;
 	}
 
-	@Column(name = "HinhAnh")
-	public String getHinhAnh() {
-		return hinhAnh;
-	}
-
-	public void setHinhAnh(String hinhAnh) {
-		this.hinhAnh = hinhAnh;
-	}
-
 	@Column(name = "SoLuongDaBan")
-	public int getSoLuongDaBan() {
+	public Integer getSoLuongDaBan() {
 		return soLuongDaBan;
 	}
 
-	public void setSoLuongDaBan(int soLuongDaBan) {
+	public void setSoLuongDaBan(Integer soLuongDaBan) {
 		this.soLuongDaBan = soLuongDaBan;
 	}
 
@@ -176,7 +167,7 @@ public class SanPham {
 		this.ngayNhap = ngayNhap;
 	}
 
-	@Column(name = "DangHoatDong", nullable = false)
+	@Column(name = "DangHoatDong")
 	@Type(type = "org.hibernate.type.NumericBooleanType")
 	public boolean isDangHoatDong() {
 		return dangHoatDong;
@@ -185,5 +176,25 @@ public class SanPham {
 	public void setDangHoatDong(boolean dangHoatDong) {
 		this.dangHoatDong = dangHoatDong;
 	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "maHangMuc", nullable = false) // maHangMuc cua HangMuc
+	public HangMucSanPham getHangMucSanPham() {
+		return hangMucSanPham;
+	}
+
+	public void setHangMucSanPham(HangMucSanPham hangMucSanPham) {
+		this.hangMucSanPham = hangMucSanPham;
+	}
+
+	@Column(name = "MaHinhAnh")
+	public String getMaHinhAnh() {
+		return maHinhAnh;
+	}
+
+	public void setMaHinhAnh(String maHinhAnh) {
+		this.maHinhAnh = maHinhAnh;
+	}
+
 
 }
