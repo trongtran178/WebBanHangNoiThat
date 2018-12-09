@@ -49,4 +49,6 @@ public class ChiTietHoaDon {
 		this.donGia = donGia;
 		this.khuyenMai = khuyenMai;
 	}
+	
+	
 }
