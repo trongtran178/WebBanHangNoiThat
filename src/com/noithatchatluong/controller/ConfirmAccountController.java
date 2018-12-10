@@ -25,20 +25,20 @@ public class ConfirmAccountController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-
+			KhachHangDAO khachHangDAO = new KhachHangDAO();
 			String encryptedCustomerCode = request.getParameter("jokeaisthis");
 			//encryptedCustomerCode = URLDecoder.decode(encryptedCustomerCode, "UTF-8");
 			System.out.println(encryptedCustomerCode + " clgv ");
 			String decryptedCustomerCode = AESUtils.decrypt(encryptedCustomerCode);	
 			System.out.println(decryptedCustomerCode + " day la giai ma");
 			KhachHang khachHang = null;
-			khachHang = KhachHangDAO.timKhachHangBoiMaKhachHang(decryptedCustomerCode);
+			khachHang = khachHangDAO.timKhachHangBoiMaKhachHang(decryptedCustomerCode);
 			if (khachHang.isDaDangKy() == true && khachHang.isDangHoatDong() == true) {
 				return;
 			}
 			khachHang.setDaDangKy(true);
 			khachHang.setDangHoatDong(true);
-			KhachHangDAO.capNhatThongTinKhachHang(khachHang);
+			khachHangDAO.capNhatThongTinKhachHang(khachHang);
 			request.setAttribute("tenKhachHang", khachHang.getHoTen());
 			StringBuffer url = request.getRequestURL();
 			String uri = request.getRequestURI();
@@ -50,8 +50,8 @@ public class ConfirmAccountController extends HttpServlet {
 			dispatcher.forward(request, response);
 
 		} catch (Exception ex) {
-			System.out.println("Đã xảy ra lỗi");
-			System.out.println("Nguyên nhân : " + ex.getMessage());
+			System.out.println("Ä�Ã£ xáº£y ra lá»—i");
+			System.out.println("NguyÃªn nhÃ¢n : " + ex.getMessage());
 		}
 	}
 }

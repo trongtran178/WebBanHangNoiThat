@@ -118,6 +118,7 @@
 									<div class="col-md-12">
 										<label for="email">Email</label>
 										 <input type="text" id="email" name = "email" class="form-control" placeholder="Nhập địa chỉ email của bạn">
+										 <div id = "checkEmail" style = "color: red; font-weight: bold;"></div>
 									</div>
 								</div>
 
@@ -146,7 +147,7 @@
 									</div>
 								</div>
 								<div class="form-group text-center">
-									<input type="submit" value="Đăng ký" class="btn btn-primary">
+									<input id = "register" type="submit" value="Đăng ký" class="btn btn-primary">
 								</div>
 								<div class="col-md-12" style = "text-align:center;">
 									Nếu bạn có tài khoản, click <a href = "login">vào đây</a> để đăng nhập
@@ -237,6 +238,7 @@
 	<script src="static/js/jquery.stellar.min.js"></script>
 	<script src="static/js/jquery.validate.min.js"></script>
  	<script src="static/js/jquery.validate.js"></script>
+ 	<script src="static/js/utils.js"></script>
 
 <!-- 	<script src="static/js/additional-methods.js"></script>
 	<script src="static/js/additional-methods.min.js"></script> -->
@@ -247,5 +249,71 @@
 	<script src="static/js/google_map.js"></script> -->
 	<!-- Main -->
 	<script src="static/js/main.js"></script>
+	
+<!-- 	kiem tra email da ton tai chưa -->
+	<script>
+		window.onload = initPage;
+		
+		function initPage() {
+			document.getElementById("register").disabled = true;
+		}
+		
+		
+		var emailValid = true;
+	
+		$("#email").blur(function() {
+			document.getElementById("email").className = "form-control thinking";
+			emailRequest = createRequest();
+			if(emailRequest === null) {
+				alert("Trình duyệt không hỗ trợ XHR!");
+			} else {
+				var getEmail = document.getElementById("email").value;
+				var email = escape(getEmail);
+				//alert(window.location.origin);
+				var url = "/WebBanHangNoiThat2/checkEmail?email=" + email;
+				emailRequest.onreadystatechange = showEmailStatus;
+				emailRequest.open("GET", url, true);
+				emailRequest.send(null);
+			}
+		});
+		
+		function showEmailStatus() {
+			if(emailRequest.readyState == 4) {
+				if(emailRequest.status == 200) {
+					if(emailRequest.responseText == "ok") {
+						document.getElementById("email").className = "form-control approved";
+						emailValid = true;
+						document.getElementById("checkEmail").innerHTML = "";
+
+						//alert(emailValid);
+					} else {
+						document.getElementById("email").className = "form-control denied";
+						document.getElementById("checkEmail").innerHTML = "Email đã tồn tại, xin vui lòng nhập email khác !";
+						document.getElementById("email").focus();
+						document.getElementById("email").select();
+						emailValid = false;
+						//alert(emailValid);
+
+					}
+					checkCorrectEmail();
+				}
+			}
+		}
+		function checkCorrectEmail() {
+			if(emailValid) {
+				document.getElementById("register").disabled = false;
+			} else {
+				document.getElementById("register").disabled = true;
+
+			}
+		}
+		
+		
+	</script>
+
+	
+	
+	
+	
 </body>
 </html>

@@ -11,10 +11,11 @@ public class KhachHangDAO {
 
 	private static SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
 
-	public static int getMaxID(Session session) {
+	public int getMaxID(Session session) {
 		try {
 			String sql = "select max(c.ID) from " + KhachHang.class.getName() + " c ";
 			Query<Integer> query = session.createQuery(sql, Integer.class);
+			
 			Integer value = (Integer) query.getSingleResult();
 			if (value == null) {
 				return -1;
@@ -27,7 +28,7 @@ public class KhachHangDAO {
 		}
 	}
 
-	public static KhachHang timKhachHangBoiMaKhachHang(String maKhachHang) {
+	public KhachHang timKhachHangBoiMaKhachHang(String maKhachHang) {
 
 		Session session = sessionFactory.getCurrentSession();
 		try {
@@ -48,7 +49,7 @@ public class KhachHangDAO {
 		return null;
 	}
 
-	public static boolean capNhatThongTinKhachHang(KhachHang khachHang) {
+	public boolean capNhatThongTinKhachHang(KhachHang khachHang) {
 
 		Session session = sessionFactory.getCurrentSession();
 		try {
@@ -64,7 +65,7 @@ public class KhachHangDAO {
 			session.flush();
 			session.getTransaction().commit();
 			return true;
-
+ 
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			session.getTransaction().rollback();
@@ -72,7 +73,7 @@ public class KhachHangDAO {
 		}
 	}
 
-	public static boolean themKhachHang(KhachHang khachHang) {
+	public boolean themKhachHang(KhachHang khachHang) {
 
 		Session session = sessionFactory.getCurrentSession();
 		try {
@@ -93,6 +94,34 @@ public class KhachHangDAO {
 			return false;
 		}
 	}
+	
+	public boolean kiemTraEmailTonTai(String emailCheck) {
+		boolean check;
+		Session session = sessionFactory.getCurrentSession();
+
+		try {
+			session.getTransaction().begin();
+			String sql = "Select count(*) from " + KhachHang.class.getName() + " khachHang "
+					+ " where khachHang.email = :email ";
+			Query<Long> query = session.createQuery(sql, Long.class);
+			query.setParameter("email", emailCheck);
+
+			Long count = query.getSingleResult();
+			if (count != 0)
+				check = false;
+			else
+				check = true;
+			session.getTransaction().commit();
+
+			return check;
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+			check = false;
+			return check;
+		}
+
+	}
+	
 
 }
 /*
