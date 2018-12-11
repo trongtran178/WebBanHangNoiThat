@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+	<!-- Khai báo sử dụng JSTL Core Tags -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="com.noithatchatluong.DAO.*"%>
+<%@ page import="com.noithatchatluong.model.*"%>
+<%@ page import="com.noithatchatluong.entities.*"%>
+<%@ page import="com.noithatchatluong.controller.ProductsController" %>
+<%@ page import="javax.servlet.http.HttpServletRequest" %>
+<%@ page import="javax.servlet.http.HttpServletResponse" %>
+<%@ page import="javax.servlet.http.HttpServlet" %>
 	<!DOCTYPE html>
 	<html>
 
@@ -132,21 +141,21 @@
 							<div class="col-md-7 single-top">
 								<div class="flexslider">
 									<ul class="slides">
-										<li data-thumb="static/images/productimages/bango1.jpeg">
+										<li data-thumb="static/images/productimages/<c:out value='${sanPham.getDanhSachHinhAnh().get(0)}'/>">
 											<div class="thumb-image">
-												<img src="static/images/productimages/bango1.jpeg" data-imagezoom="true" class="img-responsive"> </div>
+												<img src="static/images/productimages/<c:out value='${sanPham.getDanhSachHinhAnh().get(0)}'/>" data-imagezoom="true" class="img-responsive"> </div>
 										</li>
-										<li data-thumb="static/images/productimages/bango2.jpeg">
+										<li data-thumb="static/images/productimages/<c:out value='${sanPham.getDanhSachHinhAnh().get(1)}'/>">
 											<div class="thumb-image">
-												<img src="static/images/productimages/bango2.jpeg" data-imagezoom="true" class="img-responsive"> </div>
+												<img src="static/images/productimages/<c:out value='${sanPham.getDanhSachHinhAnh().get(1)}'/>" data-imagezoom="true" class="img-responsive"> </div>
 										</li>
-										<li data-thumb="static/images/productimages/bango3.jpeg">
+										<li data-thumb="static/images/productimages/<c:out value='${sanPham.getDanhSachHinhAnh().get(2)}'/>">
 											<div class="thumb-image">
-												<img src="static/images/productimages/bango3.jpeg" data-imagezoom="true" class="img-responsive"> </div>
+												<img src="static/images/productimages/<c:out value='${sanPham.getDanhSachHinhAnh().get(2)}'/>" data-imagezoom="true" class="img-responsive"> </div>
 										</li>
-										<li data-thumb="static/images/productimages/bango4.jpeg">
+										<li data-thumb="static/images/productimages/<c:out value='${sanPham.getDanhSachHinhAnh().get(3)}'/>">
 											<div class="thumb-image">
-												<img src="static/images/productimages/bango4.jpeg" data-imagezoom="true" class="img-responsive"> </div>
+												<img src="static/images/productimages/<c:out value='${sanPham.getDanhSachHinhAnh().get(3)}'/>" data-imagezoom="true" class="img-responsive"> </div>
 										</li>
 									</ul>
 								</div>
@@ -173,16 +182,16 @@
 
 							<div class="col-md-5 single-top-in simpleCart_shelfItem">
 								<div class="single-para ">
-									<h4>Bàn gỗ cao cấp</h4>
+									<h4><c:out value='${sanPham.getTenSanPham()}'/></h4>
 									<div class="star-on">
 										<div class="clearfix"> </div>
 									</div>
 
-									<h5 class="item_price">850.000 đ</h5>
-									<p>Chất liệu: gỗ tùng</p>
-									<p class="khuyenmai">Khuyến mãi: giảm 10%</p>
-									<p>Kích thước: 0.6 x 0.5 x 0.5 (mét)</p>
-									<p>Xuất xứ: Việt Nam</p>
+									<h5 class="item_price"><c:out value='${sanPham.getDonGia()}'/> đ</h5>
+									<p>Chất liệu: <c:out value='${sanPham.getChatLieu()}'/></p>
+									<p class="khuyenmai">Khuyến mãi: <c:out value='${sanPham.getKhuyenMai()}'/></p>
+									<p>Kích thước: <c:out value='${sanPham.getCao()}'/> x <c:out value='${sanPham.getDai()}'/> x <c:out value='${sanPham.getRong()}'/> (mét)</p>
+									<p>Xuất xứ: <c:out value='${sanPham.getXuatXu()}'/></p>
 									<div class="available">
 										<ul>
 											<li>Màu sắc
@@ -210,8 +219,7 @@
 				<div class="motasanpham">
 					<h2>Mô tả</h2>
 					<hr/>
-					<p>Bộ bàn ghế được làm bằng gỗ tùng, với thiết kế sang trọng, sơn phủ lớp sơn bóng chống trầy, chống nước giúp bảo vệ sản
-						phẩm bền vững với thời gian</p>
+					<p><c:out value='${sanPham.getMoTa()}'/></p>
 					<hr/>
 				</div>
 			</div>
@@ -235,7 +243,7 @@
 
 						<div class="col-md-3 text-center">
 							<div class="product-entry">
-								<div class="product-img" style="background-image: url(static/images/productimages/bango2.jpeg);">
+								<div class="product-img" style="background-image: url(static/images/productimages/<c:out value='${sanPham.getDanhSachHinhAnh().get(0)}'/>);">
 									<p class="tag">
 										<span class="new">New</span>
 									</p>
@@ -278,7 +286,7 @@
 
 						<div class="col-md-3 text-center">
 							<div class="product-entry">
-								<div class="product-img" style="background-image: url(static/images/productimages/bango1.jpeg);">
+								<div class="product-img" style="background-image: url(static/images/productimages/<c:out value='${sanPham.getDanhSachHinhAnh().get(0)}'/>);">
 									<p class="tag">
 										<span class="new">New</span>
 									</p>
@@ -319,7 +327,7 @@
 						</div>
 						<div class="col-md-3 text-center">
 							<div class="product-entry">
-								<div class="product-img" style="background-image: url(static/images/productimages/bango1.jpeg);">
+								<div class="product-img" style="background-image: url(static/images/productimages/<c:out value='${sanPham.getDanhSachHinhAnh().get(0)}'/>);">
 									<p class="tag">
 										<span class="new">New</span>
 									</p>
@@ -361,7 +369,7 @@
 
 						<div class="col-md-3 text-center">
 							<div class="product-entry">
-								<div class="product-img" style="background-image: url(static/images/productimages/bango1.jpeg);">
+								<div class="product-img" style="background-image: url(static/images/productimages/<c:out value='${sanPham.getDanhSachHinhAnh().get(0)}'/>);">
 									<p class="tag">
 										<span class="new">New</span>
 									</p>

@@ -151,7 +151,7 @@
 											<div class="cart">
 												<p>
 													<span class="addtocart">
-														<a href="cart.html">
+														<a href="addtocart?maSanPham=${thongTinSanPham.maSanPham}">
 															<i class="icon-shopping-cart"></i>
 														</a>
 													</span> 
