@@ -1,11 +1,30 @@
 package com.noithatchatluong.model;
 
+import java.sql.SQLException;
 import java.util.List;
+
+import com.noithatchatluong.jdbc.DAO.SanPhamDAO;
 
 public class Order {
 	private int id;
 	private String maKhachHang;
 	private List<Item> items;
+	private List<SanPham> sanPhamLienQuan;
+
+	public List<SanPham> getSanPhamLienQuan() throws SQLException {
+		if (this.items.size() > 0) {
+			int index = this.items.size() - 1;
+			SanPhamDAO sanPhamDAO = new SanPhamDAO();
+			this.sanPhamLienQuan = sanPhamDAO.getDanhSachSanPhamLienQuan(this.items.get(index).getSanPham().getMaHangMuc());
+		} else {
+			this.sanPhamLienQuan = null;
+		}
+		return sanPhamLienQuan;
+	}
+
+	public void setSanPhamLienQuan(List<SanPham> sanPhamLienQuan) {
+		this.sanPhamLienQuan = sanPhamLienQuan;
+	}
 
 	public int getId() {
 		return id;

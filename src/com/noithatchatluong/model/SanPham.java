@@ -8,7 +8,7 @@ import com.noithatchatluong.entities.HinhAnh;
 public class SanPham {
 	private int id;
 	private String maSanPham;
-	private String maHangMuc;
+	private int maHangMuc;
 	private String tenSanPham;
 	private double donGia;
 	private String moTa;
@@ -45,10 +45,10 @@ public class SanPham {
 		this.maSanPham = maSanPham;
 	}
 	
-	public String getMaHangMuc() {
+	public int getMaHangMuc() {
 		return maHangMuc;
 	}
-	public void setMaHangMuc(String maHangMuc) {
+	public void setMaHangMuc(int maHangMuc) {
 		this.maHangMuc = maHangMuc;
 	}
 	public String getTenSanPham() {
@@ -142,7 +142,7 @@ public class SanPham {
 	}
 
 	
-	public SanPham(int id, String maHangMuc,  String tenSanPham, double donGia, String moTa,
+	public SanPham(int id, int maHangMuc,  String tenSanPham, double donGia, String moTa,
 			double khuyenMai, float cao, float dai, float rong, String chatLieu, String xuatXu, String mauSac,
 			String maHinhAnh, int soLuongDaBan, Date ngayNhap, int dangHoatDong, List<String> danhSachHinhAnh) {
 		super();
@@ -165,7 +165,7 @@ public class SanPham {
 		this.dangHoatDong = dangHoatDong;
 		this.danhSachHinhAnh = danhSachHinhAnh;
 	}
-	public SanPham(int id, String maHangMuc, String tenSanPham, double donGia, float cao, float dai,
+	public SanPham(int id, int maHangMuc, String tenSanPham, double donGia, float cao, float dai,
 			float rong, String mauSac) {
 		super();
 		this.id = id;
