@@ -307,19 +307,25 @@
 									<div class="total">
 										<div class="sub">
 											<p>
-												<span>Tổng tiền sản phẩm:</span> <span id="tongTienChuaKhuyenMai"><c:out value='${danhSachItem.getTongTienChuaKhuyenMai()}' /> đ</span>
+												<span>Tổng tiền sản phẩm:</span> <span
+													id="tongTienChuaKhuyenMai"><c:out
+														value='${danhSachItem.getTongTienChuaKhuyenMai()}' /> đ</span>
 											</p>
 											<p>
-												<span>Phí vận chuyển:</span> <span style = "color: red;">Free ship</span>
+												<span>Phí vận chuyển:</span> <span style="color: red;">Free
+													ship</span>
 											</p>
 											<p>
-												<span>Tổng tiền khuyến mãi:</span> <span id="tongTienKhuyenMai"><c:out value='${danhSachItem.getTongTienKhuyenMai()}' /></span>
+												<span>Tổng tiền khuyến mãi:</span> <span
+													id="tongTienKhuyenMai"><c:out
+														value='${danhSachItem.getTongTienKhuyenMai()}' /></span>
 											</p>
 										</div>
 										<div class="grand-total">
 											<p>
 												<span> <strong>Tổng:</strong>
-												</span> <span id="tongTienPhaiTra"><c:out value='${danhSachItem.getTongTien()}' /> đ</span>
+												</span> <span id="tongTienPhaiTra"><c:out
+														value='${danhSachItem.getTongTien()}' /> đ</span>
 											</p>
 										</div>
 									</div>
@@ -334,6 +340,7 @@
 
 		<div class="colorlib-shop">
 			<div class="container">
+			<c:if test="${not empty danhSachItem.getSanPhamLienQuan()}">
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
 						<h2>
@@ -342,151 +349,45 @@
 						<p>Có thể bạn cũng muốn xem những sản phẩm này.</p>
 					</div>
 				</div>
-
+			</c:if>
 
 
 				<div class="row">
 
-
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img"
-								style="background-image: url(static/images/productimages/bango2.jpeg);">
-								<p class="tag">
-									<span class="new">New</span>
-								</p>
-								<div class="cart">
-									<p>
-										<span class="addtocart"> <a href="#"> <i
-												class="icon-shopping-cart"></i>
-										</a>
-										</span> <span> <a href="product-detail.html"> <i
-												class="icon-eye"></i>
-										</a>
-										</span> <span> <a href="#"> <i class="icon-heart3"></i>
-										</a>
-										</span> <span> <a href="add-to-wishlist.html"> <i
-												class="icon-bar-chart"></i>
-										</a>
-										</span>
+					<c:forEach items="${danhSachItem.getSanPhamLienQuan()}"
+						var="sanPham">
+						<div class="col-md-3 text-center">
+							<div class="product-entry">
+								<div class="product-img"
+									style="background-image: url(static/images/productimages/${sanPham.getDanhSachHinhAnh().get(0)});">
+									<p class="tag">
+										<span class="new">New</span>
+									</p>
+									<div class="cart">
+										<p>
+											<span class="addtocart"> <a
+												href="addtocart?maSanPham=${sanPham.getMaSanPham()}">
+													<i class="icon-shopping-cart"></i>
+											</a>
+											</span> <span> <a
+												href="product-detail?maSanPham=${sanPham.getMaSanPham()}">
+													<i class="icon-eye"></i>
+											</a>
+											</span>
+										</p>
+									</div>
+								</div>
+								<div class="desc">
+									<h3>
+										<a href="product-detail.html">${sanPham.getTenSanPham()}</a>
+									</h3>
+									<p class="price">
+										<span>${sanPham.getDonGia()}</span>
 									</p>
 								</div>
 							</div>
-							<div class="desc">
-								<h3>
-									<a href="shop.html">Floral Dress</a>
-								</h3>
-								<p class="price">
-									<span>$300.00</span>
-								</p>
-							</div>
 						</div>
-					</div>
-
-
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img"
-								style="background-image: url(static/images/productimages/bango1.jpeg);">
-								<p class="tag">
-									<span class="new">New</span>
-								</p>
-								<div class="cart">
-									<p>
-										<span class="addtocart"> <a href="#"> <i
-												class="icon-shopping-cart"></i>
-										</a>
-										</span> <span> <a href="product-detail.html"> <i
-												class="icon-eye"></i>
-										</a>
-										</span> <span> <a href="#"> <i class="icon-heart3"></i>
-										</a>
-										</span> <span> <a href="add-to-wishlist.html"> <i
-												class="icon-bar-chart"></i>
-										</a>
-										</span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3>
-									<a href="shop.html">Floral Dress</a>
-								</h3>
-								<p class="price">
-									<span>$300.00</span>
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img"
-								style="background-image: url(static/images/productimages/bango1.jpeg);">
-								<p class="tag">
-									<span class="new">New</span>
-								</p>
-								<div class="cart">
-									<p>
-										<span class="addtocart"> <a href="#"> <i
-												class="icon-shopping-cart"></i>
-										</a>
-										</span> <span> <a href="product-detail.html"> <i
-												class="icon-eye"></i>
-										</a>
-										</span> <span> <a href="#"> <i class="icon-heart3"></i>
-										</a>
-										</span> <span> <a href="add-to-wishlist.html"> <i
-												class="icon-bar-chart"></i>
-										</a>
-										</span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3>
-									<a href="shop.html">Floral Dress</a>
-								</h3>
-								<p class="price">
-									<span>$300.00</span>
-								</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img"
-								style="background-image: url(static/images/productimages/bango1.jpeg);">
-								<p class="tag">
-									<span class="new">New</span>
-								</p>
-								<div class="cart">
-									<p>
-										<span class="addtocart"> <a href="#"> <i
-												class="icon-shopping-cart"></i>
-										</a>
-										</span> <span> <a href="product-detail.html"> <i
-												class="icon-eye"></i>
-										</a>
-										</span> <span> <a href="#"> <i class="icon-heart3"></i>
-										</a>
-										</span> <span> <a href="add-to-wishlist.html"> <i
-												class="icon-bar-chart"></i>
-										</a>
-										</span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3>
-									<a href="shop.html">Floral Dress</a>
-								</h3>
-								<p class="price">
-									<span>$300.00</span>
-								</p>
-							</div>
-						</div>
-					</div>
+					</c:forEach>
 
 				</div>
 			</div>
@@ -544,48 +445,66 @@
 			let tongTien = document.getElementById("tongTien-" + parentid);
 
 			tongTien.innerHTML = donGia * soLuong * (1.0 - khuyenMai / 100.0);
-			
+
 			let idSanPham = parentid.substring(2);
 			let xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function(){
-                if (this.readyState == 4 && this.status == 200){
-                    let chuoi = this.responseText;
-                    let mangGia = chuoi.split("-");
-                    document.getElementById("tongTienChuaKhuyenMai").innerHTML = mangGia[0];
-                    document.getElementById("tongTienKhuyenMai").innerHTML = mangGia[1];
-                    document.getElementById("tongTienPhaiTra").innerHTML = mangGia[2];
-                }
-            }
-            xhr.open("POST", "cart", true);
-            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-            xhr.send("maSanPham=" + idSanPham + "&action=sua&soLuong=" + soLuong);
-            
+			xhr.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					let chuoi = this.responseText;
+					let mangGia = chuoi.split("-");
+					document.getElementById("tongTienChuaKhuyenMai").innerHTML = mangGia[0];
+					document.getElementById("tongTienKhuyenMai").innerHTML = mangGia[1];
+					document.getElementById("tongTienPhaiTra").innerHTML = mangGia[2];
+				}
+			}
+			xhr.open("POST", "cart", true);
+			xhr.setRequestHeader("Content-type",
+					"application/x-www-form-urlencoded")
+			xhr.send("maSanPham=" + idSanPham + "&action=sua&soLuong="
+					+ soLuong);
+
 		}
-		$(document).ready(function() {
+		$(document)
+				.ready(
+						function() {
 
-			$(".button-xoa").click(function(e) {
+							$(".button-xoa")
+									.click(
+											function(e) {
 
-				var parentid = e.target.getAttribute("data-parent-id");
-				
-				$("#" + parentid).remove();
-				
-				let idSanPham = parentid.substring(2);
-				let xhr = new XMLHttpRequest();
-	            xhr.onreadystatechange = function(){
-	                if (this.readyState == 4 && this.status == 200){
-	                	let chuoi = this.responseText;
-	                    let mangGia = chuoi.split("-");
-	                    document.getElementById("tongTienChuaKhuyenMai").innerHTML = mangGia[0];
-	                    document.getElementById("tongTienKhuyenMai").innerHTML = mangGia[1];
-	                    document.getElementById("tongTienPhaiTra").innerHTML = mangGia[2];
-	                }
-	            }
-	            xhr.open("POST", "cart", true);
-	            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-	            xhr.send("maSanPham=" + idSanPham + "&action=xoa");
-			});
+												var parentid = e.target
+														.getAttribute("data-parent-id");
 
-		});
+												$("#" + parentid).remove();
+
+												let idSanPham = parentid
+														.substring(2);
+												let xhr = new XMLHttpRequest();
+												xhr.onreadystatechange = function() {
+													if (this.readyState == 4
+															&& this.status == 200) {
+														let chuoi = this.responseText;
+														let mangGia = chuoi
+																.split("-");
+														document
+																.getElementById("tongTienChuaKhuyenMai").innerHTML = mangGia[0];
+														document
+																.getElementById("tongTienKhuyenMai").innerHTML = mangGia[1];
+														document
+																.getElementById("tongTienPhaiTra").innerHTML = mangGia[2];
+													}
+												}
+												xhr.open("POST", "cart", true);
+												xhr
+														.setRequestHeader(
+																"Content-type",
+																"application/x-www-form-urlencoded")
+												xhr.send("maSanPham="
+														+ idSanPham
+														+ "&action=xoa");
+											});
+
+						});
 	</script>
 </body>
 </html>

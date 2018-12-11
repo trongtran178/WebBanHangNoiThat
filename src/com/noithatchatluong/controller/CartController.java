@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.noithatchatluong.jdbc.DAO.SanPhamDAO;
 import com.noithatchatluong.model.*;
 
 @WebServlet(urlPatterns = "/cart")
