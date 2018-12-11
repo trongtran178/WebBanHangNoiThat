@@ -98,7 +98,7 @@ public class KhachHangDAO {
 	}
 	
 	public boolean checkPassword(KhachHang khachHang) throws SQLException {
-		String sql = "SELECT * from KhachHang where email = ?";
+		String sql = "SELECT * from KhachHang where email = ? AND DangHoatDong = 1";
 		this.dataProvider = new DataProvider();
 		this.dataProvider.connect();
 		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);

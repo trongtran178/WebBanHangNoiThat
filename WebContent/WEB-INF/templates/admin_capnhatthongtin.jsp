@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <!-- Khai báo sử dụng JSTL Core Tags -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="com.noithatchatluong.DAO.*"%>
+<%@ page import="com.noithatchatluong.model.*"%>
+<%@ page import="com.noithatchatluong.entities.*"%>
+<%@ page import="com.noithatchatluong.controller.ProductsController"%>
+<%@ page import="javax.servlet.http.HttpServletRequest"%>
+<%@ page import="javax.servlet.http.HttpServletResponse"%>
+<%@ page import="javax.servlet.http.HttpServlet"%>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -237,11 +246,11 @@
                     <div class="col-lg-8 col-xlg-9 col-md-7" style="margin: auto;">
                         <div class="card">
                             <div class="card-body">
-                                <form class="form-horizontal form-material" id = "formcapnhatthongtin">
+                                <form action = "admincapnhatthongtin" method = "POST" "class="form-horizontal form-material" id = "formcapnhatthongtin">
                                     <div class="form-group">
                                         <label class="col-md-12">Username</label>
                                         <div class="col-md-12">
-                                            <input type="text" id="username" readonly value="DucTuan" class="form-control form-control-line">
+                                            <input type="text" id="username" name = "username" readonly value="${sessionScope.admin.getUsername()}" class="form-control form-control-line">
                                         </div>
                                     </div>
 
@@ -271,6 +280,13 @@
                                             <button class="btn btn-success">Cập nhật</button>
                                         </div>
                                     </div>
+                                    <c:if test="${not empty trangthai}">
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <c:out value="${trangthai}" />
+                                        </div>
+                                    </div>
+                                     </c:if>
                                 </form>
                             </div>
                         </div>
