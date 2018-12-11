@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.noithatchatluong.utils.AESUtils;
 
-@WebServlet("/product-detail")
+@WebServlet("/maNo")
 public class ProductDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
