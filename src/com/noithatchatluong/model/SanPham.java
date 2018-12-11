@@ -1,9 +1,12 @@
 package com.noithatchatluong.model;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Date;
 import java.util.List;
 
 import com.noithatchatluong.entities.HinhAnh;
+import com.noithatchatluong.utils.AESUtils;
 
 public class SanPham {
 	private int id;
@@ -135,6 +138,11 @@ public class SanPham {
 	}
 	public void setDangHoatDong(int dangHoatDong) {
 		this.dangHoatDong = dangHoatDong;
+	}
+	
+	public String getMaSanPhamMaHoa() throws UnsupportedEncodingException {
+		String maHoa = URLEncoder.encode(AESUtils.encrypt(this.getMaSanPham()),"UTF-8");
+		return maHoa;
 	}
 	
 	public SanPham() {
