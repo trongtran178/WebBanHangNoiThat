@@ -131,267 +131,276 @@
 				</ul>
 			</div>
 		</aside>
-
-		<div class="colorlib-shop">
-			<div class="container">
-				<div class="row row-pb-md">
-					<div class="col-md-10 col-md-offset-1">
-						<div class="process-wrap">
-							<div class="process text-center active">
-								<p>
-									<span>01</span>
-								</p>
-								<h3>Giỏ hàng</h3>
-							</div>
-							<div class="process text-center">
-								<p>
-									<span>02</span>
-								</p>
-								<h3>Kiểm tra</h3>
-							</div>
-							<div class="process text-center">
-								<p>
-									<span>03</span>
-								</p>
-								<h3>Đặt hàng</h3>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row row-pb-md">
-					<div class="col-md-10 col-md-offset-1">
-						<div class="product-name">
-							<div class="one-forth text-center">
-								<span>Chi tiết sản phẩm</span>
-							</div>
-							<div class="one-eight text-center">
-								<span>Đơn giá</span>
-							</div>
-							<div class="one-eight text-center">
-								<span>Số lượng</span>
-							</div>
-							<div class="one-eight text-center">
-								<span>Khuyến mãi</span>
-							</div>
-							<div class="one-eight text-center">
-								<span>Tổng tiền</span>
-							</div>
-							<div class="one-eight text-center">
-								<span>Xóa</span>
-							</div>
-						</div>
-						<c:forEach items="${danhSachItem.getItems()}" var="item">
-							<div class="product-cart"
-								id="<c:out value='${item.getSanPham().getMaSanPham()}'/>">
-								<div class="one-forth">
-									<div class="product-img"
-										style="background-image: url(static/images/productimages/<c:out value='${item.getSanPham().getDanhSachHinhAnh().get(0)}'/>);">
-									</div>
-									<div class="display-tc">
-										<h3>
-											<c:out value='${item.getSanPham().getTenSanPham()}' />
-										</h3>
-									</div>
-								</div>
-								<div class="one-eight text-center">
-									<div class="display-tc">
-										<span class="price"
-											id="donGia-<c:out value='${item.getSanPham().getMaSanPham()}'/>"
-											data-donGia="<c:out value='${item.getSanPham().getDonGia()}'/>"><c:out
-												value='${item.getSanPham().getDonGia()}' /> đ</span>
-									</div>
-								</div>
-								<div class="one-eight text-center">
-									<div class="display-tc">
-										<input type="number" name="quantity"
-											onchange="TinhTongTien(event)"
-											data-parent-id="<c:out value='${item.getSanPham().getMaSanPham()}'/>"
-											class="form-control input-number text-center"
-											value="<c:out value='${item.getSoLuong()}'/>" min="1"
-											max="100">
-									</div>
-								</div>
-								<div class="one-eight text-center">
-									<div class="display-tc">
-										<span class="price khuyenMai"
-											id="khuyenMai-<c:out value='${item.getSanPham().getMaSanPham()}'/>"
-											data-khuyenMai="<c:out value='${item.getKhuyenMai()}'/>"><c:out
-												value='${item.getKhuyenMai()}' />%</span>
-									</div>
-								</div>
-								<div class="one-eight text-center">
-									<div class="display-tc">
-										<span class="price tongTien"
-											id="tongTien-<c:out value='${item.getSanPham().getMaSanPham()}'/>"
-											data-tongTien="<c:out value='${item.getTongTien()}'/>"><c:out
-												value='${item.getTongTien()}' /></span> đ
-									</div>
-								</div>
-								<div class="one-eight text-center">
-									<div class="display-tc">
-										<button class="btn btn-danger button-xoa"
-											style="padding: 0px 5px; border-radius: 5px;"
-											data-parent-id="<c:out value='${item.getSanPham().getMaSanPham()}'/>">x</button>
-									</div>
-								</div>
-							</div>
-						</c:forEach>
-
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-1"></div>
-					<div class="col-md-10 col-md-offset-1">
-						<div class="total-wrap">
-							<div class="row">
-								<div class="col-md-3 editSpaceOfMuaThemButton">
-									<button style="border-radius: 7px;" type="button"
-										class="btn btn-info">Mua thêm</button>
-								</div>
-								<div class="col-md-3">
-									<button style="border-radius: 7px;" type="button"
-										class="btn btn-success" data-toggle="modal"
-										data-target="#CustomerInformationModal">Thanh toán</button>
-								</div>
-								<div class="modal fade" id="CustomerInformationModal"
-									aria-labelledby="gridSystemModalLabel" role="dialog">
-									<div class="modal-dialog" role="document">
-										<div class="modal-content">
-											<div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal"
-													aria-label="Close">&times;</button>
-												<h4 class="modal-title">
-													<i class="fa fa-info-circle iconThongTinKhachHang"
-														style="font-size: 20px; color: blue;"></i>Nhập thông tin
-													quý khách
-												</h4>
-											</div>
-											<div class="modal-body">
-												<form>
-													<div class="form-group">
-														<label for="TenKhachHang" class="control-label">Họ
-															và tên:</label> <input type="text" class="form-control"
-															id="TenKhachHang" placeholder="Nhập họ và tên...">
-													</div>
-													<div class="form-group">
-														<label for="Email" class="control-label">Email:</label> <input
-															type="email" class="form-control" id="TenKhachHang"
-															placeholder="Nhập email...">
-													</div>
-													<div class="form-group">
-														<label for="Address" class="control-label">Địa
-															chỉ:</label> <input type="email" class="form-control"
-															id="address" placeholder="Nhập địa chỉ...">
-													</div>
-													<div class="form-group">
-														<label for="SDT" class="control-label">Số điện
-															thoại:</label> <input type="text" class="form-control"
-															id="phonenumber" placeholder="Nhập số điện thoại">
-													</div>
-
-												</form>
-
-
-
-											</div>
-											<div class="modal-footer">
-												<button style="border-radius: 7px;" type="button"
-													class="btn btn-danger" data-dismiss="modal">Close</button>
-												<button style="border-radius: 7px;" type="button"
-													class="btn btn-info">Lưu thông tin</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6 text-center">
-									<div class="total">
-										<div class="sub">
-											<p>
-												<span>Tổng tiền sản phẩm:</span> <span
-													id="tongTienChuaKhuyenMai"><c:out
-														value='${danhSachItem.getTongTienChuaKhuyenMai()}' /> đ</span>
-											</p>
-											<p>
-												<span>Phí vận chuyển:</span> <span style="color: red;">Free
-													ship</span>
-											</p>
-											<p>
-												<span>Tổng tiền khuyến mãi:</span> <span
-													id="tongTienKhuyenMai"><c:out
-														value='${danhSachItem.getTongTienKhuyenMai()}' /></span>
-											</p>
-										</div>
-										<div class="grand-total">
-											<p>
-												<span> <strong>Tổng:</strong>
-												</span> <span id="tongTienPhaiTra"><c:out
-														value='${danhSachItem.getTongTien()}' /> đ</span>
-											</p>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="colorlib-shop">
-			<div class="container">
-			<c:if test="${not empty danhSachItem.getSanPhamLienQuan()}">
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
-						<h2>
-							<span>Sản phẩm liên quan</span>
-						</h2>
-						<p>Có thể bạn cũng muốn xem những sản phẩm này.</p>
-					</div>
-				</div>
-			</c:if>
-
-
-				<div class="row">
-
-					<c:forEach items="${danhSachItem.getSanPhamLienQuan()}"
-						var="sanPham">
-						<div class="col-md-3 text-center">
-							<div class="product-entry">
-								<div class="product-img"
-									style="background-image: url(static/images/productimages/${sanPham.getDanhSachHinhAnh().get(0)});">
-									<p class="tag">
-										<span class="new">New</span>
-									</p>
-									<div class="cart">
+		<c:choose>
+			<c:when test="${not empty danhSachItem.getItems()}">
+				<div class="colorlib-shop">
+					<div class="container">
+						<div class="row row-pb-md">
+							<div class="col-md-10 col-md-offset-1">
+								<div class="process-wrap">
+									<div class="process text-center active">
 										<p>
-											<span class="addtocart"> <a
-												href="addtocart?maSanPham=${sanPham.getMaSanPham()}">
-													<i class="icon-shopping-cart"></i>
-											</a>
-											</span> <span> <a
-												href="product-detail?maSanPham=${sanPham.getMaSanPham()}">
-													<i class="icon-eye"></i>
-											</a>
-											</span>
+											<span>01</span>
 										</p>
+										<h3>Giỏ hàng</h3>
 									</div>
-								</div>
-								<div class="desc">
-									<h3>
-										<a href="product-detail.html">${sanPham.getTenSanPham()}</a>
-									</h3>
-									<p class="price">
-										<span>${sanPham.getDonGia()}</span>
-									</p>
+									<div class="process text-center">
+										<p>
+											<span>02</span>
+										</p>
+										<h3>Kiểm tra</h3>
+									</div>
+									<div class="process text-center">
+										<p>
+											<span>03</span>
+										</p>
+										<h3>Đặt hàng</h3>
+									</div>
 								</div>
 							</div>
 						</div>
-					</c:forEach>
-
+						<div class="row row-pb-md">
+							<div class="col-md-10 col-md-offset-1">
+								<div class="product-name">
+									<div class="one-forth text-center">
+										<span>Chi tiết sản phẩm</span>
+									</div>
+									<div class="one-eight text-center">
+										<span>Đơn giá</span>
+									</div>
+									<div class="one-eight text-center">
+										<span>Số lượng</span>
+									</div>
+									<div class="one-eight text-center">
+										<span>Khuyến mãi</span>
+									</div>
+									<div class="one-eight text-center">
+										<span>Tổng tiền</span>
+									</div>
+									<div class="one-eight text-center">
+										<span>Xóa</span>
+									</div>
+								</div>
+								<c:forEach items="${danhSachItem.getItems()}" var="item">
+									<div class="product-cart"
+										id="<c:out value='${item.getSanPham().getMaSanPham()}'/>">
+										<div class="one-forth">
+											<div class="product-img"
+												style="background-image: url(static/images/productimages/<c:out value='${item.getSanPham().getDanhSachHinhAnh().get(0)}'/>);">
+											</div>
+											<div class="display-tc">
+												<h3>
+													<c:out value='${item.getSanPham().getTenSanPham()}' />
+												</h3>
+											</div>
+										</div>
+										<div class="one-eight text-center">
+											<div class="display-tc">
+												<span class="price"
+													id="donGia-<c:out value='${item.getSanPham().getMaSanPham()}'/>"
+													data-donGia="<c:out value='${item.getSanPham().getDonGia()}'/>"><c:out
+														value='${item.getSanPham().getDonGia()}' /> đ</span>
+											</div>
+										</div>
+										<div class="one-eight text-center">
+											<div class="display-tc">
+												<input type="number" name="quantity"
+													onchange="TinhTongTien(event)"
+													data-parent-id="<c:out value='${item.getSanPham().getMaSanPham()}'/>"
+													class="form-control input-number text-center"
+													value="<c:out value='${item.getSoLuong()}'/>" min="1"
+													max="100">
+											</div>
+										</div>
+										<div class="one-eight text-center">
+											<div class="display-tc">
+												<span class="price khuyenMai"
+													id="khuyenMai-<c:out value='${item.getSanPham().getMaSanPham()}'/>"
+													data-khuyenMai="<c:out value='${item.getKhuyenMai()}'/>"><c:out
+														value='${item.getKhuyenMai()}' />%</span>
+											</div>
+										</div>
+										<div class="one-eight text-center">
+											<div class="display-tc">
+												<span class="price tongTien"
+													id="tongTien-<c:out value='${item.getSanPham().getMaSanPham()}'/>"
+													data-tongTien="<c:out value='${item.getTongTien()}'/>"><c:out
+														value='${item.getTongTien()}' /></span> đ
+											</div>
+										</div>
+										<div class="one-eight text-center">
+											<div class="display-tc">
+												<button class="btn btn-danger button-xoa"
+													style="padding: 0px 5px; border-radius: 5px;"
+													data-parent-id="<c:out value='${item.getSanPham().getMaSanPham()}'/>">x</button>
+											</div>
+										</div>
+									</div>
+								</c:forEach>
+		
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-1"></div>
+							<div class="col-md-10 col-md-offset-1">
+								<div class="total-wrap">
+									<div class="row">
+										<div class="col-md-3 editSpaceOfMuaThemButton">
+											<button style="border-radius: 7px;" type="button"
+												class="btn btn-info">Mua thêm</button>
+										</div>
+										<div class="col-md-3">
+											<button style="border-radius: 7px;" type="button"
+												class="btn btn-success" data-toggle="modal"
+												data-target="#CustomerInformationModal">Thanh toán</button>
+										</div>
+										<div class="modal fade" id="CustomerInformationModal"
+											aria-labelledby="gridSystemModalLabel" role="dialog">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal"
+															aria-label="Close">&times;</button>
+														<h4 class="modal-title">
+															<i class="fa fa-info-circle iconThongTinKhachHang"
+																style="font-size: 20px; color: blue;"></i>Nhập thông tin
+															quý khách
+														</h4>
+													</div>
+													<div class="modal-body">
+														<form>
+															<div class="form-group">
+																<label for="TenKhachHang" class="control-label">Họ
+																	và tên:</label> <input type="text" class="form-control"
+																	id="TenKhachHang" placeholder="Nhập họ và tên...">
+															</div>
+															<div class="form-group">
+																<label for="Email" class="control-label">Email:</label> <input
+																	type="email" class="form-control" id="TenKhachHang"
+																	placeholder="Nhập email...">
+															</div>
+															<div class="form-group">
+																<label for="Address" class="control-label">Địa
+																	chỉ:</label> <input type="email" class="form-control"
+																	id="address" placeholder="Nhập địa chỉ...">
+															</div>
+															<div class="form-group">
+																<label for="SDT" class="control-label">Số điện
+																	thoại:</label> <input type="text" class="form-control"
+																	id="phonenumber" placeholder="Nhập số điện thoại">
+															</div>
+		
+														</form>
+		
+		
+		
+													</div>
+													<div class="modal-footer">
+														<button style="border-radius: 7px;" type="button"
+															class="btn btn-danger" data-dismiss="modal">Close</button>
+														<button style="border-radius: 7px;" type="button"
+															class="btn btn-info">Lưu thông tin</button>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6 text-center">
+											<div class="total">
+												<div class="sub">
+													<p>
+														<span>Tổng tiền sản phẩm:</span> <span
+															id="tongTienChuaKhuyenMai"><c:out
+																value='${danhSachItem.getTongTienChuaKhuyenMai()}' /> đ</span>
+													</p>
+													<p>
+														<span>Phí vận chuyển:</span> <span style="color: red;">Free
+															ship</span>
+													</p>
+													<p>
+														<span>Tổng tiền khuyến mãi:</span> <span
+															id="tongTienKhuyenMai"><c:out
+																value='${danhSachItem.getTongTienKhuyenMai()}' /></span>
+													</p>
+												</div>
+												<div class="grand-total">
+													<p>
+														<span> <strong>Tổng:</strong>
+														</span> <span id="tongTienPhaiTra"><c:out
+																value='${danhSachItem.getTongTien()}' /> đ</span>
+													</p>
+												</div>
+											</div>
+										</div>
+		
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
+		
+				<div class="colorlib-shop">
+					<div class="container">
+					<c:if test="${not empty danhSachItem.getSanPhamLienQuan()}">
+						<div class="row">
+							<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
+								<h2>
+									<span>Sản phẩm liên quan</span>
+								</h2>
+								<p>Có thể bạn cũng muốn xem những sản phẩm này.</p>
+							</div>
+						</div>
+					</c:if>
+		
+		
+						<div class="row">
+		
+							<c:forEach items="${danhSachItem.getSanPhamLienQuan()}"
+								var="sanPham">
+								<div class="col-md-3 text-center">
+									<div class="product-entry">
+										<div class="product-img"
+											style="background-image: url(static/images/productimages/${sanPham.getDanhSachHinhAnh().get(0)});">
+											<p class="tag">
+												<span class="new">New</span>
+											</p>
+											<div class="cart">
+												<p>
+													<span class="addtocart"> <a
+														href="addtocart?maSanPham=${sanPham.getMaSanPham()}">
+															<i class="icon-shopping-cart"></i>
+													</a>
+													</span> <span> <a
+														href="product-detail?maSanPham=${sanPham.getMaSanPham()}">
+															<i class="icon-eye"></i>
+													</a>
+													</span>
+												</p>
+											</div>
+										</div>
+										<div class="desc">
+											<h3>
+												<a href="product-detail.html">${sanPham.getTenSanPham()}</a>
+											</h3>
+											<p class="price">
+												<span>${sanPham.getDonGia()}</span>
+											</p>
+										</div>
+									</div>
+								</div>
+							</c:forEach>
+		
+						</div>
+					</div>
+				</div>			</c:when>
+			
+			<c:otherwise>
+				<div style="text-align: center;"><h2>Bạn chưa có sản phẩm nào trong giỏ hàng!</h2>
+					<h3><a href = "products">Xem sảm phẩm ngay!</a></h3>
+				</div>
+			</c:otherwise>
+		</c:choose>
+
 	</div>
 
 
