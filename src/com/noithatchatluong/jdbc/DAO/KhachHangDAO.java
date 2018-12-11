@@ -12,6 +12,7 @@ import java.util.List;
 
 import com.noithatchatluong.model.AdminUser;
 import com.noithatchatluong.model.KhachHang;
+import com.noithatchatluong.utils.BCryptUtils;
 
 public class KhachHangDAO {
 	public DataProvider dataProvider;
@@ -97,22 +98,26 @@ public class KhachHangDAO {
 	}
 	
 	public boolean checkPassword(KhachHang khachHang) throws SQLException {
-		String sql = "SELECT COUNT(*) FROM KhachHang WHERE email = ? AND password = ?";
-
+		String sql = "SELECT * from KhachHang where email = ?";
+		this.dataProvider = new DataProvider();
 		this.dataProvider.connect();
 		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);
 		
 		statement.setString(1, khachHang.getEmail());
-		statement.setString(2, khachHang.getPassword());
 		
-		int count = statement.executeUpdate();
+		ResultSet resultSet = statement.executeQuery();
+		String password = "1";
+		
+		if (resultSet.next()) {
+			password = resultSet.getString("password");
+			
+		}
 		statement.close();
 		this.dataProvider.disconnect();
 		
-		if (count == 1)
-			return true;
+		boolean isSuccess = BCryptUtils.checkPassword(khachHang.getPassword(), password);
 		
-		return false;
+		return isSuccess;
 	}
 	
 	public boolean updatePassword(KhachHang khachHang) throws SQLException {

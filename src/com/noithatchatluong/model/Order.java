@@ -1,9 +1,12 @@
 package com.noithatchatluong.model;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.sql.SQLException;
 import java.util.List;
 
 import com.noithatchatluong.jdbc.DAO.SanPhamDAO;
+import com.noithatchatluong.utils.AESUtils;
 
 public class Order {
 	private int id;
@@ -11,11 +14,15 @@ public class Order {
 	private List<Item> items;
 	private List<SanPham> sanPhamLienQuan;
 
-	public List<SanPham> getSanPhamLienQuan() throws SQLException {
+	public List<SanPham> getSanPhamLienQuan() throws SQLException, UnsupportedEncodingException {
 		if (this.items.size() > 0) {
 			int index = this.items.size() - 1;
 			SanPhamDAO sanPhamDAO = new SanPhamDAO();
 			this.sanPhamLienQuan = sanPhamDAO.getDanhSachSanPhamLienQuan(this.items.get(index).getSanPham().getMaHangMuc());
+			for(int i = 0; i <  this.sanPhamLienQuan.size(); i++ ) {
+				this.sanPhamLienQuan.get(i).setMaSanPham(URLEncoder.encode(AESUtils.encrypt(this.sanPhamLienQuan.get(i).getMaSanPham()),"UTF-8"));
+			}
+			
 		} else {
 			this.sanPhamLienQuan = null;
 		}

@@ -270,7 +270,7 @@
 				var getEmail = document.getElementById("email").value;
 				var email = escape(getEmail);
 				//alert(window.location.origin);
-				var url = "/WebBanHangNoiThat2/checkEmail?email=" + email;
+				var url = "/WebBanHangNoiThat/checkEmail?email=" + email;
 				emailRequest.onreadystatechange = showEmailStatus;
 				emailRequest.open("GET", url, true);
 				emailRequest.send(null);
