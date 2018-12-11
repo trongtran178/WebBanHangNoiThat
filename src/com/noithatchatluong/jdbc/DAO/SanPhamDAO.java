@@ -163,4 +163,24 @@ public class SanPhamDAO {
 		
 		return listSanPham;
 	}
+	
+	//Ko can ham nay nua
+	public List<String> getDanhSachHinhAnh(String maHinh) throws SQLException {		
+		List<String> danhSachHinhAnh = new ArrayList<String>();
+		String sql = "SELECT * FROM HinhAnh WHERE MaHinh = ?";
+		
+		this.dataProvider = new DataProvider();
+		this.dataProvider.connect();
+		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);
+		statement.setString(1, maHinh);
+		
+		ResultSet resultSet = statement.executeQuery();
+		
+		while (resultSet.next()) {
+			String hinhCon = resultSet.getString("HinhCon");
+			danhSachHinhAnh.add(hinhCon);
+		}
+		
+		return danhSachHinhAnh;
+	}
 }
