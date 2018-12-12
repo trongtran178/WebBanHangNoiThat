@@ -13,6 +13,8 @@ public class HoaDonDAO {
 
 	public boolean insertHoaDon(HoaDon hoaDon) throws SQLException {
 		String sql = "INSERT INTO HoaDon (ID, MaHoaDon, MaKhachHang, TongTien, NgayDat, TrangThai, GhiChu, DangHoatDong) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		this.dataProvider = new DataProvider();
 		this.dataProvider.connect();
 
 		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);
@@ -36,6 +38,7 @@ public class HoaDonDAO {
 	public boolean deletetHoaDon(HoaDon hoaDon) throws SQLException {
 		String sql = "DELETE FROM HoaDon where MaHoaDon = ?";
 
+		this.dataProvider = new DataProvider();
 		this.dataProvider.connect();
 		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);
 		statement.setString(1, hoaDon.getMaHoaDon());

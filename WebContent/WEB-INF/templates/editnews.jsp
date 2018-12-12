@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<!-- Khai báo sử dụng JSTL Core Tags -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -47,6 +49,32 @@
 	    font-weight: 400;
 	    line-height: 1.471;
 	}
+	.Choicefile {
+	color: #fff;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+#imageFile, .removeimg {
+	display: none;
+}
+
+#thumbbox {
+	position: relative;
+	width: 100px;
+}
+
+.removeimg {
+	background:
+		url("http://png-3.findicons.com/files/icons/2181/34al_volume_3_2_se/24/001_05.png")
+		repeat scroll 0 0 transparent;
+	height: 24px;
+	position: absolute;
+	right: -195px;
+	top: 7px;
+	width: 24px;
+}
 </style>
 </head>
 
@@ -217,7 +245,7 @@
                                 <i class="mdi mdi-alert-outline"></i>
                                 <span class="hide-menu">Đăng xuất</span>
                             </a>
-                        </li>
+                        </li> 
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -252,38 +280,58 @@
 				</div>
 			</div>
 			<div class="col-md-12 col-md-offset-0">
-				<form action="/admin/editNews" method="POST"
+				<form name = "editNews" action="editnews" method="POST"
 					enctype="multipart/form-data">
 					<div class="">
-						<input type="hidden" name="id" />
+						<input type="hidden" name="maTinTuc" value = "${tinTuc.maTinTuc}" />
 					</div>
-					<label>Tiêu đề</label> <input value = "MOCHI – Ý TƯỞNG THIẾT KẾ CHUỖI CỬA HÀNG BÁNH NHẬT ĐỘC ĐÁO" style = "border-radius: 5px;" class = "form-control" type="text" name="title" /> <br>
+					<label>Tiêu đề</label> <input value = "${tinTuc.tieuDe}" style = "border-radius: 5px;" class = "form-control" type="text" name="tieuDe" /> <br>
 					<label>Nội dung</label>
-					<textarea class="ckeditor" id="editor" name="content" cols="80"
-						rows="10">Thiết kế cửa hàng Nhật,  món ăn Nhật dường như không còn xa lạ với mọi người, nhất là đối với những ai đã, đang và sẽ kinh doanh cửa hàng, tiệm bánh.  Có khá nhiều phong cách thiết kế nội thất cửa hàng như phong cách thiết kế hiện đại, phong cách cổ điển…nhưng có thể thấy nhà hàng, cửa hàng kiểu nhật đang khá được ưa chuộng trên thị trường khi mà càng ngày càng xuất hiện nhiều dạng chuỗi hệ thống thương hiệu bánh, nhượng quyền. Hãy cùng Starlight tìm hiểu về không gian nội thất cửa hàng mochi – ý tưởng thiết kế chuỗi cửa hàng bánh nhật độc đáo trong bài chia sẻ dưới đây.<br>
-						June
-19
-2018
-207
-0
-MOCHI – Ý TƯỞNG THIẾT KẾ CHUỖI CỬA HÀNG BÁNH NHẬT ĐỘC ĐÁO
-By OanhIn STARLIGHT, THI CÔNG NỘI THẤT, THIẾT KẾ NỘI THẤT, THIẾT KẾ NỘI THẤT NHÀ HÀNG
-MOCHI – Ý TƯỞNG THIẾT KẾ CHUỖI CỬA HÀNG BÁNH NHẬT ĐỘC ĐÁO
-Thiết kế cửa hàng Nhật,  món ăn Nhật dường như không còn xa lạ với mọi người, nhất là đối với những ai đã, đang và sẽ kinh doanh cửa hàng, tiệm bánh.  Có khá nhiều phong cách thiết kế nội thất cửa hàng như phong cách thiết kế hiện đại, phong cách cổ điển…nhưng có thể thấy nhà hàng, cửa hàng kiểu nhật đang khá được ưa chuộng trên thị trường khi mà càng ngày càng xuất hiện nhiều dạng chuỗi hệ thống thương hiệu bánh, nhượng quyền. Hãy cùng Starlight tìm hiểu về không gian nội thất cửa hàng mochi – ý tưởng thiết kế chuỗi cửa hàng bánh nhật độc đáo trong bài chia sẻ dưới đây.
-
-mochi-y-tuong-thiet-ke-chuoi-cua-hang-banh-doc-dao
-
-Mochi là thương hiệu bánh nhật khá nổi tiếng trên thị trường với sự phát triển về thương hiệu và thị phần, chuỗi cửa hàng ngày càng mở rộng trong các trung tâm thương mại lớn, trong các khu đô thị, trên các tuyến phố lớn tại Việt Nam. Mochi Sweet tại Vạn Hạnh Mall Hồ Chí Minh được thiết kế và thi công nhanh chóng chính xác bởi Starlight.<br>
-Thương hiệu bánh nhật không chỉ được nhắc đến với sản phẩm của chính họ mà còn ấn tượng với khách hàng bởi không gian nội thất được thiết kế hiện đại, độc đáo.<br>
-
+					<textarea class="ckeditor" id="editor" name="noiDung" cols="80"
+						rows="10">${tinTuc.noiDung }
+						<br>
 	
 					</textarea>
 					<br> 
-					<span>File đính kèm : </span>
-					<input type = "file"/>
+					<span>Hình đại diện : </span>
+					
+						<div id="myfileupload">
+							<input type="file" id="imageFile" name="imageFile"
+								accept="image/*" onchange="readURL(this);" />
+						</div>
+						<c:choose>
+							<c:when test="${not empty tinTuc.hinhDaiDien and tinTuc.hinhDaiDien ne 'None'}">
+								<div id="thumbbox">
+								<img height="300" src = "static/hinhdaidientintuc/${tinTuc.hinhDaiDien}" width="300" alt="Thumb image" id="thumbimage" /> <a class="removeimg"
+									href="javascript:"></a>
+								</div>
+							</c:when>
+							<c:when test="${tinTuc.hinhDaiDien eq 'None'}">
+								<div id="thumbbox">	
+									<img src = "" height="300" width="300" alt="Thumb image" id="thumbimage"
+										style="display: none" /> <a class="removeimg"
+										href="javascript:"></a>
+								</div>								
+							</c:when>
+						</c:choose>
+						<div id="boxchoice">
+							
+								<c:if test="${not empty tinTuc.hinhDaiDien and tinTuc.hinhDaiDien ne 'None'}">
+									<a href="javascript:" class="Choicefile btn btn-primary">Chỉnh sửa đại diện</a>									
+								</c:if>
+								<c:if test="${tinTuc.hinhDaiDien eq 'None'}">
+									<a href="javascript:" class="Choicefile btn btn-primary">Chọn hình đại diện</a>									
+								</c:if>								
+								
+							<!-- <a href="javascript:" class="Choicefile">Chọn hình đại diện</a> -->
+							<p style="clear: both"></p>
+						</div>
 					<br><br><br>
+					
+					<input type = "hidden" name = "nameOfImageAvatar" id = "idOfImageAvatar" value = ""/>
+					
 					<!-- <button class = "btn btn-primary" type="submit">Sửa tin tức</button> -->
-					<button class = "btn btn-primary" type="submit">Sửa tin tức</button>
+					<button class = "btn btn-primary" onclick = "submitTheForm()">Sửa tin tức</button>
 					 <br> <br>
 				</form>
 
@@ -332,168 +380,62 @@ Thương hiệu bánh nhật không chỉ được nhắc đến với sản ph�
 	<!-- Custom Theme Scripts -->
 	<script src="build/js/custom.min.js"></script>
 
-	<!-- Chart.js -->
+	<!-- //Xử lý xem ảnh trước -->
+	<script type="text/javascript">
+		function  readURL(input,thumbimage) {
+		   if  (input.files && input.files[0]) { //Sử dụng  cho Firefox - chrome
+		   	var  reader = new FileReader();
+		   	reader.onload = function (e) {
+		   		$("#thumbimage").attr('src', e.target.result);
+		   	}
+		   	reader.readAsDataURL(input.files[0]);
+		   }
+		    else  { // Sử dụng cho IE
+		    	$("#thumbimage").attr('src', input.value);
+
+		    }
+		    $("#thumbimage").show();
+		    $('.Choicefile').css('background', '#C4C4C4');
+		    $('.Choicefile').css('cursor', 'default');
+		    $(".removeimg").show();
+		    $(".Choicefile").unbind('click'); //Xóa sự kiện  click trên nút .Choicefile
+
+		}
+		$(document).ready(function () {
+		   $(".Choicefile").bind('click', function  () { //Chọn file khi .Choicefile Click
+		   	$("#imageFile").click();
+
+		   });
+		   $(".removeimg").click(function () {//Xóa hình  ảnh đang xem
+			 document.getElementById("imageFile").value = null;
+			 $("#imageFile").val(null);
+
+		   	$("#thumbimage").attr('src', '').hide();
+		   	$("#myfileupload").html('<input type="file" id="imageFile" accept="image/*" name = "imageFile" onchange="readURL(this);" />');
+		   	$(".removeimg").hide();
+		      $(".Choicefile").bind('click', function  () {//Tạo lại sự kiện click để chọn file
+		      	$("#imageFile").click();
+		      });
+		      $('.Choicefile').css('background','#0877D8');
+		      $('.Choicefile').css('cursor', 'pointer');	
+		  });
+		})		
+
+	</script>	
+	
+	
 	<script>
-		/*Chart.defaults.global.legend = {
-		  enabled: false
-		};*/
-
-		// Line chart
-		var ctx = document.getElementById("lineChart");
-		var lineChart = new Chart(ctx, {
-			type : 'line',
-			data : {
-				labels : [ "January", "February", "March", "April", "May",
-						"June", "July" ],
-				datasets : [ {
-					label : "số lượng sản phẩm",
-					backgroundColor : "rgba(38, 185, 154, 0.31)",
-					borderColor : "rgba(38, 185, 154, 0.7)",
-					pointBorderColor : "rgba(38, 185, 154, 0.7)",
-					pointBackgroundColor : "rgba(38, 185, 154, 0.7)",
-					pointHoverBackgroundColor : "#fff",
-					pointHoverBorderColor : "rgba(22,22,22,1)",
-					pointBorderWidth : 3,
-					data : [ 50, 50, 50, 39, 20, 85, 7 ]
-				}, {
-					label : "số lượng hóa đơn",
-					backgroundColor : "rgba(3, 88, 106, 0.3)",
-					borderColor : "rgba(3, 88, 106, 0.70)",
-					pointBorderColor : "rgba(3, 88, 106, 0.70)",
-					pointBackgroundColor : "rgba(3, 88, 106, 0.70)",
-					pointHoverBackgroundColor : "#fff",
-					pointHoverBorderColor : "rgba(151,187,205,1)",
-					pointBorderWidth : 1,
-					data : [ 82, 23, 66, 9, 99, 4, 2 ]
-				} ]
-			},
-		});
-
-		// Bar chart
-		var ctx = document.getElementById("mybarChart");
-		var mybarChart = new Chart(ctx, {
-			type : 'bar',
-			data : {
-				labels : [ "January", "February", "March", "April", "May",
-						"June", "July" ],
-				datasets : [ {
-					label : 'Yes - of Votes',
-					backgroundColor : "#26B99A",
-					data : [ 51, 30, 40, 28, 92, 50, 45 ]
-				}, {
-					label : 'No - of Votes',
-					backgroundColor : "#03586A",
-					data : [ 41, 56, 25, 48, 72, 34, 12 ]
-				} ]
-			},
-
-			options : {
-				scales : {
-					yAxes : [ {
-						ticks : {
-							beginAtZero : true
-						}
-					} ]
-				}
-			}
-		});
-
-		// Doughnut chart
-		var ctx = document.getElementById("canvasDoughnut");
-		var data = {
-			labels : [ "Dark Grey", "Purple Color", "Gray Color",
-					"Green Color", "Blue Color" ],
-			datasets : [ {
-				data : [ 120, 50, 140, 180, 100 ],
-				backgroundColor : [ "#455C73", "#9B59B6", "#BDC3C7", "#26B99A",
-						"#3498DB" ],
-				hoverBackgroundColor : [ "#34495E", "#B370CF", "#CFD4D8",
-						"#36CAAB", "#49A9EA" ]
-
-			} ]
-		};
-
-		var canvasDoughnut = new Chart(ctx, {
-			type : 'doughnut',
-			tooltipFillColor : "rgba(51, 51, 51, 0.55)",
-			data : data
-		});
-
-		// Radar chart
-		var ctx = document.getElementById("canvasRadar");
-		var data = {
-			labels : [ "Eating", "Drinking", "Sleeping", "Designing", "Coding",
-					"Cycling", "Running" ],
-			datasets : [ {
-				label : "My First dataset",
-				backgroundColor : "rgba(3, 88, 106, 0.2)",
-				borderColor : "rgba(3, 88, 106, 0.80)",
-				pointBorderColor : "rgba(3, 88, 106, 0.80)",
-				pointBackgroundColor : "rgba(3, 88, 106, 0.80)",
-				pointHoverBackgroundColor : "#fff",
-				pointHoverBorderColor : "rgba(220,220,220,1)",
-				data : [ 65, 59, 90, 81, 56, 55, 40 ]
-			}, {
-				label : "My Second dataset",
-				backgroundColor : "rgba(38, 185, 154, 0.2)",
-				borderColor : "rgba(38, 185, 154, 0.85)",
-				pointColor : "rgba(38, 185, 154, 0.85)",
-				pointStrokeColor : "#fff",
-				pointHighlightFill : "#fff",
-				pointHighlightStroke : "rgba(151,187,205,1)",
-				data : [ 28, 48, 40, 19, 96, 27, 100 ]
-			} ]
-		};
-
-		var canvasRadar = new Chart(ctx, {
-			type : 'radar',
-			data : data,
-		});
-
-		// Pie chart
-		var ctx = document.getElementById("pieChart");
-		var data = {
-			datasets : [ {
-				data : [ 120, 50, 140, 180, 100 ],
-				backgroundColor : [ "#455C73", "#9B59B6", "#BDC3C7", "#26B99A",
-						"#3498DB" ],
-				label : 'My dataset' // for legend
-			} ],
-			labels : [ "Dark Gray", "Purple", "Gray", "Green", "Blue" ]
-		};
-
-		var pieChart = new Chart(ctx, {
-			data : data,
-			type : 'pie'/*,
-															        options: {
-															          legend: false
-															        }*/
-		});
-
-		// PolarArea chart
-		var ctx = document.getElementById("polarArea");
-		var data = {
-			datasets : [ {
-				data : [ 120, 50, 140, 180, 100 ],
-				backgroundColor : [ "#455C73", "#9B59B6", "#BDC3C7", "#26B99A",
-						"#3498DB" ],
-				label : 'My dataset'
-			} ],
-			labels : [ "Dark Gray", "Purple", "Gray", "Green", "Blue" ]
-		};
-
-		var polarArea = new Chart(ctx, {
-			data : data,
-			type : 'polarArea',
-			options : {
-				scale : {
-					ticks : {
-						beginAtZero : true
-					}
-				}
-			}
-		});
+		function submitTheForm() {
+			
+			var imgSrcParam = document.getElementById("thumbimage").src;
+			console.log(imgSrcParam + " cacascsa");
+			document.getElementById("idOfImageAvatar").value = imgSrcParam;
+			//console.log(document.getElementById("idOfImageAvatar").value + "  SADSAD A DS ");
+			document.forms["editNews"].submit();
+		}
+		
 	</script>
+		
 	<!-- chỗ này add js biểu đô -->
 
 

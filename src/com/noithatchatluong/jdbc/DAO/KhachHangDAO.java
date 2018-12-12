@@ -12,6 +12,7 @@ import java.util.List;
 
 import com.noithatchatluong.model.AdminUser;
 import com.noithatchatluong.model.KhachHang;
+import com.noithatchatluong.model.KhachHang;
 import com.noithatchatluong.utils.BCryptUtils;
 
 public class KhachHangDAO {
@@ -26,6 +27,7 @@ public class KhachHangDAO {
 		
 		String sql = "SELECT * FROM khachhang";
 		
+		this.dataProvider = new DataProvider();
 		this.dataProvider.connect();
 		
 		Statement statement = this.dataProvider.jdbcConnection.createStatement();
@@ -50,6 +52,8 @@ public class KhachHangDAO {
 	public boolean updateKhachHang(KhachHang khachhang) throws SQLException {
 		String sql = "UPDATE khachhang SET HoTen = ?, SDT = ?, DIaChi = ?, Password = ?";
 		sql += " WHERE MaKhachHang = ?";
+		
+		this.dataProvider = new DataProvider();
 		this.dataProvider.connect();
 		
 		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);
@@ -69,6 +73,7 @@ public class KhachHangDAO {
 		KhachHang khachhang = null;
 		String sql = "SELECT * FROM khachhang WHERE MaKhachHang = ?";
 		
+		this.dataProvider = new DataProvider();
 		this.dataProvider.connect();
 		
 		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);
@@ -93,12 +98,14 @@ public class KhachHangDAO {
 		
 		resultSet.close();
 		statement.close();
+		this.dataProvider.disconnect();
 		
 		return khachhang;
 	}
 	
 	public boolean checkPassword(KhachHang khachHang) throws SQLException {
 		String sql = "SELECT * from KhachHang where email = ? AND DangHoatDong = 1";
+		
 		this.dataProvider = new DataProvider();
 		this.dataProvider.connect();
 		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);
@@ -121,7 +128,7 @@ public class KhachHangDAO {
 	}
 	
 	public boolean updatePassword(KhachHang khachHang) throws SQLException {
-		String sql = "UPDATE AdminUser SET password = ? WHERE Email = ?";
+		String sql = "UPDATE KhachHang SET password = ? WHERE Email = ?";
 		
 		this.dataProvider = new DataProvider();
 		this.dataProvider.connect();
@@ -137,4 +144,83 @@ public class KhachHangDAO {
 		
 		return rowUpdated;		
 	}
+	
+	public boolean checkEmailTonTai(String email) throws SQLException {
+		String sql = "SELECT COUNT(*) as count FROM KhachHang WHERE Email = ? AND  DangHoatDong = 1;";
+		boolean isSuccess = false;
+
+		this.dataProvider = new DataProvider();
+		this.dataProvider.connect();
+		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);
+		
+		statement.setString(1, email);
+		
+		ResultSet resultSet = statement.executeQuery();
+
+		if (resultSet.next()) {
+			int count = resultSet.getInt("count");
+			if (count > 0) {
+				isSuccess = true;
+			}
+		}
+		
+		statement.close();
+		this.dataProvider.disconnect();
+		
+		return isSuccess;
+	}
+	
+	
+	public int getLastIDKhachHang() throws SQLException {
+		int id = 0;
+		String sql = "select ID from KhachHang order by ID DESC LIMIT 1";
+		this.dataProvider = new DataProvider();
+		this.dataProvider.connect();
+		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);
+		ResultSet resultSet = statement.executeQuery();
+		if (resultSet.next()) {
+			id = resultSet.getInt("ID");
+		}
+		resultSet.close();
+		statement.close();
+		this.dataProvider.disconnect();
+		
+		return id + 1;
+	}
+	
+	public KhachHang getKhachHangByEmail(String email) throws SQLException {
+		KhachHang khachhang = null;
+		String sql = "SELECT * FROM khachhang WHERE Email = ?";
+		
+		this.dataProvider = new DataProvider();
+		this.dataProvider.connect();
+		
+		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);
+		statement.setString(1, email);
+		
+		ResultSet resultSet = statement.executeQuery();
+		
+		if (resultSet.next()) {
+			int iD = resultSet.getInt("id");
+			String maKhachHang = resultSet.getString("MaKhachHang");	
+			String hoTen = resultSet.getString("HoTen");
+			String sdt = resultSet.getString("SDT");
+			String diaChi = resultSet.getString("DiaChi");
+			String password = resultSet.getString("Password");
+			Date ngayDangKy = resultSet.getDate("NgayDangKy");
+			int daDangKy = resultSet.getInt("DaDangKy");
+			int soNguoiDaGioiThieu = resultSet.getInt("SoNguoiDaGioiThieu");
+			int dangHoatDong = resultSet.getInt("DangHoatDong");
+
+			khachhang = new KhachHang(iD, maKhachHang, email, hoTen, sdt, diaChi, password, ngayDangKy, daDangKy, soNguoiDaGioiThieu, dangHoatDong);
+		}
+		
+		resultSet.close();
+		statement.close();
+		this.dataProvider.disconnect();
+
+		return khachhang;
+	}
+
+	
 }

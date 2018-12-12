@@ -11,8 +11,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
-    <title>Nice admin Template - The Ultimate Multipurpose admin template</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="static/images/sweet-home-icon.jpg">
+    <title>Thống kê</title>
     <!-- Custom CSS -->
     <link href="static/admin/dist/css/style.min.css" rel="stylesheet">
     
@@ -153,62 +153,8 @@
         <!-- ============================================================== -->
  		<!-- Left Sidebar - style you can find in sidebar.scss  -->
 		<!-- ============================================================== -->
-		<aside class="left-sidebar" data-sidebarbg="skin5">
-            <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.html" aria-expanded="false">
-                                <i class="mdi mdi-av-timer"></i>
-                                <span class="hide-menu">Thống kê</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="pages-profile.html" aria-expanded="false">
-                                <i class="mdi mdi-account-network"></i>
-                                <span class="hide-menu">Sản phẩm</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="form-basic.html" aria-expanded="false">
-                                <i class="mdi mdi-arrange-bring-forward"></i>
-                                <span class="hide-menu">Hóa đơn</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="table-basic.html" aria-expanded="false">
-                                <i class="mdi mdi-border-none"></i>
-                                <span class="hide-menu">Tín tức</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="icon-material.html" aria-expanded="false">
-                                <i class="mdi mdi-face"></i>
-                                <span class="hide-menu">Moderator</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="starter-kit.html" aria-expanded="false">
-                                <i class="mdi mdi-file"></i>
-                                <span class="hide-menu">Khách hàng</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="error-404.html" aria-expanded="false">
-                                <i class="mdi mdi-alert-outline"></i>
-                                <span class="hide-menu">Đăng xuất</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- End Sidebar navigation -->
-            </div>
-            <!-- End Sidebar scroll-->
-        </aside>
-        <!-- ============================================================== -->
-        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+		<jsp:include page="_admin_pageleft.jsp"></jsp:include>
+
         <!-- ============================================================== -->
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
@@ -250,7 +196,7 @@
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Line graph<small>Sessions</small></h2>
+                    <h2>Thống kê sản phẩm bán ra </h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -278,7 +224,7 @@
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Bar graph <small>Sessions</small></h2>
+                    <h2>Bar graph</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -465,19 +411,38 @@
     <script src="build/js/custom.min.js"></script>
 
     <!-- Chart.js -->
-    <script>
-      /*Chart.defaults.global.legend = {
-        enabled: false
-      };*/
+    <script>		
+		var arraySoLieuSanPhamNoiNhap = [];
+		var arraySoLieuSanPhamNgoaiNhap = [];
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function() {
+			if(this.readyState == 4 && this.status == 200) {
+				var obj = JSON.parse(this.responseText);
+				 for(var i = 0; i < obj.sanPhamNoiNhap.length; i++) {
+					 arraySoLieuSanPhamNoiNhap.push(obj.sanPhamNoiNhap[i]);
+				} 
+				 for(var i = 0; i < obj.sanPhamNgoaiNhap.length; i++) {
+					 arraySoLieuSanPhamNgoaiNhap.push(obj.sanPhamNgoaiNhap[i]);
+				 }
+				console.log(arraySoLieSanPhamNoiNhap);
+				console.log(arraySoLieSanPhamNgoaiNhap);
+				console.log(Array.isArray(arraySoLieuSanPhamNoiNhap));
+				console.log(Array.isArray(arraySoLieuSanPhamNgoaiNhap));
+			}
+		};
+		xhr.open("GET", "/WebBanHangNoiThat/getStatisticsOfProductsSold", true);
+		xhr.send();
+		
+		
 
       // Line chart
       var ctx = document.getElementById("lineChart");
       var lineChart = new Chart(ctx, {
         type: 'line',
         data: {
-          labels: ["January", "February", "March", "April", "May", "June", "July"],
+          labels: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
           datasets: [{
-            label: "số lượng sản phẩm",
+            label: "Sản phẩm nội nhập",
             backgroundColor: "rgba(38, 185, 154, 0.31)",
             borderColor: "rgba(38, 185, 154, 0.7)",
             pointBorderColor: "rgba(38, 185, 154, 0.7)",
@@ -485,9 +450,11 @@
             pointHoverBackgroundColor: "#fff",
             pointHoverBorderColor: "rgba(22,22,22,1)",
             pointBorderWidth: 3,
-            data: [50, 50, 50, 39, 20, 85, 7]
+           /*  data: [50, 54, 52, 39, 60, 85, 50, 40, 45, 89, 50, 44 ]*/
+
+           	data: arraySoLieSanPhamNoiNhap
           }, {
-            label: "số lượng hóa đơn",
+            label: "Sản phẩm ngoại nhập",
             backgroundColor: "rgba(3, 88, 106, 0.3)",
             borderColor: "rgba(3, 88, 106, 0.70)",
             pointBorderColor: "rgba(3, 88, 106, 0.70)",
@@ -495,7 +462,8 @@
             pointHoverBackgroundColor: "#fff",
             pointHoverBorderColor: "rgba(151,187,205,1)",
             pointBorderWidth: 1,
-            data: [82, 23, 66, 9, 99, 4, 2]
+            data: arraySoLieSanPhamNgoaiNhap
+           /*  data: [39, 41, 39, 50, 39, 85, 44, 75, 44, 33, 44, 44] */
           }]
         },
       });

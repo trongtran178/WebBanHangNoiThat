@@ -9,20 +9,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.noithatchatluong.jdbc.DAO.HoaDonDAO;
+
 @WebServlet("/adminquanlydonhang")
 public class AdminQuanLyDonHangController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public AdminQuanLyDonHangController() {
-        super();
-    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/templates/admin_quanlydonhang.jsp");
-		dispatcher.forward(request, response);
+	public AdminQuanLyDonHangController() {
+		super();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		if (request.getSession().getAttribute("admin") == null) {
+			response.sendRedirect("adminlogin");
+		} else {
+			HoaDonDAO hoaDonDAO = new HoaDonDAO();
+			
+			
+			
+			
+			RequestDispatcher dispatcher = this.getServletContext()
+					.getRequestDispatcher("/WEB-INF/templates/admin_quanlydonhang.jsp");
+			dispatcher.forward(request, response);
+		}
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 

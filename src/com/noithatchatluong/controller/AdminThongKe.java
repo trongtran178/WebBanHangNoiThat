@@ -12,17 +12,24 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/adminthongke")
 public class AdminThongKe extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public AdminThongKe() {
-        super();
-    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/templates/testThongKe.jsp");
-		dispatcher.forward(request, response);
+	public AdminThongKe() {
+		super();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		if (request.getSession().getAttribute("admin") == null) {
+			response.sendRedirect("adminlogin");
+		} else {
+			RequestDispatcher dispatcher = this.getServletContext()
+					.getRequestDispatcher("/WEB-INF/templates/admin_thongke.jsp");
+			dispatcher.forward(request, response);
+		}
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 

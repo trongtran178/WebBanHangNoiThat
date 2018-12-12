@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -9,6 +10,9 @@
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript" src="static/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="static/ckeditor/samples/js/sample.js"></script>
+<script type="text/javascript" src="static/ckeditor/samples/css/sample.css"></script>
+<link rel="stylesheet" href="toolbarconfigurator/lib/codemirror/neo.css">
 <meta name="description" content="">
 <meta name="author" content="">
 <!-- Favicon icon -->
@@ -39,14 +43,46 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 <style>
-	body {
-	    color: #73879C;
-	    background: #f4f4f4;
-	    font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
-	    font-size: 13px;
-	    font-weight: 400;
-	    line-height: 1.471;
-	}
+body {
+	color: #73879C;
+	background: #f4f4f4;
+	font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 1.471;
+}
+
+.Choicefile {
+	display: block;
+	background: #0877D8;
+	border: 1px solid #fff;
+	color: #fff;
+	width: 100px;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+	padding: 5px 0px;
+}
+
+#imageFile, .removeimg {
+	display: none;
+}
+
+#thumbbox {
+	position: relative;
+	width: 100px;
+}
+
+.removeimg {
+	background:
+		url("http://png-3.findicons.com/files/icons/2181/34al_volume_3_2_se/24/001_05.png")
+		repeat scroll 0 0 transparent;
+	height: 24px;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	width: 24px;
+}
 </style>
 </head>
 
@@ -252,18 +288,33 @@
 				</div>
 			</div>
 			<div class="col-md-12 col-md-offset-0">
-				<form action="/admin/editNews" method="POST"
+				<form action="addnews" method="POST"
 					enctype="multipart/form-data">
 					<div class="">
 						<input type="hidden" name="id" />
 					</div>
-					<label>Tiêu đề</label> <input placeholder = "Tiêu đề phải lớn hơn 20 kí tự" style = "border-radius: 5px;" class = "form-control" type="text" name="title" /> <br>
+					<label>Tiêu đề</label> <input placeholder = "Tiêu đề phải lớn hơn 20 kí tự" style = "border-radius: 5px;" class = "form-control" type="text" name="tieuDe" id = "tieuDe" /> <br>
 					<label>Nội dung</label>
-					<textarea class="ckeditor" id="editor" name="content" cols="80"
+					<textarea class="ckeditor" id="editor" name="noiDung" cols="80"
 						rows="10"></textarea>
 					<br> 
-					<span>File đính kèm : </span>
-					<input type = "file"/>
+					<span>Hình đại diện : </span>
+					
+						<div id="myfileupload">
+							<input type="file" id="imageFile" name="imageFile"
+								accept="image/*" onchange="readURL(this);" />
+						</div>
+						<div id="thumbbox">
+							<img height="300" width="300" alt="Thumb image" id="thumbimage"
+								style="display: none" /> <a class="removeimg"
+								href="javascript:"></a>
+						</div>
+						<div id="boxchoice">
+							<a href="javascript:" class="Choicefile">Chọn file</a>
+							<p style="clear: both"></p>
+						</div>
+						<label class="filename"></label>
+					
 					<br><br><br>
 					<!-- <button class = "btn btn-primary" type="submit">Sửa tin tức</button> -->
 					<button class = "btn btn-primary" type="submit">Thêm tin tức</button>
@@ -309,175 +360,57 @@
 	<script src="vendors/Chart.js/dist/Chart.min.js"></script>
 
 	<script>
-		CKEDITOR.replace("editor");
+		initSample();
 	</script>
 
 	<!-- Custom Theme Scripts -->
 	<script src="build/js/custom.min.js"></script>
+	
+	<!-- //Xử lý xem ảnh trước -->
+	<script type="text/javascript">
+		function  readURL(input,thumbimage) {
+		   if  (input.files && input.files[0]) { //Sử dụng  cho Firefox - chrome
+		   	var  reader = new FileReader();
+		   	reader.onload = function (e) {
+		   		$("#thumbimage").attr('src', e.target.result);
+		   	}
+		   	reader.readAsDataURL(input.files[0]);
+		   }
+		    else  { // Sử dụng cho IE
+		    	$("#thumbimage").attr('src', input.value);
 
-	<!-- Chart.js -->
-	<script>
-		/*Chart.defaults.global.legend = {
-		  enabled: false
-		};*/
+		    }
+		    $("#thumbimage").show();
+		    $('.filename').text($("#imageFile").val());
+		    $('.Choicefile').css('background', '#C4C4C4');
+		    $('.Choicefile').css('cursor', 'default');
+		    $(".removeimg").show();
+		    $(".Choicefile").unbind('click'); //Xóa sự kiện  click trên nút .Choicefile
 
-		// Line chart
-		var ctx = document.getElementById("lineChart");
-		var lineChart = new Chart(ctx, {
-			type : 'line',
-			data : {
-				labels : [ "January", "February", "March", "April", "May",
-						"June", "July" ],
-				datasets : [ {
-					label : "số lượng sản phẩm",
-					backgroundColor : "rgba(38, 185, 154, 0.31)",
-					borderColor : "rgba(38, 185, 154, 0.7)",
-					pointBorderColor : "rgba(38, 185, 154, 0.7)",
-					pointBackgroundColor : "rgba(38, 185, 154, 0.7)",
-					pointHoverBackgroundColor : "#fff",
-					pointHoverBorderColor : "rgba(22,22,22,1)",
-					pointBorderWidth : 3,
-					data : [ 50, 50, 50, 39, 20, 85, 7 ]
-				}, {
-					label : "số lượng hóa đơn",
-					backgroundColor : "rgba(3, 88, 106, 0.3)",
-					borderColor : "rgba(3, 88, 106, 0.70)",
-					pointBorderColor : "rgba(3, 88, 106, 0.70)",
-					pointBackgroundColor : "rgba(3, 88, 106, 0.70)",
-					pointHoverBackgroundColor : "#fff",
-					pointHoverBorderColor : "rgba(151,187,205,1)",
-					pointBorderWidth : 1,
-					data : [ 82, 23, 66, 9, 99, 4, 2 ]
-				} ]
-			},
-		});
+		}
+		$(document).ready(function () {
+		   $(".Choicefile").bind('click', function  () { //Chọn file khi .Choicefile Click
+		   	$("#imageFile").click();
 
-		// Bar chart
-		var ctx = document.getElementById("mybarChart");
-		var mybarChart = new Chart(ctx, {
-			type : 'bar',
-			data : {
-				labels : [ "January", "February", "March", "April", "May",
-						"June", "July" ],
-				datasets : [ {
-					label : 'Yes - of Votes',
-					backgroundColor : "#26B99A",
-					data : [ 51, 30, 40, 28, 92, 50, 45 ]
-				}, {
-					label : 'No - of Votes',
-					backgroundColor : "#03586A",
-					data : [ 41, 56, 25, 48, 72, 34, 12 ]
-				} ]
-			},
+		   });
+		   $(".removeimg").click(function () {//Xóa hình  ảnh đang xem
+			 document.getElementById("imageFile").value = null;
+			 $("#imageFile").val(null);
 
-			options : {
-				scales : {
-					yAxes : [ {
-						ticks : {
-							beginAtZero : true
-						}
-					} ]
-				}
-			}
-		});
+		   	$("#thumbimage").attr('src', '').hide();
+		   	$("#myfileupload").html('<input type="file" id="imageFile" name = "imageFile" onchange="readURL(this);" />');
+		   	$(".removeimg").hide();
+		      $(".Choicefile").bind('click', function  () {//Tạo lại sự kiện click để chọn file
+		      	$("#imageFile").click();
+		      });
+		      $('.Choicefile').css('background','#0877D8');
+		      $('.Choicefile').css('cursor', 'pointer');
+		      $(".filename").text("");
+		      //this.formChonHinh.reset();
+		  });
+		})		
 
-		// Doughnut chart
-		var ctx = document.getElementById("canvasDoughnut");
-		var data = {
-			labels : [ "Dark Grey", "Purple Color", "Gray Color",
-					"Green Color", "Blue Color" ],
-			datasets : [ {
-				data : [ 120, 50, 140, 180, 100 ],
-				backgroundColor : [ "#455C73", "#9B59B6", "#BDC3C7", "#26B99A",
-						"#3498DB" ],
-				hoverBackgroundColor : [ "#34495E", "#B370CF", "#CFD4D8",
-						"#36CAAB", "#49A9EA" ]
-
-			} ]
-		};
-
-		var canvasDoughnut = new Chart(ctx, {
-			type : 'doughnut',
-			tooltipFillColor : "rgba(51, 51, 51, 0.55)",
-			data : data
-		});
-
-		// Radar chart
-		var ctx = document.getElementById("canvasRadar");
-		var data = {
-			labels : [ "Eating", "Drinking", "Sleeping", "Designing", "Coding",
-					"Cycling", "Running" ],
-			datasets : [ {
-				label : "My First dataset",
-				backgroundColor : "rgba(3, 88, 106, 0.2)",
-				borderColor : "rgba(3, 88, 106, 0.80)",
-				pointBorderColor : "rgba(3, 88, 106, 0.80)",
-				pointBackgroundColor : "rgba(3, 88, 106, 0.80)",
-				pointHoverBackgroundColor : "#fff",
-				pointHoverBorderColor : "rgba(220,220,220,1)",
-				data : [ 65, 59, 90, 81, 56, 55, 40 ]
-			}, {
-				label : "My Second dataset",
-				backgroundColor : "rgba(38, 185, 154, 0.2)",
-				borderColor : "rgba(38, 185, 154, 0.85)",
-				pointColor : "rgba(38, 185, 154, 0.85)",
-				pointStrokeColor : "#fff",
-				pointHighlightFill : "#fff",
-				pointHighlightStroke : "rgba(151,187,205,1)",
-				data : [ 28, 48, 40, 19, 96, 27, 100 ]
-			} ]
-		};
-
-		var canvasRadar = new Chart(ctx, {
-			type : 'radar',
-			data : data,
-		});
-
-		// Pie chart
-		var ctx = document.getElementById("pieChart");
-		var data = {
-			datasets : [ {
-				data : [ 120, 50, 140, 180, 100 ],
-				backgroundColor : [ "#455C73", "#9B59B6", "#BDC3C7", "#26B99A",
-						"#3498DB" ],
-				label : 'My dataset' // for legend
-			} ],
-			labels : [ "Dark Gray", "Purple", "Gray", "Green", "Blue" ]
-		};
-
-		var pieChart = new Chart(ctx, {
-			data : data,
-			type : 'pie'/*,
-															        options: {
-															          legend: false
-															        }*/
-		});
-
-		// PolarArea chart
-		var ctx = document.getElementById("polarArea");
-		var data = {
-			datasets : [ {
-				data : [ 120, 50, 140, 180, 100 ],
-				backgroundColor : [ "#455C73", "#9B59B6", "#BDC3C7", "#26B99A",
-						"#3498DB" ],
-				label : 'My dataset'
-			} ],
-			labels : [ "Dark Gray", "Purple", "Gray", "Green", "Blue" ]
-		};
-
-		var polarArea = new Chart(ctx, {
-			data : data,
-			type : 'polarArea',
-			options : {
-				scale : {
-					ticks : {
-						beginAtZero : true
-					}
-				}
-			}
-		});
-	</script>
-	<!-- chỗ này add js biểu đô -->
+	</script>	
 
 
 
