@@ -12,17 +12,26 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/adminquanlymod")
 public class AdminQuanLyMod extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public AdminQuanLyMod() {
-        super();
-    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/templates/admin_quanlymod.jsp");
-		dispatcher.forward(request, response);
+	public AdminQuanLyMod() {
+		super();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		if (request.getSession().getAttribute("admin") == null) {
+			RequestDispatcher dispatcher = this.getServletContext()
+					.getRequestDispatcher("/WEB-INF/templates/admin_login.jsp");
+			dispatcher.forward(request, response);
+		} else {
+			RequestDispatcher dispatcher = this.getServletContext()
+					.getRequestDispatcher("/WEB-INF/templates/admin_quanlymod.jsp");
+			dispatcher.forward(request, response);
+		}
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 

@@ -5,6 +5,9 @@ public class AdminUser {
 	private String password;
 	private String quyenHan;
 	private int dangHoatDong;
+	public static String ADMIN = "Admin";
+	public static String MOD_QLBV = "ModQLBV";
+	public static String MOD_QLSP = "ModQLSP";
 	
 	public AdminUser() {
 		

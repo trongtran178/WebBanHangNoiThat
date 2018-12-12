@@ -49,7 +49,7 @@ public class BinhLuanDAO {
 		statement.setString(1, maSanPham);
 		ResultSet resultSet = statement.executeQuery();
 		
-		if (resultSet.next()) {
+		while (resultSet.next()) {
 			int id = resultSet.getInt("ID");
 			String email = resultSet.getString("Email");
 			String noiDung = resultSet.getString("NoiDung");
