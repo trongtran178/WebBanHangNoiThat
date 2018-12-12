@@ -27,6 +27,7 @@ public class KhachHangDAO {
 		
 		String sql = "SELECT * FROM khachhang";
 		
+		this.dataProvider = new DataProvider();
 		this.dataProvider.connect();
 		
 		Statement statement = this.dataProvider.jdbcConnection.createStatement();
@@ -51,6 +52,8 @@ public class KhachHangDAO {
 	public boolean updateKhachHang(KhachHang khachhang) throws SQLException {
 		String sql = "UPDATE khachhang SET HoTen = ?, SDT = ?, DIaChi = ?, Password = ?";
 		sql += " WHERE MaKhachHang = ?";
+		
+		this.dataProvider = new DataProvider();
 		this.dataProvider.connect();
 		
 		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);
@@ -70,6 +73,7 @@ public class KhachHangDAO {
 		KhachHang khachhang = null;
 		String sql = "SELECT * FROM khachhang WHERE MaKhachHang = ?";
 		
+		this.dataProvider = new DataProvider();
 		this.dataProvider.connect();
 		
 		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);
@@ -94,12 +98,14 @@ public class KhachHangDAO {
 		
 		resultSet.close();
 		statement.close();
+		this.dataProvider.disconnect();
 		
 		return khachhang;
 	}
 	
 	public boolean checkPassword(KhachHang khachHang) throws SQLException {
 		String sql = "SELECT * from KhachHang where email = ? AND DangHoatDong = 1";
+		
 		this.dataProvider = new DataProvider();
 		this.dataProvider.connect();
 		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);
@@ -186,6 +192,7 @@ public class KhachHangDAO {
 		KhachHang khachhang = null;
 		String sql = "SELECT * FROM khachhang WHERE Email = ?";
 		
+		this.dataProvider = new DataProvider();
 		this.dataProvider.connect();
 		
 		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);
@@ -210,7 +217,8 @@ public class KhachHangDAO {
 		
 		resultSet.close();
 		statement.close();
-		
+		this.dataProvider.disconnect();
+
 		return khachhang;
 	}
 

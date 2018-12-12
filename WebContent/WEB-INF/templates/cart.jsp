@@ -246,7 +246,7 @@
 											</c:when>
 
 											<c:otherwise>
-												<form action="thanhtoan" method="GET">
+												<form action="thanhtoan" method="POST">
 													<div class="col-md-3">
 														<input type="submit" value="Thanh toán" style="border-radius: 7px;" type="button" class="btn btn-success">
 													</div>
