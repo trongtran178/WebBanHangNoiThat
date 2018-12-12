@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+	
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -57,6 +60,14 @@
 	<![endif]-->
 
 	</head>
+	<style>
+		hr {
+    	margin-top: 20px;
+    	margin-bottom: 20px;
+    	border: 0;
+    	border-top: 1px solid #e69595;
+	}
+	</style>
 	<body>
 		
 	<div class="colorlib-loader"></div>
@@ -73,7 +84,7 @@
 				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
 				   				<div class="slider-text-inner text-center">
 				   					<h1>Our Blog</h1>
-				   					<h2 class="bread"><span><a href="index.html">Home</a></span> <span>Blog</span></h2>
+				   					<h2 class="bread"><span><a href="index.html">Home</a></span> <span>Đọc tin</span></h2>
 				   				</div>
 				   			</div>
 				   		</div>
@@ -85,111 +96,176 @@
 
 		<div class="colorlib-blog">
 			<div class="container">
+				<div class = "row">
+					<div class = "col-md-12">
+						<h3>Đọc tin</h3>
+					</div>
+				</div>
 				<div class="row">
-					<div class="col-md-4">
-						<article class="article-entry">
-							<a href="blog.html" class="blog-img" style="background-image: url(images/home1.jpg);"></a>
-							<div class="desc">
-								<p class="meta"><span class="day">14</span><span class="month">Mar</span></p>
-								<p class="admin"><span>Đăng bởi:</span> <span>Tú Hồ</span></p>
-								<h2><a href="blog.html">Mở chi nhánh</a></h2>
-								<p>Sự kiện mở chi nhánh đang được khởi động và chúng tôi rất hào hứng về nó</p>
+					<div class = "col-md-9">
+					<c:forEach items="${paginationTinTuc.getList()}" var = "tinTuc">
+						<div class = "row">
+							<div class = "col-md-12">
+								<img src = "static/hinhdaidientintuc/${tinTuc.hinhDaiDien}" class="img-responsive" width = "850" height = "500"/>	
+							</div>	
+						</div>
+						<br>
+						<div class = "row">
+							<div class = "col-md-12">
+								<h4 style = "font-size: 20px;">${tinTuc.tieuDe }</h4>
+								<hr style = "color:red; width: 50px;">
 							</div>
-						</article>
-					</div>
-					<div class="col-md-4">
-						<article class="article-entry">
-							<a href="blog.html" class="blog-img" style="background-image: url(images/home2.jpg);"></a>
-							<div class="desc">
-							    <p class="meta"><span class="day">14</span><span class="month">Mar</span></p>
-								<p class="admin"><span>Đăng bởi:</span> <span>Tú Hồ</span></p>
-								<h2><a href="blog.html">Mở chi nhánh</a></h2>
-								<p>Sự kiện mở chi nhánh đang được khởi động và chúng tôi rất hào hứng về nó</p>
+							<div class = "col-md-12" id = "contentnews">
+								<c:if test="${fn:length(tinTuc.noiDung) gt 400}">
+									<p id = "content" style = "font-size: 18px;">${tinTuc.noiDung.substring(0, 400)}...</p>
+								</c:if>
+								<c:if test="${fn:length(tinTuc.noiDung) le 400}">
+									<p id = "content" style = "font-size: 18px;">${tinTuc.noiDung}...</p>								
+								</c:if>
+								<!-- <p>Thiết kế cửa hàng Nhật,  món ăn Nhật dường như không còn xa lạ với mọi người, nhất là đối với những ai đã, đang và sẽ kinh doanh cửa hàng, tiệm bánh.  Có khá nhiều phong cách thiết kế nội thất cửa hàng như phong cách thiết kế hiện đại, phong cách cổ điển…nhưng có thể thấy nhà hàng, cửa hàng kiểu nhật đang khá được ưa chuộng trên thị trường khi mà càng ngày càng xuất hiện nhiều dạng chuỗi hệ thống thương hiệu bánh, nhượng quyền. Hãy cùng Starlight tìm hiểu về không gian nội thất cửa hàng mochi – ý tưởng thiết kế chuỗi cửa hàng bánh nhật độc đáo trong bài chia sẻ dưới đây.</p>
+								<img src = "static/images/newsimage/news1.jpg" class="img-responsive" width = "850" height = "500"/>	
+								<br>
+								<p>Thương hiệu bánh nhật không chỉ được nhắc đến với sản phẩm của chính họ mà còn ấn tượng với khách hàng bởi không gian nội thất được thiết kế hiện đại, độc đáo.</p>
+								<p>
+									Với địa điểm nằm trong trung tâm thương mại, có diện tích khá nhỏ nhưng không vì thếmà khó trưng bày sản phẩm , ngược lại với cách thiết kế đơn giản, hiện đại, không gian nội thất được bố trí  gọn gàng, tiện ích.
+								</p>
+								<img src = "static/images/newsimage/news4.jpg" class="img-responsive" width = "850" height = "500"/>	
+								<br>
+								<p>Có thể thấy nội thất bên trong cửa hàng Mochi Sweet được thiết kế hài hòa nổi bật lên các sản phẩm trong tiệm bánh, góp phần quan trọng trong việc thu hút khách hàng và tăng hiệu quả kinh doanh cho tiệm bánh.</p> -->
 							</div>
-						</article>
+							<a class = "btn btn-danger" href = "readnews?maTinTuc=${tinTuc.maTinTuc }" >READ NEWS</a>
+							
+						</div>
+						<br><br><br><br>
+						<hr style = "color:red;">
+						
+						</c:forEach>
+					
 					</div>
-					<div class="col-md-4">
-						<article class="article-entry">
-							<a href="blog.html" class="blog-img" style="background-image: url(images/home3.jpg);"></a>
-							<div class="desc">
-								<p class="meta"><span class="day">14</span><span class="month">Mar</span></p>
-								<p class="admin"><span>Đăng bởi:</span> <span>Tú Hồ</span></p>
-								<h2><a href="blog.html">Mở chi nhánh</a></h2>
-								<p>Sự kiện mở chi nhánh đang được khởi động và chúng tôi rất hào hứng về nó</p>
+					
+					<div class = "col-md-3">
+						<div class = "row">
+							<h3>Tin tức mới</h3>
+							<hr style = "color:red;">
+						</div>
+						<c:forEach items = "${listTinTucMoi }" var = "tinTuc">
+							<div class="row">
+								<div class=" col-xs-3 col-md-4 col-sm-2">
+									<a href ="readnews?maTinTuc=${tinTuc.maTinTuc}" ><img src="static/hinhdaidientintuc/${tinTuc.hinhDaiDien}"
+										style="max-width: none;" width="80" height="60" /></a>
+								</div>
+
+								<div class="col-xs-9 col-md-8 col-sm-10">
+									<h5><a style = "color:black;" href = "readnews?maTinTuc=${tinTuc.maTinTuc}">${tinTuc.tieuDe}</a></h5>
+									<h6 style="color: grey;"><a href = "readnews?maTinTuc=${tinTuc.maTinTuc}">${tinTuc.ngayTao}</a></h6>
+								</div>
 							</div>
-						</article>
-					</div>
-					<div class="col-md-4">
-						<article class="article-entry">
-							<a href="blog.html" class="blog-img" style="background-image: url(images/home4.jpg);"></a>
-							<div class="desc">
-								<p class="meta"><span class="day">14</span><span class="month">Mar</span></p>
-								<p class="admin"><span>Đăng bởi:</span> <span>Tú Hồ</span></p>
-								<h2><a href="blog.html">Mở chi nhánh</a></h2>
-								<p>Sự kiện mở chi nhánh đang được khởi động và chúng tôi rất hào hứng về nó</p>
+							<!-- <div class="row">
+								<div class=" col-xs-3 col-md-4 col-sm-2">
+									<img src="static/images/slideimages/slide3.jpg"
+										style="max-width: none;" width="80" height="60" />
+								</div>
+
+								<div class="col-xs-9 col-md-8 col-sm-10">
+									<h5>Những ý tưởng kinh doanh quán cafe độc đáo</h5>
+									<h6 style="color: grey;">June 28, 2018</h6>
+								</div>
 							</div>
-						</article>
-					</div>
-					<div class="col-md-4">
-						<article class="article-entry">
-							<a href="blog.html" class="blog-img" style="background-image: url(images/home5.jpg);"></a>
-							<div class="desc">
-								<p class="meta"><span class="day">14</span><span class="month">Mar</span></p>
-								<p class="admin"><span>Đăng bởi:</span> <span>Tú Hồ</span></p>
-								<h2><a href="blog.html">Mở chi nhánh</a></h2>
-								<p>Sự kiện mở chi nhánh đang được khởi động và chúng tôi rất hào hứng về nó</p>
+							<div class="row">
+								<div class=" col-xs-3 col-md-4 col-sm-2">
+									<img src="static/images/slideimages/slide3.jpg"
+										style="max-width: none;" width="80" height="60" />
+								</div>
+
+								<div class="col-xs-9 col-md-8 col-sm-10">
+									<h5>Những ý tưởng kinh doanh quán cafe độc đáo</h5>
+									<h6 style="color: grey;">June 28, 2018</h6>
+								</div>
 							</div>
-						</article>
-					</div>
-					<div class="col-md-4">
-						<article class="article-entry">
-							<a href="blog.html" class="blog-img" style="background-image: url(images/home1.jpg);"></a>
-							<div class="desc">
-								<p class="meta"><span class="day">14</span><span class="month">Mar</span></p>
-								<p class="admin"><span>Đăng bởi:</span> <span>Tú Hồ</span></p>
-								<h2><a href="blog.html">Mở chi nhánh</a></h2>
-								<p>Sự kiện mở chi nhánh đang được khởi động và chúng tôi rất hào hứng về nó</p>
+							<div class="row">
+								<div class=" col-xs-3 col-md-4 col-sm-2">
+									<img src="static/images/slideimages/slide3.jpg"
+										style="max-width: none;" width="80" height="60" />
+								</div>
+
+								<div class="col-xs-9 col-md-8 col-sm-10">
+									<h5>Những ý tưởng kinh doanh quán cafe độc đáo</h5>
+									<h6 style="color: grey;">June 28, 2018</h6>
+								</div>
+							</div> -->
+						</c:forEach>
+						<br><br><br><br>					
+						<div class = "row">
+							<h3>Đọc nhiều nhất</h3>
+							<hr style = "color:red;">
+						</div>
+						<div class = "row">
+							<div class = " col-xs-3 col-md-4 col-sm-2">
+								<img src = "static/images/slideimages/slide3.jpg"  style = "max-width:none;" width = "80" height = "60" />
 							</div>
-						</article>
-					</div>
-					<div class="col-md-4">
-						<article class="article-entry">
-							<a href="blog.html" class="blog-img" style="background-image: url(images/home2.jpg);"></a>
-							<div class="desc">
-								<p class="meta"><span class="day">14</span><span class="month">Mar</span></p>
-								<p class="admin"><span>Đăng bởi:</span> <span>Tú Hồ</span></p>
-								<h2><a href="blog.html">Mở chi nhánh</a></h2>
-								<p>Sự kiện mở chi nhánh đang được khởi động và chúng tôi rất hào hứng về nó</p>
+						
+							<div class = "col-xs-9 col-md-8 col-sm-10">
+								<h5>
+									Những ý tưởng kinh doanh quán cafe độc đáo
+								</h5>
+								<h6 style = "color: grey;">696969 view</h6>
 							</div>
-						</article>
-					</div>
-					<div class="col-md-4">
-						<article class="article-entry">
-							<a href="blog.html" class="blog-img" style="background-image: url(images/home3.jpg);"></a>
-							<div class="desc">
-								<p class="meta"><span class="day">14</span><span class="month">Mar</span></p>
-								<p class="admin"><span>Đăng bởi:</span> <span>Tú Hồ</span></p>
-								<h2><a href="blog.html">Mở chi nhánh</a></h2>
-								<p>Sự kiện mở chi nhánh đang được khởi động và chúng tôi rất hào hứng về nó</p>
+						</div>	
+						<div class = "row">
+							<div class = " col-xs-3 col-md-4 col-sm-2">
+								<img src = "static/images/slideimages/slide3.jpg"  style = "max-width:none;" width = "80" height = "60" />
 							</div>
-						</article>
-					</div>
-					<div class="col-md-4">
-						<article class="article-entry">
-							<a href="blog.html" class="blog-img" style="background-image: url(images/home4.jpg);"></a>
-							<div class="desc">
-								<p class="meta"><span class="day">14</span><span class="month">Mar</span></p>
-								<p class="admin"><span>Đăng bởi:</span> <span>Tú Hồ</span></p>
-								<h2><a href="blog.html">Mở chi nhánh</a></h2>
-								<p>Sự kiện mở chi nhánh đang được khởi động và chúng tôi rất hào hứng về nó</p>
+						
+							<div class = "col-xs-9 col-md-8 col-sm-10">
+								<h5>
+									Những ý tưởng kinh doanh quán cafe độc đáo
+								</h5>
+								<h6 style = "color: grey;">696969 view</h6>
 							</div>
-						</article>
+						</div>	
+						<div class = "row">
+							<div class = " col-xs-3 col-md-4 col-sm-2">
+								<img src = "static/images/slideimages/slide3.jpg"  style = "max-width:none;" width = "80" height = "60" />
+							</div>
+						
+							<div class = "col-xs-9 col-md-8 col-sm-10">
+								<h5>
+									Những ý tưởng kinh doanh quán cafe độc đáo
+								</h5>
+								<h6 style = "color: grey;">696969 view</h6>
+							</div>
+						</div>
 					</div>
+					<c:if test="${paginationTinTuc.totalPages > 1}">
+						<div class="row">
+							<div class="col-md-12">
+								<ul class="pagination">
+									<c:forEach items="${paginationTinTuc.navigationPages }"
+										var="page">
+										<c:if test="${page != -1}">
+											<c:choose>
+												<c:when test="${paginationTinTuc.currentPage == page }">
+													<li class="active"><a
+														href="News?page=${page}">${page}</a></li>
+												</c:when>
+												<c:when test="${paginationTinTuc.currentPage != page }">
+													<li><a href="News?page=${page}">${page}</a></li>
+												</c:when>
+											</c:choose>
+										</c:if>
+										<c:if test="${page == -1}">
+											<span>...</span>
+										</c:if>
+									</c:forEach>
+								</ul>
+							</div>
+						</div>
+					</c:if>					
 				</div>
 			</div>
 		</div>
 
-		<div id="colorlib-subscribe">
+<!-- 		<div id="colorlib-subscribe">
 			<div class="overlay"></div>
 			<div class="container">
 				<div class="row">
@@ -212,7 +288,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<jsp:include page = "_footer.jsp"></jsp:include>
 	</div>
 
@@ -241,7 +317,11 @@
 	<script src="static/js/jquery.stellar.min.js"></script>
 	<!-- Main -->
 	<script src="static/js/main.js"></script>
-
+	
+	<script>
+		console.log(document.getElementById("content"));
+	</script>
+	
 	</body>
 </html>
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -64,6 +65,9 @@
     	border: 0;
     	border-top: 1px solid #e69595;
 	}
+	#contentnews {
+		font-size: 18px;
+	}
 	</style>
 	<body>
 		
@@ -102,17 +106,18 @@
 					<div class = "col-md-9">
 						<div class = "row">
 							<div class = "col-md-12">
-								<img src = "static/images/newsimage/news1.jpg" class="img-responsive" width = "850" height = "500"/>	
+								<img src = "static/hinhdaidientintuc/${tinTuc.hinhDaiDien}" class="img-responsive" width = "850" height = "500"/>	
 							</div>	
 						</div>
 						<br>
 						<div class = "row">
 							<div class = "col-md-12">
-								<h4>MOCHI - Ý TƯỞNG THIẾT KẾ CHUỖI CỬA HÀNG BÁNH NHẬT ĐỘC ĐÁO</h4>
+								<h4>${tinTuc.tieuDe }</h4>
 								<hr style = "color:red;">
 							</div>
 							<div class = "col-md-12" id = "contentnews">
-								<p>Thiết kế cửa hàng Nhật,  món ăn Nhật dường như không còn xa lạ với mọi người, nhất là đối với những ai đã, đang và sẽ kinh doanh cửa hàng, tiệm bánh.  Có khá nhiều phong cách thiết kế nội thất cửa hàng như phong cách thiết kế hiện đại, phong cách cổ điển…nhưng có thể thấy nhà hàng, cửa hàng kiểu nhật đang khá được ưa chuộng trên thị trường khi mà càng ngày càng xuất hiện nhiều dạng chuỗi hệ thống thương hiệu bánh, nhượng quyền. Hãy cùng Starlight tìm hiểu về không gian nội thất cửa hàng mochi – ý tưởng thiết kế chuỗi cửa hàng bánh nhật độc đáo trong bài chia sẻ dưới đây.</p>
+								<p>${tinTuc.noiDung}</p>
+								<!-- <p>Thiết kế cửa hàng Nhật,  món ăn Nhật dường như không còn xa lạ với mọi người, nhất là đối với những ai đã, đang và sẽ kinh doanh cửa hàng, tiệm bánh.  Có khá nhiều phong cách thiết kế nội thất cửa hàng như phong cách thiết kế hiện đại, phong cách cổ điển…nhưng có thể thấy nhà hàng, cửa hàng kiểu nhật đang khá được ưa chuộng trên thị trường khi mà càng ngày càng xuất hiện nhiều dạng chuỗi hệ thống thương hiệu bánh, nhượng quyền. Hãy cùng Starlight tìm hiểu về không gian nội thất cửa hàng mochi – ý tưởng thiết kế chuỗi cửa hàng bánh nhật độc đáo trong bài chia sẻ dưới đây.</p>
 								<img src = "static/images/newsimage/news1.jpg" class="img-responsive" width = "850" height = "500"/>	
 								<br>
 								<p>Thương hiệu bánh nhật không chỉ được nhắc đến với sản phẩm của chính họ mà còn ấn tượng với khách hàng bởi không gian nội thất được thiết kế hiện đại, độc đáo.</p>
@@ -121,65 +126,64 @@
 								</p>
 								<img src = "static/images/newsimage/news4.jpg" class="img-responsive" width = "850" height = "500"/>	
 								<br>
-								<p>Có thể thấy nội thất bên trong cửa hàng Mochi Sweet được thiết kế hài hòa nổi bật lên các sản phẩm trong tiệm bánh, góp phần quan trọng trong việc thu hút khách hàng và tăng hiệu quả kinh doanh cho tiệm bánh.</p>
+								<p>Có thể thấy nội thất bên trong cửa hàng Mochi Sweet được thiết kế hài hòa nổi bật lên các sản phẩm trong tiệm bánh, góp phần quan trọng trong việc thu hút khách hàng và tăng hiệu quả kinh doanh cho tiệm bánh.</p> -->
 							</div>
 						</div>
 						
 					
 					</div>
+					
 					<div class = "col-md-3">
 						<div class = "row">
 							<h3>Tin tức mới</h3>
 							<hr style = "color:red;">
 						</div>
-						<div class = "row">
-							<div class = " col-xs-3 col-md-4 col-sm-2">
-								<img src = "static/images/slideimages/slide3.jpg"  style = "max-width:none;" width = "80" height = "60" />
+						<c:forEach items = "${listTinTuc }" var = "tinTuc">
+							<div class="row">
+								<div class=" col-xs-3 col-md-4 col-sm-2">
+									<img src="static/hinhdaidientintuc/${tinTuc.hinhDaiDien}"
+										style="max-width: none;" width="80" height="60" />
+								</div>
+
+								<div class="col-xs-9 col-md-8 col-sm-10">
+									<h5><a style = "color:black;" href = "readnews?maTinTuc=${tinTuc.maTinTuc}">${tinTuc.tieuDe}</a></h5>
+									<h6 style="color: grey;"><a href = "readnews?maTinTuc=${tinTuc.maTinTuc}">${tinTuc.ngayTao}</a></h6>
+								</div>
 							</div>
-						
-							<div class = "col-xs-9 col-md-8 col-sm-10">
-								<h5>
-									Những ý tưởng kinh doanh quán cafe độc đáo
-								</h5>
-								<h6 style = "color: grey;">June 28, 2018</h6>
+							<!-- <div class="row">
+								<div class=" col-xs-3 col-md-4 col-sm-2">
+									<img src="static/images/slideimages/slide3.jpg"
+										style="max-width: none;" width="80" height="60" />
+								</div>
+
+								<div class="col-xs-9 col-md-8 col-sm-10">
+									<h5>Những ý tưởng kinh doanh quán cafe độc đáo</h5>
+									<h6 style="color: grey;">June 28, 2018</h6>
+								</div>
 							</div>
-						</div>
-						<div class = "row">
-							<div class = " col-xs-3 col-md-4 col-sm-2">
-								<img src = "static/images/slideimages/slide3.jpg"  style = "max-width:none;" width = "80" height = "60" />
+							<div class="row">
+								<div class=" col-xs-3 col-md-4 col-sm-2">
+									<img src="static/images/slideimages/slide3.jpg"
+										style="max-width: none;" width="80" height="60" />
+								</div>
+
+								<div class="col-xs-9 col-md-8 col-sm-10">
+									<h5>Những ý tưởng kinh doanh quán cafe độc đáo</h5>
+									<h6 style="color: grey;">June 28, 2018</h6>
+								</div>
 							</div>
-						
-							<div class = "col-xs-9 col-md-8 col-sm-10">
-								<h5>
-									Những ý tưởng kinh doanh quán cafe độc đáo
-								</h5>
-								<h6 style = "color: grey;">June 28, 2018</h6>
-							</div>
-						</div>
-						<div class = "row">
-							<div class = " col-xs-3 col-md-4 col-sm-2">
-								<img src = "static/images/slideimages/slide3.jpg"  style = "max-width:none;" width = "80" height = "60" />
-							</div>
-						
-							<div class = "col-xs-9 col-md-8 col-sm-10">
-								<h5>
-									Những ý tưởng kinh doanh quán cafe độc đáo
-								</h5>
-								<h6 style = "color: grey;">June 28, 2018</h6>
-							</div>
-						</div>
-						<div class = "row">
-							<div class = " col-xs-3 col-md-4 col-sm-2">
-								<img src = "static/images/slideimages/slide3.jpg"  style = "max-width:none;" width = "80" height = "60" />
-							</div>
-						
-							<div class = "col-xs-9 col-md-8 col-sm-10">
-								<h5>
-									Những ý tưởng kinh doanh quán cafe độc đáo
-								</h5>
-								<h6 style = "color: grey;">June 28, 2018</h6>
-							</div>
-						</div>
+							<div class="row">
+								<div class=" col-xs-3 col-md-4 col-sm-2">
+									<img src="static/images/slideimages/slide3.jpg"
+										style="max-width: none;" width="80" height="60" />
+								</div>
+
+								<div class="col-xs-9 col-md-8 col-sm-10">
+									<h5>Những ý tưởng kinh doanh quán cafe độc đáo</h5>
+									<h6 style="color: grey;">June 28, 2018</h6>
+								</div>
+							</div> -->
+						</c:forEach>
 						<br><br><br><br>					
 						<div class = "row">
 							<h3>Đọc nhiều nhất</h3>
@@ -225,31 +229,6 @@
 				</div>
 			</div>
 		</div>
-
-<!-- 		<div id="colorlib-subscribe">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2">
-						<div class="col-md-6 text-center">
-							<h2><i class="icon-paperplane"></i>Sign Up for a Newsletter</h2>
-						</div>
-						<div class="col-md-6">
-							<form class="form-inline qbstp-header-subscribe">
-								<div class="row">
-									<div class="col-md-12 col-md-offset-0">
-										<div class="form-group">
-											<input type="text" class="form-control" id="email" placeholder="Enter your email">
-											<button type="submit" class="btn btn-primary">Subscribe</button>
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div> -->
 		<jsp:include page = "_footer.jsp"></jsp:include>
 	</div>
 
