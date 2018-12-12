@@ -424,8 +424,8 @@
 				 for(var i = 0; i < obj.sanPhamNgoaiNhap.length; i++) {
 					 arraySoLieuSanPhamNgoaiNhap.push(obj.sanPhamNgoaiNhap[i]);
 				 }
-				console.log(arraySoLieSanPhamNoiNhap);
-				console.log(arraySoLieSanPhamNgoaiNhap);
+				console.log(arraySoLieuSanPhamNoiNhap);
+				console.log(arraySoLieuSanPhamNoiNhap);
 				console.log(Array.isArray(arraySoLieuSanPhamNoiNhap));
 				console.log(Array.isArray(arraySoLieuSanPhamNgoaiNhap));
 			}
@@ -452,7 +452,7 @@
             pointBorderWidth: 3,
            /*  data: [50, 54, 52, 39, 60, 85, 50, 40, 45, 89, 50, 44 ]*/
 
-           	data: arraySoLieSanPhamNoiNhap
+           	data: arraySoLieuSanPhamNoiNhap
           }, {
             label: "Sản phẩm ngoại nhập",
             backgroundColor: "rgba(3, 88, 106, 0.3)",
@@ -462,7 +462,7 @@
             pointHoverBackgroundColor: "#fff",
             pointHoverBorderColor: "rgba(151,187,205,1)",
             pointBorderWidth: 1,
-            data: arraySoLieSanPhamNgoaiNhap
+            data: arraySoLieuSanPhamNgoaiNhap
            /*  data: [39, 41, 39, 50, 39, 85, 44, 75, 44, 33, 44, 44] */
           }]
         },

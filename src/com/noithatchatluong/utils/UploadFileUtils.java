@@ -10,7 +10,7 @@ import javax.servlet.http.Part;
 
 public class UploadFileUtils {
 
-	private String SAVE_DIRECTORY = "G:\\webproejct\\WebBanHangNoiThat - Copy\\WebContent\\static\\hinhdaidientintuc";
+	//private String SAVE_DIRECTORY = "G:\\webproejct\\WebBanHangNoiThat - Copy\\WebContent\\static\\hinhdaidientintuc";
 	private String fileName = null;
 
 	public String getFileName() {
@@ -21,13 +21,13 @@ public class UploadFileUtils {
 		this.fileName = fileName;
 	}
 
-	public String getSAVE_DIRECTORY() {
+	/*public String getSAVE_DIRECTORY() {
 		return SAVE_DIRECTORY;
 	}
 
 	public void setSAVE_DIRECTORY(String sAVE_DIRECTORY) {
 		SAVE_DIRECTORY = sAVE_DIRECTORY;
-	}
+	}*/
 
 	public boolean uploadFile(Part part, HttpServletRequest request) throws ServletException, IOException {
 		if (part.getSize() > 0) {
@@ -36,10 +36,10 @@ public class UploadFileUtils {
 			this.setFileName(generateUniqueFileName(this.getFileName()));
 			if (fileName != null && fileName.length() > 0) {
 				
-				part.write(SAVE_DIRECTORY + File.separator + fileName);
+			//	part.write(SAVE_DIRECTORY + File.separator + fileName);
 				part.write(request.getServletContext().getRealPath("") + "static\\hinhdaidientintuc\\" +  File.separator + this.getFileName());
 				System.out.println(request.getServletContext().getRealPath("") + "static\\hinhdaidientintuc\\" +  File.separator + this.getFileName());
-				System.out.println(SAVE_DIRECTORY + File.separator + fileName);
+				//System.out.println(SAVE_DIRECTORY + File.separator + fileName);
 				return true;
 			}
 		}
