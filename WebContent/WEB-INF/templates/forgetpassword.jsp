@@ -102,7 +102,7 @@
 					<div class="col-md-10 col-md-offset-1">
 						<div class="contact-wrap">
 							<h3>Quên mật khẩu</h3>
-							<form method="POST" action="login" id = "loginForm">
+							<form method="POST" action="forgetpassword" id = "loginForm">
 	
 								<div class="row form-group">
 									<div class="col-md-12">
