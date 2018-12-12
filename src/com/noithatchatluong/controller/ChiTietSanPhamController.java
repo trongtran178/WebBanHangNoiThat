@@ -30,6 +30,9 @@ public class ChiTietSanPhamController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/templates/chitietsanpham.jsp");
 //		dispatcher.forward(request, response);
+		
+		System.out.println(request.getServletContext().getRealPath(""));
+		
 		String maSanPham = request.getParameter("maSanPham");
 		maSanPham = AESUtils.decrypt(maSanPham);
 		SanPhamDAO sanPhamDAO = new SanPhamDAO();
