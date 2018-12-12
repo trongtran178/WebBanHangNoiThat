@@ -16,6 +16,8 @@ public class ChiTietHoaDonDAO {
 
 	public boolean insertChiTietHoaDon(ChiTietHoaDon chiTietHoaDon) throws SQLException {
 		String sql = "INSERT INTO ChiTietHoaDon (MaHoaDon, MaSanPham, SoLuong, DonGia, KhuyenMai) VALUES (?, ?, ?, ?, ?)";
+		
+		this.dataProvider = new DataProvider();
 		this.dataProvider.connect();
 
 		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);
@@ -37,6 +39,8 @@ public class ChiTietHoaDonDAO {
 		ChiTietHoaDon chiTietHoaDon = null;
 		String sql = "SELECT * FROM ChiTietHoaDon WHERE MaHoaDon = ? AND MaSanPham = ?";
 		
+		
+		this.dataProvider = new DataProvider();
 		this.dataProvider.connect();
 		
 		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);

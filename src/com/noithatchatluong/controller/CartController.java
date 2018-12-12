@@ -26,7 +26,7 @@ public class CartController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		HttpSession session = request.getSession();
 		Order order = (Order) session.getAttribute("order");
 		if (order == null) {
@@ -37,26 +37,28 @@ public class CartController extends HttpServlet {
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/templates/cart.jsp");
 		dispatcher.forward(request, response);
 
-	}	
+	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String maSanPham = request.getParameter("maSanPham");
-		String action =  request.getParameter("action");
+		String action = request.getParameter("action");
 		int idSanPham = Integer.parseInt(maSanPham);
-		
+
 		response.setContentType("text/plain");
 		HttpSession session = request.getSession();
 		Order order = (Order) session.getAttribute("order");
-		
+
 		if (action.equals("xoa")) {
 			if (order != null) {
 				order.removeItem(idSanPham);
 				double tongTienChuaKhuyenMai = order.getTongTienChuaKhuyenMai();
 				double tongTienKhuyenMai = order.getTongTienKhuyenMai();
 				double tienPhaiTra = order.getTongTien();
-				response.getWriter().write(Double.toString(tongTienChuaKhuyenMai) + "-" + Double.toString(tongTienKhuyenMai) + "-" + Double.toString(tienPhaiTra));			}
+				response.getWriter().write(Double.toString(tongTienChuaKhuyenMai) + "-"
+						+ Double.toString(tongTienKhuyenMai) + "-" + Double.toString(tienPhaiTra));
+			}
 		} else if (action.equals("sua")) {
 			int soLuong = Integer.parseInt(request.getParameter("soLuong"));
 			if (order != null) {
@@ -64,10 +66,9 @@ public class CartController extends HttpServlet {
 				double tongTienChuaKhuyenMai = order.getTongTienChuaKhuyenMai();
 				double tongTienKhuyenMai = order.getTongTienKhuyenMai();
 				double tienPhaiTra = order.getTongTien();
-				response.getWriter().write(Double.toString(tongTienChuaKhuyenMai) + "-" + Double.toString(tongTienKhuyenMai) + "-" + Double.toString(tienPhaiTra));
+				response.getWriter().write(Double.toString(tongTienChuaKhuyenMai) + "-"
+						+ Double.toString(tongTienKhuyenMai) + "-" + Double.toString(tienPhaiTra));
 			}
 		}
-		
-		
 	}
 }

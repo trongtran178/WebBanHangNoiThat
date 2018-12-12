@@ -15,7 +15,6 @@ public class KhachHang {
 	private int soNguoiDaGioiThieu;
 	private int dangHoatDong;
 
-	
 	public int getID() {
 		return ID;
 	}
@@ -104,13 +103,12 @@ public class KhachHang {
 		this.dangHoatDong = dangHoatDong;
 	}
 
-
 	public KhachHang() {
 
 	}
 
-	public KhachHang(int ID, String email, String hoTen, String soDienThoai, String diaChi,
-			String password, Date ngayDangKy, int daDangKy, int soNguoiDaGioiThieu, int dangHoatDong) {
+	public KhachHang(int ID, String email, String hoTen, String soDienThoai, String diaChi, String password,
+			Date ngayDangKy, int daDangKy, int soNguoiDaGioiThieu, int dangHoatDong) {
 		super();
 		this.ID = ID;
 		this.maKhachHang = "KH" + this.getID();
@@ -124,7 +122,7 @@ public class KhachHang {
 		this.soNguoiDaGioiThieu = soNguoiDaGioiThieu;
 		this.dangHoatDong = dangHoatDong;
 	}
-	
+
 	public KhachHang(int ID, String maKhachHang, String email, String hoTen, String soDienThoai, String diaChi,
 			String password, Date ngayDangKy, int daDangKy, int soNguoiDaGioiThieu, int dangHoatDong) {
 		super();
@@ -146,7 +144,5 @@ public class KhachHang {
 		this.email = email;
 		this.password = password;
 	}
-	
-	
 
 }

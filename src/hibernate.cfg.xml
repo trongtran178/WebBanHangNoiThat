@@ -32,7 +32,9 @@
       <mapping class="com.noithatchatluong.entities.HangMucSanPham" />
       <mapping class="com.noithatchatluong.entities.HinhAnh" />
       <mapping class="com.noithatchatluong.entities.TinTuc" />
-      
+      <mapping class="com.noithatchatluong.entities.HoaDon" />
+      <mapping class="com.noithatchatluong.entities.ChiTietHoaDon" />      
+      <mapping class="com.noithatchatluong.entities.ChiTietHoaDonID" /> 
   </session-factory>
  
 </hibernate-configuration>

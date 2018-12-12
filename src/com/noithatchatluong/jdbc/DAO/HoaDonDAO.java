@@ -1,6 +1,7 @@
 package com.noithatchatluong.jdbc.DAO;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.noithatchatluong.model.HoaDon;
@@ -45,4 +46,23 @@ public class HoaDonDAO {
 		this.dataProvider.disconnect();
 		return rowDeleted;
 	}
+
+	public int getMaxID() throws SQLException {
+
+		int id = 0;
+		String sql = "select ID from HoaDon order by ID DESC LIMIT 1";
+		this.dataProvider = new DataProvider();
+		this.dataProvider.connect();
+		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);
+		ResultSet resultSet = statement.executeQuery();
+		if (resultSet.next()) {
+			id = resultSet.getInt("ID");
+		}
+		resultSet.close();
+		statement.close();
+		this.dataProvider.disconnect();
+
+		return id + 1;
+	}
+
 }
