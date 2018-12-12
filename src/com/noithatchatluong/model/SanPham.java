@@ -3,12 +3,12 @@ package com.noithatchatluong.model;
 import java.util.Date;
 
 public class SanPham {
-	private int id;
+	protected int id;
 	private String maSanPham;
 	private String maHangMuc;
 	private String tenSanPham;
 	private double donGia;
-	private String phanLoai;
+	
 	private String moTa;
 	private double khuyenMai;
 	private float cao;
@@ -17,11 +17,14 @@ public class SanPham {
 	private String chatLieu;
 	private String xuatXu;
 	private String mauSac;
-	private String hinhAnh;
+	private String maHinhAnh;
 	private int soLuongDaBan;
 	private Date ngayNhap;
 	private int dangHoatDong;
-	
+	public SanPham(int id) {
+	        this.id = id;
+	}
+	 
 	public int getId() {
 		return id;
 	}
@@ -52,12 +55,6 @@ public class SanPham {
 	}
 	public void setDonGia(double donGia) {
 		this.donGia = donGia;
-	}
-	public String getPhanLoai() {
-		return phanLoai;
-	}
-	public void setPhanLoai(String phanLoai) {
-		this.phanLoai = phanLoai;
 	}
 	public String getMoTa() {
 		return moTa;
@@ -107,11 +104,11 @@ public class SanPham {
 	public void setMauSac(String mauSac) {
 		this.mauSac = mauSac;
 	}
-	public String getHinhAnh() {
-		return hinhAnh;
+	public String getMaHinhAnh() {
+		return maHinhAnh;
 	}
 	public void setHinhAnh(String hinhAnh) {
-		this.hinhAnh = hinhAnh;
+		this.maHinhAnh = hinhAnh;
 	}
 	public int getSoLuongDaBan() {
 		return soLuongDaBan;
@@ -125,7 +122,7 @@ public class SanPham {
 	public void setNgayNhap(Date ngayNhap) {
 		this.ngayNhap = ngayNhap;
 	}
-	public int DangHoatDong() {
+	public int getDangHoatDong() {
 		return dangHoatDong;
 	}
 	public void setDangHoatDong(int dangHoatDong) {
@@ -137,7 +134,7 @@ public class SanPham {
 	}
 
 	
-	public SanPham(int id, String maHangMuc,  String tenSanPham, double donGia, String phanLoai, String moTa,
+	public SanPham(int id, String maHangMuc,  String tenSanPham, double donGia, String moTa,
 			double khuyenMai, float cao, float dai, float rong, String chatLieu, String xuatXu, String mauSac,
 			String hinhAnh, int soLuongDaBan, Date ngayNhap, int dangHoatDong) {
 		super();
@@ -146,7 +143,6 @@ public class SanPham {
 		this.maHangMuc = maHangMuc;
 		this.tenSanPham = tenSanPham;
 		this.donGia = donGia;
-		this.phanLoai = phanLoai;
 		this.moTa = moTa;
 		this.khuyenMai = khuyenMai;
 		this.cao = cao;
@@ -155,24 +151,12 @@ public class SanPham {
 		this.chatLieu = chatLieu;
 		this.xuatXu = xuatXu;
 		this.mauSac = mauSac;
-		this.hinhAnh = hinhAnh;
+		this.maHinhAnh = hinhAnh;
 		this.soLuongDaBan = soLuongDaBan;
 		this.ngayNhap = ngayNhap;
 		this.dangHoatDong = dangHoatDong;
 	}
-	public SanPham(int id, String maHangMuc, String tenSanPham, double donGia, String phanLoai, float cao, float dai,
-			float rong, String mauSac) {
-		super();
-		this.id = id;
-		this.maHangMuc = maHangMuc;
-		this.tenSanPham = tenSanPham;
-		this.donGia = donGia;
-		this.phanLoai = phanLoai;
-		this.cao = cao;
-		this.dai = dai;
-		this.rong = rong;
-		this.mauSac = mauSac;
-	}
+	
 	
 	
 	

@@ -19,7 +19,7 @@ public class DataProvider {
 	{
 		this.jdbcURL = "jdbc:mysql://localhost:3306/webbanhangnoithat";
 		this.jdbcUsername = "root";
-		this.jdbcPassword = "123456";
+		this.jdbcPassword = "hoanhtu1998";
 		this.jdbcConnection = null;
 	}
 	protected void connect() throws SQLException {

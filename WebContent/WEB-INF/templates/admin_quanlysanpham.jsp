@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+
     <!DOCTYPE html>
     <html dir="ltr" lang="en">
     
@@ -248,9 +251,9 @@
                                             <tr>
                                                 <th scope="col">STT</th>
                                                 <th scope="col">Mã SP</th>
+                                                <th scope="col">Mã hạng mục</th>
                                                 <th scope="col">Tên sản phẩm</th>
                                                 <th scope="col">Giá</th>
-                                                <th scope="col">Phân loại</th>
                                                 <th scope="col">Mô tả</th>
                                                 <th scope="col">Khuyến mãi</th>
                                                 <th scope="col">Cao</th>
@@ -269,93 +272,34 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>SP0001</td>
-                                                <td>Bàn gỗ</td>
-                                                <td>3.400.000 đ</td>
-                                                <td>Nhà bếp</td>
-                                                <td>Bền đẹp sử dụng được lâu</td>
-                                                <td>sale 50%</td>
-                                                <td>1,2 m</td>
-                                                <td>2 m</td>
-                                                <td>1,5m</td>
-                                                <td>Gỗ</td>
-                                                <td>Tây Nguyên</td>
-                                                <td>Màu xám</td>
-                                                <td></td>
-                                                <td>4</td>
-                                                <td>20/10/2018</td>
-                                                <td>True</td>
-                                                <td style="text-align: center;"><button class = "btn btn-danger">Xóa</button></td>
-                                                <td style="text-align: center;"><button class = "btn btn-danger">Sửa</button></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>SP0002</td>
-                                                <td>Bàn gỗ</td>
-                                                <td>3.400.000 đ</td>
-                                                <td>Nhà bếp</td>
-                                                <td>Bền đẹp sử dụng được lâu</td>
-                                                <td>sale 50%</td>
-                                                <td>1,2 m</td>
-                                                <td>2 m</td>
-                                                <td>1,5m</td>
-                                                <td>Gỗ</td>
-                                                <td>Tây Nguyên</td>
-                                                <td>Màu xám</td>
-                                                <td></td>
-                                                <td>4</td>
-                                                <td>20/10/2018</td>
-                                                <td>True</td>
-                                                <td style="text-align: center;"><button class = "btn btn-danger">Xóa</button></td>
-                                                <td style="text-align: center;"><button class = "btn btn-danger">Sửa</button></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td>SP0003</td>
-                                                <td>Bàn gỗ</td>
-                                                <td>3.400.000 đ</td>
-                                                <td>Nhà bếp</td>
-                                                <td>Bền đẹp sử dụng được lâu</td>
-                                                <td>sale 50%</td>
-                                                <td>1,2 m</td>
-                                                <td>2 m</td>
-                                                <td>1,5m</td>
-                                                <td>Gỗ</td>
-                                                <td>Tây Nguyên</td>
-                                                <td>Màu xám</td>
-                                                <td></td>
-                                                <td>4</td>
-                                                <td>20/10/2018</td>
-                                                <td>True</td>
-                                                <td style="text-align: center;"><button class = "btn btn-danger">Xóa</button></td>
-                                                <td style="text-align: center;"><button class = "btn btn-danger">Sửa</button></td>
-                                            </tr>
-                                            <tr>
-                                            	<th scope="row">4</th>
-                                                <td>SP0004</td>
-                                                <td>Bàn gỗ</td>
-                                                <td>3.400.000 đ</td>
-                                                <td>Nhà bếp</td>
-                                                <td>Bền đẹp sử dụng được lâu</td>
-                                                <td>sale 50%</td>
-                                                <td>1,2 m</td>
-                                                <td>2 m</td>
-                                                <td>1,5m</td>
-                                                <td>Gỗ</td>
-                                                <td>Tây Nguyên</td>
-                                                <td>Màu xám</td>
-                                                <td></td>
-                                                <td>4</td>
-                                                <td>20/10/2018</td>
-                                                <td>True</td>
-                                                <td style="text-align: center;"><button class = "btn btn-danger">Xóa</button></td>
-                                                <td style="text-align: center;"><button class = "btn btn-danger">Sửa</button></td>
-                                                </tr>
+										<c:forEach var="SanPham" items="${listSP}">
+											<tr>
+												<td><c:out value="${SanPham.getId()}" /></td>
+												<td><c:out value="${SanPham.getMaSanPham()}" /></td>
+												<td><c:out value="${SanPham.getMaHangMuc()}" /></td>
+												<td><c:out value="${SanPham.getTenSanPham()}" /></td>
+												<td><c:out value="${SanPham.getDonGia()}" /></td>
+												<td><c:out value="${SanPham.getMoTa()}" /></td>
+												<td><c:out value="${SanPham.getKhuyenMai()}" /></td>
+												<td><c:out value="${SanPham.getCao()}" /></td>
+												<td><c:out value="${SanPham.getDai()}" /></td>
+												<td><c:out value="${SanPham.getRong()}" /></td>
+												<td><c:out value="${SanPham.getChatLieu()}" /></td>
+												<td><c:out value="${SanPham.getXuatXu()}" /></td>
+												<td><c:out value="${SanPham.getMauSac()}" /></td>
+												<td><img src="static/images/${SanPham.maHinhAnh}" width="100dp" height="100dp"></td>
+												<td><c:out value="${SanPham.getSoLuongDaBan()}" /></td>
+												<td><c:out value="${SanPham.getNgayNhap()}" /></td>
+												<td><c:out value="${SanPham.getDangHoatDong()}" /></td>
+												<td style="text-align: center;"><button class = "btn btn-danger" onclick="return confirmDelete()"><a href="DeleteAdminQuanLySanPham?id=<c:out value='${SanPham.getId()}' />">Delete</a></button></td>
+                                                <td style="text-align: center;"><button class = "btn btn-danger"><a href="/WEB-INF/templates/AddSanPham.jsp/>">Add</a></button></td>
+												
+											</tr>
+										</c:forEach>
+										
                                         </tbody>
                                     </table>
-                                    <td style="text-align: center;"><button class = "btn btn-danger">Thêm</button></td>
+                                    <td style="text-align: center;"><button class = "btn btn-danger"><a href="AddSanPham">Add</a></button></td>
                                 </div>
                             </div>
                         </div>
@@ -580,6 +524,22 @@
             <script src="static/admin/dist/js/sidebarmenu.js"></script>
             <!--Custom JavaScript -->
             <script src="static/admin/dist/js/custom.min.js"></script>
+            <script>
+            	
+            	function confirmDelete() {
+            		var res = confirm("Bạn có chắc chắn muốn xóa bài viết này ? ");
+            		if(res == false) {
+            			//this.preventDefault();
+                		return false;
+            		}
+            		else {
+            			alert("Xoá thành công");
+            			return true;
+            		}
+                	
+            	}
+         
+            </script>
     </body>
     
     </html>
