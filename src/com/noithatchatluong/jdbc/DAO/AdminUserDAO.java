@@ -4,9 +4,13 @@ package com.noithatchatluong.jdbc.DAO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 import com.noithatchatluong.model.AdminUser;
+import com.noithatchatluong.model.KhachHang;
+import com.noithatchatluong.utils.BCryptUtils;
 
 public class AdminUserDAO {
 	
@@ -50,22 +54,28 @@ public class AdminUserDAO {
 		return rowUpdated;		
 	}
 	
-	public boolean checkPassword(AdminUser adminuser) throws SQLException {
-		String sql = "SELECT COUNT(*) FROM AdminUser WHERE username = ? AND password = ?";
-
+	public boolean checkPassword(AdminUser adminUser) throws SQLException {
+		String sql = "SELECT * from AdminUser where Username = ? AND DangHoatDong = 1";
+		
+		this.dataProvider = new DataProvider();
 		this.dataProvider.connect();
 		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);
 		
-		statement.setString(1, adminuser.getUsername());
-		statement.setString(2, adminuser.getPassword());
+		statement.setString(1, adminUser.getUsername());
 		
-		int count = statement.executeUpdate();
+		ResultSet resultSet = statement.executeQuery();
+		String password = "1";
+		
+		if (resultSet.next()) {
+			password = resultSet.getString("password");
+			
+		}
 		statement.close();
 		this.dataProvider.disconnect();
-		if (count == 1)
-			return true;
 		
-		return false;
+		boolean isSuccess = BCryptUtils.checkPassword(adminUser.getPassword(), password);
+		
+		return isSuccess;
 	}
 	
 	public boolean changePassword(String username, String matKhauCu, String matKhauMoi) throws SQLException {
@@ -81,4 +91,32 @@ public class AdminUserDAO {
 		
 		return false;		
 	}
+	
+	
+	public AdminUser getAdminUser(String username) throws SQLException {
+		AdminUser adminUser = null;
+		String sql = "SELECT * FROM AdminUser WHERE Username = ? and DangHoatDong = 1";
+		
+		this.dataProvider.connect();
+		
+		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);
+		statement.setString(1, username);
+		
+		ResultSet resultSet = statement.executeQuery();
+		
+		if (resultSet.next()) {
+			
+			String password = resultSet.getString("Password");
+			String quyenHan = resultSet.getString("QuyenHan");
+			int dangHoatDong = resultSet.getInt("DangHoatDong");
+
+			adminUser = new AdminUser(username, password, quyenHan, dangHoatDong);
+		}
+		
+		resultSet.close();
+		statement.close();
+		
+		return adminUser;
+	}
+
 }

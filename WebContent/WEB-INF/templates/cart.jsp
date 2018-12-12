@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<!-- Khai báo sử dụng JSTL Core Tags -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="com.noithatchatluong.DAO.*"%>
+<%@ page import="com.noithatchatluong.model.*"%>
+<%@ page import="com.noithatchatluong.entities.*"%>
+<%@ page import="com.noithatchatluong.controller.ProductsController"%>
+<%@ page import="javax.servlet.http.HttpServletRequest"%>
+<%@ page import="javax.servlet.http.HttpServletResponse"%>
+<%@ page import="javax.servlet.http.HttpServlet"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +35,8 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700"
 	rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- Animate.css -->
 <link rel="stylesheet" href="static/css/animate.css">
 <!-- Icomoon Icon Fonts-->
@@ -58,511 +69,354 @@
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 <style>
-	.labelTen{
-		width: 19.33333% !important;
-	}
-	.inputNhapTen{
-		width: 74.666667% !important;
-	}
-	#TenKhachHang{
-		margin-top: -5px;
-		border-radius: 6px;
-	}
-	@media (min-width: 992px) {
-		.editSpaceOfMuaThemButton {
-			width: 14% !important;
-		}
-	}
-	
-.total-wrap .form-control {
-    height: 40px;
-    border: 1px solid #f0f0f0 !important;
-    margin-bottom: 10px;
-     text-align: left; 
+.labelTen {
+	width: 19.33333% !important;
 }
-	.iconThongTinKhachHang {
-		font-size: 20px;
-		color: blue;
-		margin-right: 10px;
+
+.inputNhapTen {
+	width: 74.666667% !important;
+}
+
+#TenKhachHang {
+	margin-top: -5px;
+	border-radius: 6px;
+}
+
+@media ( min-width : 992px) {
+	.editSpaceOfMuaThemButton {
+		width: 14% !important;
 	}
-	
+}
+
+.total-wrap .form-control {
+	height: 40px;
+	border: 1px solid #f0f0f0 !important;
+	margin-bottom: 10px;
+	text-align: left;
+}
+
+.iconThongTinKhachHang {
+	font-size: 20px;
+	color: blue;
+	margin-right: 10px;
+}
 </style>
 </head>
 <body>
 	<div class="colorlib-loader"></div>
 
 	<div id="page">
-	<jsp:include page = "_menu.jsp"></jsp:include>
-	<aside id="colorlib-hero" class="breadcrumbs">
-		<div class="flexslider">
-			<ul class="slides">
-				<li style="background-image: url(static/images/cover-img-1.jpg);">
-					<div class="overlay"></div>
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
-								<div class="slider-text-inner text-center">
-									<h1>Giỏ hàng</h1>
-									<h2 class="bread">
-										<span>
-											<a href="index.html">Home</a>
-										</span>
-										<span>
-											<a href="shop.html">Sản phẩm</a>
-										</span>
-										<span>Giỏ hàng</span>
-									</h2>
+		<jsp:include page="_menu.jsp"></jsp:include>
+		<aside id="colorlib-hero" class="breadcrumbs">
+			<div class="flexslider">
+				<ul class="slides">
+					<li style="background-image: url(static/images/cover-img-1.jpg);">
+						<div class="overlay"></div>
+						<div class="container-fluid">
+							<div class="row">
+								<div
+									class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
+									<div class="slider-text-inner text-center">
+										<h1>Giỏ hàng</h1>
+										<h2 class="bread">
+											<span> <a href="index.html">Home</a>
+											</span> <span> <a href="shop.html">Sản phẩm</a>
+											</span> <span>Giỏ hàng</span>
+										</h2>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				</li>
-			</ul>
-		</div>
-	</aside>
-
-	<div class="colorlib-shop">
-		<div class="container">
-			<div class="row row-pb-md">
-				<div class="col-md-10 col-md-offset-1">
-					<div class="process-wrap">
-						<div class="process text-center active">
-							<p>
-								<span>01</span>
-							</p>
-							<h3>Giỏ hàng</h3>
-						</div>
-						<div class="process text-center">
-							<p>
-								<span>02</span>
-							</p>
-							<h3>Kiểm tra </h3>
-						</div>
-						<div class="process text-center">
-							<p>
-								<span>03</span>
-							</p>
-							<h3>Đặt hàng</h3>
-						</div>
-					</div>
-				</div>
+					</li>
+				</ul>
 			</div>
-			<div class="row row-pb-md">
-				<div class="col-md-10 col-md-offset-1">
-					<div class="product-name">
-						<div class="one-forth text-center">
-							<span>Chi tiết sản phẩm</span>
-						</div>
-						<div class="one-eight text-center">
-							<span>Đơn giá</span>
-						</div>
-						<div class="one-eight text-center">
-							<span>Số lượng</span>
-						</div>
-						<div class="one-eight text-center">
-							<span>Khuyến mãi</span>
-						</div>
-						<div class="one-eight text-center">
-							<span>Tổng tiền</span>
-						</div>
-						<div class="one-eight text-center">
-							<span>Xóa</span>
-						</div>
-					</div>
-
-					<div class="product-cart" id="product-card-1">
-						<div class="one-forth">
-							<div class="product-img" style="background-image: url(static/images/productimages/bango1.jpeg);">
-							</div>
-							<div class="display-tc">
-								<h3>Bộ bàn ăn</h3>
+		</aside>
+		<c:choose>
+			<c:when test="${not empty danhSachItem.getItems()}">
+				<div class="colorlib-shop">
+					<div class="container">
+						<div class="row row-pb-md">
+							<div class="col-md-10 col-md-offset-1">
+								<div class="process-wrap">
+									<div class="process text-center active">
+										<p>
+											<span>01</span>
+										</p>
+										<h3>Giỏ hàng</h3>
+									</div>
+									<div class="process text-center">
+										<p>
+											<span>02</span>
+										</p>
+										<h3>Kiểm tra</h3>
+									</div>
+									<div class="process text-center">
+										<p>
+											<span>03</span>
+										</p>
+										<h3>Đặt hàng</h3>
+									</div>
+								</div>
 							</div>
 						</div>
-						<div class="one-eight text-center">
-							<div class="display-tc">
-								<span class="price">850.000 đ</span>
-							</div>
-						</div>
-						<div class="one-eight text-center">
-							<div class="display-tc">
-								<input type="number" id="quantity" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100">
-							</div>
-						</div>
-						<div class="one-eight text-center">
-							<div class="display-tc">
-								<span class="price">5%</span>
-							</div>
-						</div>
-						<div class="one-eight text-center">
-							<div class="display-tc">
-								<span class="price">850.000 đ</span>
-							</div>
-						</div>
-						<div class="one-eight text-center">
-							<div class="display-tc">
-								<button class="btn btn-danger button-xoa" style="padding: 0px 5px; border-radius: 5px;" data-parent-id="product-card-1">x</button>
-							</div>
-						</div>
-					</div>
-
-					<div class="product-cart" id="product-card-2">
-						<div class="one-forth">
-							<div class="product-img" style="background-image: url(static/images/productimages/bango1.jpeg);">
-							</div>
-							<div class="display-tc">
-								<h3>Bộ bàn ăn</h3>
-							</div>
-						</div>
-						<div class="one-eight text-center">
-							<div class="display-tc">
-								<span class="price">850.000 đ</span>
-							</div>
-						</div>
-						<div class="one-eight text-center">
-							<div class="display-tc">
-								<input type="number" id="quantity" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100">
-							</div>
-						</div>
-						<div class="one-eight text-center">
-							<div class="display-tc">
-								<span class="price">5%</span>
-							</div>
-						</div>
-						<div class="one-eight text-center">
-							<div class="display-tc">
-								<span class="price">850.000 đ</span>
-							</div>
-						</div>
-						<div class="one-eight text-center">
-							<div class="display-tc">
-								<button class="btn btn-danger button-xoa" style="padding: 0px 5px; border-radius: 5px;" data-parent-id="product-card-2">x</button>
-							</div>
-						</div>
-					</div>
-
-					<div class="product-cart" id="product-card-3">
-						<div class="one-forth">
-							<div class="product-img" style="background-image: url(static/images/productimages/bango1.jpeg);">
-							</div>
-							<div class="display-tc">
-								<h3>Bộ bàn ăn</h3>
-							</div>
-						</div>
-						<div class="one-eight text-center">
-							<div class="display-tc">
-								<span class="price">850.000 đ</span>
-							</div>
-						</div>
-						<div class="one-eight text-center">
-							<div class="display-tc">
-								<input type="number" id="quantity" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100">
-							</div>
-						</div>
-						<div class="one-eight text-center">
-							<div class="display-tc">
-								<span class="price">5%</span>
-							</div>
-						</div>
-						<div class="one-eight text-center">
-							<div class="display-tc">
-								<span class="price">850.000 đ</span>
-							</div>
-						</div>
-						<div class="one-eight text-center">
-							<div class="display-tc">
-								<button class="btn btn-danger button-xoa" style="padding: 0px 5px; border-radius: 5px;" data-parent-id="product-card-3">x</button>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-			<div class="row">
-				<div class = "col-md-1">
-				
-				</div>
-				<div class="col-md-10 col-md-offset-1">
-					<div class="total-wrap">
-						<div class="row">
-							<div class="col-md-3 editSpaceOfMuaThemButton">
-								<button style = "border-radius: 7px;" type="button" class="btn btn-info">Mua thêm</button>
-							</div>
-							<div class="col-md-3">
-								<button style = "border-radius: 7px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#CustomerInformationModal">Thanh toán</button>
-							</div>
-							<div class = "modal fade" id = "CustomerInformationModal" aria-labelledby="gridSystemModalLabel" role="dialog">
-								<div class = "modal-dialog" role="document">
-									<div class = "modal-content">
-										<div class = "modal-header">
-								          <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
-								          <h4 class="modal-title"><i class = "fa fa-info-circle iconThongTinKhachHang" style = "font-size: 20px; color: blue;"></i>Nhập thông tin quý khách</h4>											
+						<div class="row row-pb-md">
+							<div class="col-md-10 col-md-offset-1">
+								<div class="product-name">
+									<div class="one-forth text-center">
+										<span>Chi tiết sản phẩm</span>
+									</div>
+									<div class="one-eight text-center">
+										<span>Đơn giá</span>
+									</div>
+									<div class="one-eight text-center">
+										<span>Số lượng</span>
+									</div>
+									<div class="one-eight text-center">
+										<span>Khuyến mãi</span>
+									</div>
+									<div class="one-eight text-center">
+										<span>Tổng tiền</span>
+									</div>
+									<div class="one-eight text-center">
+										<span>Xóa</span>
+									</div>
+								</div>
+								<c:forEach items="${danhSachItem.getItems()}" var="item">
+									<div class="product-cart"
+										id="<c:out value='${item.getSanPham().getMaSanPham()}'/>">
+										<div class="one-forth">
+											<div class="product-img"
+												style="background-image: url(static/images/productimages/<c:out value='${item.getSanPham().getDanhSachHinhAnh().get(0)}'/>);">
+											</div>
+											<div class="display-tc">
+												<h3>
+													<c:out value='${item.getSanPham().getTenSanPham()}' />
+												</h3>
+											</div>
 										</div>
-										<div class = "modal-body">
-											<form>
-									          <div class="form-group">
-									            <label for="TenKhachHang" class="control-label">Họ và tên:</label>
-									            <input type="text" class="form-control" id="TenKhachHang" placeholder="Nhập họ và tên...">
-									          </div>	
-									          <div class="form-group">
-									            <label for="Email" class="control-label">Email:</label>
-									            <input type="email" class="form-control" id="TenKhachHang" placeholder ="Nhập email...">
-									          </div>
-									          <div class="form-group">
-									            <label for="Address" class="control-label">Địa chỉ:</label>
-									            <input type="email" class="form-control" id="address" placeholder ="Nhập địa chỉ...">
-									          </div>									          
-									          <div class="form-group">
-									            <label for="SDT" class="control-label">Số điện thoại:</label>
-									            <input type="text" class="form-control" id="phonenumber" placeholder="Nhập số điện thoại">
-									          </div>
-									           									        									          																				
-											</form>
-											
-															
-
+										<div class="one-eight text-center">
+											<div class="display-tc">
+												<span class="price"
+													id="donGia-<c:out value='${item.getSanPham().getMaSanPham()}'/>"
+													data-donGia="<c:out value='${item.getSanPham().getDonGia()}'/>"><c:out
+														value='${item.getSanPham().getDonGia()}' /> đ</span>
+											</div>
 										</div>
-										<div class="modal-footer">
-									        <button style = "border-radius: 7px;" type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-									        <button style = "border-radius: 7px;" type="button" class="btn btn-info">Lưu thông tin</button>
-									      </div>										
+										<div class="one-eight text-center">
+											<div class="display-tc">
+												<input type="number" name="quantity"
+													onchange="TinhTongTien(event)"
+													data-parent-id="<c:out value='${item.getSanPham().getMaSanPham()}'/>"
+													class="form-control input-number text-center"
+													value="<c:out value='${item.getSoLuong()}'/>" min="1"
+													max="100">
+											</div>
+										</div>
+										<div class="one-eight text-center">
+											<div class="display-tc">
+												<span class="price khuyenMai"
+													id="khuyenMai-<c:out value='${item.getSanPham().getMaSanPham()}'/>"
+													data-khuyenMai="<c:out value='${item.getKhuyenMai()}'/>"><c:out
+														value='${item.getKhuyenMai()}' />%</span>
+											</div>
+										</div>
+										<div class="one-eight text-center">
+											<div class="display-tc">
+												<span class="price tongTien"
+													id="tongTien-<c:out value='${item.getSanPham().getMaSanPham()}'/>"
+													data-tongTien="<c:out value='${item.getTongTien()}'/>"><c:out
+														value='${item.getTongTien()}' /></span> đ
+											</div>
+										</div>
+										<div class="one-eight text-center">
+											<div class="display-tc">
+												<button class="btn btn-danger button-xoa"
+													style="padding: 0px 5px; border-radius: 5px;"
+													data-parent-id="<c:out value='${item.getSanPham().getMaSanPham()}'/>">x</button>
+											</div>
+										</div>
+									</div>
+								</c:forEach>
+		
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-1"></div>
+							<div class="col-md-10 col-md-offset-1">
+								<div class="total-wrap">
+									<div class="row">
+										<div class="col-md-3 editSpaceOfMuaThemButton">
+											<button style="border-radius: 7px;" type="button"
+												class="btn btn-info">Mua thêm</button>
+										</div>
+										<div class="col-md-3">
+											<button style="border-radius: 7px;" type="button"
+												class="btn btn-success" data-toggle="modal"
+												data-target="#CustomerInformationModal">Thanh toán</button>
+										</div>
+										<div class="modal fade" id="CustomerInformationModal"
+											aria-labelledby="gridSystemModalLabel" role="dialog">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal"
+															aria-label="Close">&times;</button>
+														<h4 class="modal-title">
+															<i class="fa fa-info-circle iconThongTinKhachHang"
+																style="font-size: 20px; color: blue;"></i>Nhập thông tin
+															quý khách
+														</h4>
+													</div>
+													<div class="modal-body">
+														<form>
+															<div class="form-group">
+																<label for="TenKhachHang" class="control-label">Họ
+																	và tên:</label> <input type="text" class="form-control"
+																	id="TenKhachHang" placeholder="Nhập họ và tên...">
+															</div>
+															<div class="form-group">
+																<label for="Email" class="control-label">Email:</label> <input
+																	type="email" class="form-control" id="TenKhachHang"
+																	placeholder="Nhập email...">
+															</div>
+															<div class="form-group">
+																<label for="Address" class="control-label">Địa
+																	chỉ:</label> <input type="email" class="form-control"
+																	id="address" placeholder="Nhập địa chỉ...">
+															</div>
+															<div class="form-group">
+																<label for="SDT" class="control-label">Số điện
+																	thoại:</label> <input type="text" class="form-control"
+																	id="phonenumber" placeholder="Nhập số điện thoại">
+															</div>
+		
+														</form>
+		
+		
+		
+													</div>
+													<div class="modal-footer">
+														<button style="border-radius: 7px;" type="button"
+															class="btn btn-danger" data-dismiss="modal">Close</button>
+														<button style="border-radius: 7px;" type="button"
+															class="btn btn-info">Lưu thông tin</button>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6 text-center">
+											<div class="total">
+												<div class="sub">
+													<p>
+														<span>Tổng tiền sản phẩm:</span> <span
+															id="tongTienChuaKhuyenMai"><c:out
+																value='${danhSachItem.getTongTienChuaKhuyenMai()}' /> đ</span>
+													</p>
+													<p>
+														<span>Phí vận chuyển:</span> <span style="color: red;">Free
+															ship</span>
+													</p>
+													<p>
+														<span>Tổng tiền khuyến mãi:</span> <span
+															id="tongTienKhuyenMai"><c:out
+																value='${danhSachItem.getTongTienKhuyenMai()}' /></span>
+													</p>
+												</div>
+												<div class="grand-total">
+													<p>
+														<span> <strong>Tổng:</strong>
+														</span> <span id="tongTienPhaiTra"><c:out
+																value='${danhSachItem.getTongTien()}' /> đ</span>
+													</p>
+												</div>
+											</div>
+										</div>
+		
 									</div>
 								</div>
 							</div>
-							<div class="col-md-6 text-center">
-								<div class="total">
-									<div class="sub">
-										<p>
-											<span>Tổng tiền sản phẩm:</span>
-											<span>$200.00</span>
-										</p>
-										<p>
-											<span>Phí vận chuyển:</span>
-											<span>$0.00</span>
-										</p>
-										<p>
-											<span>Tổng tiền khuyến mãi:</span>
-											<span>$45.00</span>
-										</p>
-									</div>
-									<div class="grand-total">
-										<p>
-											<span>
-												<strong>Tổng:</strong>
-											</span>
-											<span>$450.00</span>
-										</p>
+						</div>
+					</div>
+				</div>
+		
+				<div class="colorlib-shop">
+					<div class="container">
+					<c:if test="${not empty danhSachItem.getSanPhamLienQuan()}">
+						<div class="row">
+							<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
+								<h2>
+									<span>Sản phẩm liên quan</span>
+								</h2>
+								<p>Có thể bạn cũng muốn xem những sản phẩm này.</p>
+							</div>
+						</div>
+					</c:if>
+		
+		
+						<div class="row">
+		
+							<c:forEach items="${danhSachItem.getSanPhamLienQuan()}"
+								var="sanPham">
+								<div class="col-md-3 text-center">
+									<div class="product-entry">
+										<div class="product-img"
+											style="background-image: url(static/images/productimages/${sanPham.getDanhSachHinhAnh().get(0)});">
+											<p class="tag">
+												<span class="new">New</span>
+											</p>
+											<div class="cart">
+												<p>
+													<span class="addtocart"> <a
+														href="addtocart?maSanPham=${sanPham.getMaSanPham()}">
+															<i class="icon-shopping-cart"></i>
+													</a>
+													</span> <span> <a
+														href="product-detail?maSanPham=${sanPham.getMaSanPham()}">
+															<i class="icon-eye"></i>
+													</a>
+													</span>
+												</p>
+											</div>
+										</div>
+										<div class="desc">
+											<h3>
+												<a href="product-detail.html">${sanPham.getTenSanPham()}</a>
+											</h3>
+											<p class="price">
+												<span>${sanPham.getDonGia()}</span>
+											</p>
+										</div>
 									</div>
 								</div>
-							</div>
-
+							</c:forEach>
+		
 						</div>
 					</div>
+				</div>			</c:when>
+			
+			<c:otherwise>
+				<div style="text-align: center;"><h2>Bạn chưa có sản phẩm nào trong giỏ hàng!</h2>
+					<h3><a href = "products">Xem sảm phẩm ngay!</a></h3>
 				</div>
-			</div>
-		</div>
-	</div>
+			</c:otherwise>
+		</c:choose>
 
-	<div class="colorlib-shop">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
-					<h2>
-						<span>Sản phẩm liên quan</span>
-					</h2>
-					<p>Có thể bạn cũng muốn xem những sản phẩm này.</p>
-				</div>
-			</div>
-
-
-
-			<div class="row">
-
-
-				<div class="col-md-3 text-center">
-					<div class="product-entry">
-						<div class="product-img" style="background-image: url(static/images/productimages/bango2.jpeg);">
-							<p class="tag">
-								<span class="new">New</span>
-							</p>
-							<div class="cart">
-								<p>
-									<span class="addtocart">
-										<a href="#">
-											<i class="icon-shopping-cart"></i>
-										</a>
-									</span>
-									<span>
-										<a href="product-detail.html">
-											<i class="icon-eye"></i>
-										</a>
-									</span>
-									<span>
-										<a href="#">
-											<i class="icon-heart3"></i>
-										</a>
-									</span>
-									<span>
-										<a href="add-to-wishlist.html">
-											<i class="icon-bar-chart"></i>
-										</a>
-									</span>
-								</p>
-							</div>
-						</div>
-						<div class="desc">
-							<h3>
-								<a href="shop.html">Floral Dress</a>
-							</h3>
-							<p class="price">
-								<span>$300.00</span>
-							</p>
-						</div>
-					</div>
-				</div>
-
-
-				<div class="col-md-3 text-center">
-					<div class="product-entry">
-						<div class="product-img" style="background-image: url(static/images/productimages/bango1.jpeg);">
-							<p class="tag">
-								<span class="new">New</span>
-							</p>
-							<div class="cart">
-								<p>
-									<span class="addtocart">
-										<a href="#">
-											<i class="icon-shopping-cart"></i>
-										</a>
-									</span>
-									<span>
-										<a href="product-detail.html">
-											<i class="icon-eye"></i>
-										</a>
-									</span>
-									<span>
-										<a href="#">
-											<i class="icon-heart3"></i>
-										</a>
-									</span>
-									<span>
-										<a href="add-to-wishlist.html">
-											<i class="icon-bar-chart"></i>
-										</a>
-									</span>
-								</p>
-							</div>
-						</div>
-						<div class="desc">
-							<h3>
-								<a href="shop.html">Floral Dress</a>
-							</h3>
-							<p class="price">
-								<span>$300.00</span>
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 text-center">
-					<div class="product-entry">
-						<div class="product-img" style="background-image: url(static/images/productimages/bango1.jpeg);">
-							<p class="tag">
-								<span class="new">New</span>
-							</p>
-							<div class="cart">
-								<p>
-									<span class="addtocart">
-										<a href="#">
-											<i class="icon-shopping-cart"></i>
-										</a>
-									</span>
-									<span>
-										<a href="product-detail.html">
-											<i class="icon-eye"></i>
-										</a>
-									</span>
-									<span>
-										<a href="#">
-											<i class="icon-heart3"></i>
-										</a>
-									</span>
-									<span>
-										<a href="add-to-wishlist.html">
-											<i class="icon-bar-chart"></i>
-										</a>
-									</span>
-								</p>
-							</div>
-						</div>
-						<div class="desc">
-							<h3>
-								<a href="shop.html">Floral Dress</a>
-							</h3>
-							<p class="price">
-								<span>$300.00</span>
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-3 text-center">
-					<div class="product-entry">
-						<div class="product-img" style="background-image: url(static/images/productimages/bango1.jpeg);">
-							<p class="tag">
-								<span class="new">New</span>
-							</p>
-							<div class="cart">
-								<p>
-									<span class="addtocart">
-										<a href="#">
-											<i class="icon-shopping-cart"></i>
-										</a>
-									</span>
-									<span>
-										<a href="product-detail.html">
-											<i class="icon-eye"></i>
-										</a>
-									</span>
-									<span>
-										<a href="#">
-											<i class="icon-heart3"></i>
-										</a>
-									</span>
-									<span>
-										<a href="add-to-wishlist.html">
-											<i class="icon-bar-chart"></i>
-										</a>
-									</span>
-								</p>
-							</div>
-						</div>
-						<div class="desc">
-							<h3>
-								<a href="shop.html">Floral Dress</a>
-							</h3>
-							<p class="price">
-								<span>$300.00</span>
-							</p>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
 	</div>
 
 
-		<!--  -->
+	<!--  -->
 
-		<!-- <div id="map" class="colorlib-map"></div> -->
+	<!-- <div id="map" class="colorlib-map"></div> -->
 
-		<jsp:include page = "_footer.jsp"></jsp:include>
+	<jsp:include page="_footer.jsp"></jsp:include>
 	</div>
 
 
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
 	</div>
+
+	<div id="ThucHienLenh" style="font-size: 1px">Xin chao cac ban</div>
 
 	<!-- jQuery -->
 	<script src="static/js/jquery.min.js"></script>
@@ -590,13 +444,76 @@
 	<!-- Main -->
 	<script src="static/js/main.js"></script>
 	<script>
-		$(document).ready(function () {
+		function TinhTongTien(event) {
+			let parentid = event.target.getAttribute("data-parent-id");
+			let soLuong = event.target.value;
+			let donGia = document.getElementById("donGia-" + parentid)
+					.getAttribute("data-donGia");
+			let khuyenMai = document.getElementById("khuyenMai-" + parentid)
+					.getAttribute("data-khuyenMai");
+			let tongTien = document.getElementById("tongTien-" + parentid);
 
-			$(".button-xoa").click(function (e) {
-				var parentid = e.target.getAttribute("data-parent-id");
-				$("#" + parentid).remove();
-			});
-		});
+			tongTien.innerHTML = donGia * soLuong * (1.0 - khuyenMai / 100.0);
+
+			let idSanPham = parentid.substring(2);
+			let xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					let chuoi = this.responseText;
+					let mangGia = chuoi.split("-");
+					document.getElementById("tongTienChuaKhuyenMai").innerHTML = mangGia[0];
+					document.getElementById("tongTienKhuyenMai").innerHTML = mangGia[1];
+					document.getElementById("tongTienPhaiTra").innerHTML = mangGia[2];
+				}
+			}
+			xhr.open("POST", "cart", true);
+			xhr.setRequestHeader("Content-type",
+					"application/x-www-form-urlencoded")
+			xhr.send("maSanPham=" + idSanPham + "&action=sua&soLuong="
+					+ soLuong);
+
+		}
+		$(document)
+				.ready(
+						function() {
+
+							$(".button-xoa")
+									.click(
+											function(e) {
+
+												var parentid = e.target
+														.getAttribute("data-parent-id");
+
+												$("#" + parentid).remove();
+
+												let idSanPham = parentid
+														.substring(2);
+												let xhr = new XMLHttpRequest();
+												xhr.onreadystatechange = function() {
+													if (this.readyState == 4
+															&& this.status == 200) {
+														let chuoi = this.responseText;
+														let mangGia = chuoi
+																.split("-");
+														document
+																.getElementById("tongTienChuaKhuyenMai").innerHTML = mangGia[0];
+														document
+																.getElementById("tongTienKhuyenMai").innerHTML = mangGia[1];
+														document
+																.getElementById("tongTienPhaiTra").innerHTML = mangGia[2];
+													}
+												}
+												xhr.open("POST", "cart", true);
+												xhr
+														.setRequestHeader(
+																"Content-type",
+																"application/x-www-form-urlencoded")
+												xhr.send("maSanPham="
+														+ idSanPham
+														+ "&action=xoa");
+											});
+
+						});
 	</script>
 </body>
 </html>

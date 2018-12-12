@@ -1,8 +1,9 @@
 package com.noithatchatluong.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class HoaDon {
+	private int id;
 	private String maHoaDon;
 	private String maKhachHang;
 	private double tongTien;
@@ -11,10 +12,18 @@ public class HoaDon {
 	private String ghiChu;
 	private int dangHoatDong;
 	
-	public static String CHUA_XU_LY = "chuaxuly";
-	public static String DANG_GIAO = "danggiao";
-	public static String DA_GIAO = "dagiao";		
+	public static String CHUA_XU_LY = "Chưa xử lý";
+	public static String DANG_GIAO = "Đang giao";
+	public static String DA_GIAO = "Đã giao";		
 
+	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getMaHoaDon() {
 		return maHoaDon;
 	}
@@ -58,10 +67,11 @@ public class HoaDon {
 		this.dangHoatDong = dangHoatDong;
 	}
 	
-	public HoaDon(String maHoaDon, String maKhachHang, double tongTien, Date ngayDat, String trangThai, String ghiChu,
+	public HoaDon(int id, String maHoaDon, String maKhachHang, double tongTien, Date ngayDat, String trangThai, String ghiChu,
 			int dangHoatDong) {
 		super();
-		this.maHoaDon = maHoaDon;
+		this.id = id;
+		this.maHoaDon = "HD" + Integer.toString(id);
 		this.maKhachHang = maKhachHang;
 		this.tongTien = tongTien;
 		this.ngayDat = ngayDat;

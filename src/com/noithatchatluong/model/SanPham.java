@@ -1,14 +1,19 @@
 package com.noithatchatluong.model;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Date;
+import java.util.List;
+
+import com.noithatchatluong.entities.HinhAnh;
+import com.noithatchatluong.utils.AESUtils;
 
 public class SanPham {
 	private int id;
 	private String maSanPham;
-	private String maHangMuc;
+	private int maHangMuc;
 	private String tenSanPham;
 	private double donGia;
-	private String phanLoai;
 	private String moTa;
 	private double khuyenMai;
 	private float cao;
@@ -17,11 +22,19 @@ public class SanPham {
 	private String chatLieu;
 	private String xuatXu;
 	private String mauSac;
-	private String hinhAnh;
+	private String maHinhAnh;
 	private int soLuongDaBan;
 	private Date ngayNhap;
 	private int dangHoatDong;
+	private List<String> danhSachHinhAnh;
+
 	
+	public List<String> getDanhSachHinhAnh() {
+		return danhSachHinhAnh;
+	}
+	public void setDanhSachHinhAnh(List<String> danhSachHinhAnh) {
+		this.danhSachHinhAnh = danhSachHinhAnh;
+	}
 	public int getId() {
 		return id;
 	}
@@ -35,10 +48,10 @@ public class SanPham {
 		this.maSanPham = maSanPham;
 	}
 	
-	public String getMaHangMuc() {
+	public int getMaHangMuc() {
 		return maHangMuc;
 	}
-	public void setMaHangMuc(String maHangMuc) {
+	public void setMaHangMuc(int maHangMuc) {
 		this.maHangMuc = maHangMuc;
 	}
 	public String getTenSanPham() {
@@ -53,12 +66,7 @@ public class SanPham {
 	public void setDonGia(double donGia) {
 		this.donGia = donGia;
 	}
-	public String getPhanLoai() {
-		return phanLoai;
-	}
-	public void setPhanLoai(String phanLoai) {
-		this.phanLoai = phanLoai;
-	}
+
 	public String getMoTa() {
 		return moTa;
 	}
@@ -107,11 +115,11 @@ public class SanPham {
 	public void setMauSac(String mauSac) {
 		this.mauSac = mauSac;
 	}
-	public String getHinhAnh() {
-		return hinhAnh;
+	public String getMaHinhAnh() {
+		return maHinhAnh;
 	}
-	public void setHinhAnh(String hinhAnh) {
-		this.hinhAnh = hinhAnh;
+	public void setMaHinhAnh(String hinhAnh) {
+		this.maHinhAnh = hinhAnh;
 	}
 	public int getSoLuongDaBan() {
 		return soLuongDaBan;
@@ -132,21 +140,25 @@ public class SanPham {
 		this.dangHoatDong = dangHoatDong;
 	}
 	
+	public String getMaSanPhamMaHoa() throws UnsupportedEncodingException {
+		String maHoa = URLEncoder.encode(AESUtils.encrypt(this.getMaSanPham()),"UTF-8");
+		return maHoa;
+	}
+	
 	public SanPham() {
 		
 	}
 
 	
-	public SanPham(int id, String maHangMuc,  String tenSanPham, double donGia, String phanLoai, String moTa,
+	public SanPham(int id, int maHangMuc,  String tenSanPham, double donGia, String moTa,
 			double khuyenMai, float cao, float dai, float rong, String chatLieu, String xuatXu, String mauSac,
-			String hinhAnh, int soLuongDaBan, Date ngayNhap, int dangHoatDong) {
+			String maHinhAnh, int soLuongDaBan, Date ngayNhap, int dangHoatDong, List<String> danhSachHinhAnh) {
 		super();
 		this.id = id;
 		this.maSanPham = "SP" + Integer.toString(id);
 		this.maHangMuc = maHangMuc;
 		this.tenSanPham = tenSanPham;
 		this.donGia = donGia;
-		this.phanLoai = phanLoai;
 		this.moTa = moTa;
 		this.khuyenMai = khuyenMai;
 		this.cao = cao;
@@ -155,19 +167,19 @@ public class SanPham {
 		this.chatLieu = chatLieu;
 		this.xuatXu = xuatXu;
 		this.mauSac = mauSac;
-		this.hinhAnh = hinhAnh;
+		this.maHinhAnh = maHinhAnh;
 		this.soLuongDaBan = soLuongDaBan;
 		this.ngayNhap = ngayNhap;
 		this.dangHoatDong = dangHoatDong;
+		this.danhSachHinhAnh = danhSachHinhAnh;
 	}
-	public SanPham(int id, String maHangMuc, String tenSanPham, double donGia, String phanLoai, float cao, float dai,
+	public SanPham(int id, int maHangMuc, String tenSanPham, double donGia, float cao, float dai,
 			float rong, String mauSac) {
 		super();
 		this.id = id;
 		this.maHangMuc = maHangMuc;
 		this.tenSanPham = tenSanPham;
 		this.donGia = donGia;
-		this.phanLoai = phanLoai;
 		this.cao = cao;
 		this.dai = dai;
 		this.rong = rong;
