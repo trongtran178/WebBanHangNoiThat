@@ -26,9 +26,7 @@ public class AdminCapNhatThongTinController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		if (request.getSession().getAttribute("admin") == null) {
-			RequestDispatcher dispatcher = this.getServletContext()
-					.getRequestDispatcher("/WEB-INF/templates/admin_login.jsp");
-			dispatcher.forward(request, response);
+			response.sendRedirect("adminlogin");
 		} else {
 
 			if (isShowNotification == false) {
