@@ -31,6 +31,7 @@
       <mapping class="com.noithatchatluong.entities.SanPham" />
       <mapping class="com.noithatchatluong.entities.HangMucSanPham" />
       <mapping class="com.noithatchatluong.entities.HinhAnh" />
+      <mapping class="com.noithatchatluong.entities.TinTuc" />
       
   </session-factory>
  
