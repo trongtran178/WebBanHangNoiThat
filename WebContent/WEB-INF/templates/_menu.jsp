@@ -32,7 +32,7 @@
 								<li><a href="order-complete.html">Order Complete</a></li>
 								<li><a href="add-to-wishlist.html">Wishlist</a></li>
 							</ul></li>
-						<li><a href="News">Blog</a></li>
+						<li><a href="News">Tin tức</a></li>
 						<li><a href="AboutUs">Về chúng tôi</a></li>
 						<li><a href="contact">Liên hệ</a></li>
 						<li><a href="cart"><i class="icon-shopping-cart"></i>

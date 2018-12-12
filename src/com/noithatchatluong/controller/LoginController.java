@@ -35,16 +35,22 @@ public class LoginController extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		KhachHang khachHang = new KhachHang(email, password);
+		System.out.println(password);
 		KhachHangDAO khachHangDAO = new KhachHangDAO();
 		
 		try {
 			if (khachHangDAO.checkPassword(khachHang)){
+				System.out.println("true");
 				request.getSession().setAttribute("email", email);
 				response.sendRedirect("home");
 			} else {
+				System.out.println("false");
+
 				response.sendRedirect("login");
 			}
 		} catch (SQLException e) {
+			System.out.println("false");
+
 			System.out.println(e.getMessage());
 		}
 		//doGet(request, response);

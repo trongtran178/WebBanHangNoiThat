@@ -18,7 +18,7 @@ public class AdminThongKe extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/templates/testThongKe.jsp");
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/templates/admin_thongke.jsp");
 		dispatcher.forward(request, response);
 	}
 

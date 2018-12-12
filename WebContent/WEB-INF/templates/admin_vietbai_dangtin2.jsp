@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     <!DOCTYPE html>
     <html dir="ltr" lang="en">
     
@@ -11,6 +12,9 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <!-- Favicon icon -->
+        <link rel="stylesheet" href="static/css/style.css">
+        <!-- Bootstrap  -->
+<link rel="stylesheet" href="static/css/bootstrap.css">
         <link rel="icon" type="image/png" sizes="16x16" href="static/admin/assets/images/favicon.png">
         <title>Nice admin Template - The Ultimate Multipurpose admin template</title>
         <!-- Custom CSS -->
@@ -21,6 +25,11 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+    	 body {
+    		font-size: 15px;
+    	}
+    </style>
     </head>
     
     <body>
@@ -141,12 +150,14 @@
             <!-- End Topbar header -->
             <!-- ============================================================== -->
             <!-- ============================================================== -->
+            
+           <jsp:include page="_admin_pageleft.jsp"></jsp:include>
 		<!-- Left Sidebar - style you can find in sidebar.scss  -->
 		<!-- ============================================================== -->
-		<aside class="left-sidebar" data-sidebarbg="skin5">
-            <!-- Sidebar scroll-->
+<!-- 		<aside class="left-sidebar" data-sidebarbg="skin5">
+            Sidebar scroll
             <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
+                Sidebar navigation
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li class="sidebar-item">
@@ -193,10 +204,10 @@
                         </li>
                     </ul>
                 </nav>
-                <!-- End Sidebar navigation -->
+                End Sidebar navigation
             </div>
-            <!-- End Sidebar scroll-->
-        </aside>
+            End Sidebar scroll
+        </aside> -->
 		<!-- ============================================================== -->
 		<!-- End Left Sidebar - style you can find in sidebar.scss  -->
 		<!-- ============================================================== -->
@@ -247,70 +258,70 @@
     
                             <div class="card">
                                 <div class="table-responsive m-t-20">
-                                <td style="text-align: center;"><button class = "btn btn-danger">Thêm</button></td>
+                                <a href = "addnews" class = "btn btn-danger btn-lg">Thêm</a>
                                     <table class="table table-bordered table-responsive-lg table-striped table-hover">
                                         <thead>
                                             <tr>
-                                                <th scope="col">STT</th>
                                                 <th scope="col">Mã tin tức</th>
                                                 <th scope="col">Tiêu đề</th>
                                                 <th scope="col">Nội dung</th>
                                                 <th scope="col">Hình đại diện</th>
                                                 <th scope="col">Ngày tạo</th>
                                                 <th scope="col">Xóa</th>
-                                                <th scope="col">Sửa</th>
-                                                
+                                                <th scope="col">Sửa</th>                               
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody>	
+                                        <c:forEach items = "${paginationTinTuc.getList()}" var = "tinTuc">
                                             <tr>
-                                                <th scope="row">1</th>
-                                                <td>TT0001</td>
-                                                <td>Bàn kim loại cứng nhất thế giới</td>
-                                                <td>Ở đây chúng tôi đã nhập về mẫu bàn kim loại cứng nhất thế giới, nó có vẻ cứng thật và nó sẽ tiếp tục cứng cho tới khi nào tui không cho nó cứng nưa hiểu chưa ahihi</td>
-                                                <td></td>
-                                                <td>20/11/2018</td>
-                                                <td style="text-align: center;"><button class = "btn btn-danger">Xóa</button></td>
-                                                <td style="text-align: center;"><button class = "btn btn-danger">Sửa</button></td>
+                                                <td>${tinTuc.maTinTuc }</td>
+                                                <td>${tinTuc.tieuDe.substring(0, 10)}...</td>
+                                                <td>${tinTuc.noiDung.substring(0, 30)}...</td>
+                                                <c:if test="${tinTuc.hinhDaiDien eq 'None'}">
+                                                	<td><img width = "80" height = "80" src = "static/hinhdaidientintuc/default.jpg" /></td>
+                                                </c:if>
+                                                <c:if test="${tinTuc.hinhDaiDien ne 'None'}">
+                                                    <%-- <td><img width = "80" height = "80" src = "static/hinhdaidientintuc/${tinTuc.hinhDaiDien}" /></td> --%>
+													<td><img width = "80" height = "80" src = "static/hinhdaidientintuc/${tinTuc.hinhDaiDien}" /></td>
+                                                </c:if>                                                
+                                                <td>${tinTuc.ngayTao}</td>
+                                                <td style="text-align: center;"><a onclick = "return confirmDelete('${tinTuc.maTinTuc}')" class="btn btn-secondary btn-lg active" href = "deleteNews?maTinTuc=${tinTuc.maTinTuc }">Xóa</a></td>
+                                                <td style="text-align: center;"><a class="btn btn-secondary btn-lg active" href = "editnews?maTinTuc=${tinTuc.maTinTuc}" class = "btn btn-danger">Sửa</a></td>
                                             </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>TT0002</td>
-                                                <td>Bàn kim loại cứng nhất thế giới</td>
-                                                <td>Ở đây chúng tôi đã nhập về mẫu bàn kim loại cứng nhất thế giới, nó có vẻ cứng thật và nó sẽ tiếp tục cứng cho tới khi nào tui không cho nó cứng nưa hiểu chưa ahihi</td>
-                                                <td></td>
-                                                <td>20/11/2018</td>
-                                                <td style="text-align: center;"><button class = "btn btn-danger">Xóa</button></td>
-                                                <td style="text-align: center;"><button class = "btn btn-danger">Sửa</button></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td>TT0003</td>
-                                                <td>Bàn kim loại cứng nhất thế giới</td>
-                                                <td>Ở đây chúng tôi đã nhập về mẫu bàn kim loại cứng nhất thế giới, nó có vẻ cứng thật và nó sẽ tiếp tục cứng cho tới khi nào tui không cho nó cứng nưa hiểu chưa ahihi</td>
-                                                <td></td>
-                                                <td>20/11/2018</td>
-                                                <td style="text-align: center;"><button onclick = "confirmDelete()" class = "btn btn-danger">Xóa</button></td>
-                                                <td style="text-align: center;"><button class = "btn btn-danger">Sửa</button></td>
-                                            </tr>
-                                            <tr>
-                                            	<th scope="row">4</th>
-                                               <td>TT0004</td>
-                                                <td>Bàn kim loại cứng nhất thế giới</td>
-                                                <td>Ở đây chúng tôi đã nhập về mẫu bàn kim loại cứng nhất thế giới, nó có vẻ cứng thật và nó sẽ tiếp tục cứng cho tới khi nào tui không cho nó cứng nưa hiểu chưa ahihi</td>
-                                                <td></td>
-                                                <td>20/11/2018</td>
-                                                <td style="text-align: center;"><button class = "btn btn-danger">Xóa</button></td>
-                                                <td style="text-align: center;"><button class = "btn btn-danger">Sửa</button></td>
-                                                </tr>
+                                            </c:forEach>
                                         </tbody>
                                     </table>
-                                    
+                                  
                                 </div>
-                            </div>
+                        
+                            </div>                                
                         </div>
-    
-                        <!-- Quản lý chi tiết hóa đơn -->
+					<c:if test="${paginationTinTuc.totalPages > 1}">
+						<div class="row">
+							<div class="col-md-12">
+								<ul class="pagination">
+									<c:forEach items="${paginationTinTuc.navigationPages }"
+										var="page">
+										<c:if test="${page != -1}">
+											<c:choose>
+												<c:when test="${paginationTinTuc.currentPage == page }">
+													<li class="active"><a
+														href="adminvietbaidangtin?page=${page}">${page}</a></li>
+												</c:when>
+												<c:when test="${paginationTinTuc.currentPage != page }">
+													<li><a href="adminvietbaidangtin?page=${page}">${page}</a></li>
+												</c:when>
+											</c:choose>
+										</c:if>
+										<c:if test="${page == -1}">
+											<span>...</span>
+										</c:if>
+									</c:forEach>
+								</ul>
+							</div>
+						</div>
+					</c:if>
+					<!-- Quản lý chi tiết hóa đơn -->
     
                            
             
@@ -332,8 +343,7 @@
                     <!-- footer -->
                     <!-- ============================================================== -->
                     <footer class="footer text-center">
-                        All Rights Reserved by Nice admin. Designed and Developed by
-                        <a href="https://wrappixel.com">WrapPixel</a>.
+                        All Rights Reserved by NoiThatChatLuong.
                     </footer>
                     <!-- ============================================================== -->
                     <!-- End footer -->
@@ -362,18 +372,23 @@
             <!--Custom JavaScript -->
             <script src="static/admin/dist/js/custom.min.js"></script>
             
+           <!--  Đoạn script xử lý confirm xoas tin tuc -->                 
             <script>
-            	function confirmDelete() {
-            		var res = confirm("Bạn chắc chắn muốn xóa bài viết này ? ");
-            		if(res == true) {
-            			alert("Xóa thành công");
-            		} else {
-            			alert("Hihi");
+            	
+            	function confirmDelete(maTinTuc) {
+            		var res = confirm("Bạn có chắc chắn muốn xóa bài viết này ? ");
+            		if(res == false) {
+            			//this.preventDefault();
+                		return false;
             		}
-            		
+            		else {
+            			alert("Xoá thành công");
+            			return true;
+            		}
+                	
             	}
-            </script>
-            
+         
+            </script>            
     </body>
     
     </html>

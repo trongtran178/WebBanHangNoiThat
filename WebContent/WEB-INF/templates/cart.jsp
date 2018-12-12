@@ -473,6 +473,7 @@
 					+ soLuong);
 
 		}
+
 		$(document)
 				.ready(
 						function() {
