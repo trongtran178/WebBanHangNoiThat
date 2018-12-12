@@ -227,7 +227,11 @@
 								<div class="total-wrap">
 									<div class="row">
 										<a href="products">
+<<<<<<< HEAD
 											<div class="col-md-3 editSpaceOfMuaThemButton" >
+=======
+											<div class="col-md-3 editSpaceOfMuaThemButton">
+>>>>>>> master
 												<button style="border-radius: 7px;" type="button" class="btn btn-info">Mua thêm</button>
 											</div>
 										</a>
@@ -451,16 +455,33 @@
 				"application/x-www-form-urlencoded")
 			xhr.send("maSanPham=" + idSanPham + "&action=sua&soLuong=" +
 				soLuong);
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 		}
 		$(document)
 			.ready(
 				function () {
+<<<<<<< HEAD
 					$(".button-xoa")
 						.click(
 							function (e) {
 								var parentid = e.target
 									.getAttribute("data-parent-id");
 								$("#" + parentid).remove();
+=======
+
+					$(".button-xoa")
+						.click(
+							function (e) {
+
+								var parentid = e.target
+									.getAttribute("data-parent-id");
+
+								$("#" + parentid).remove();
+
+>>>>>>> master
 								let idSanPham = parentid
 									.substring(2);
 								let xhr = new XMLHttpRequest();
@@ -487,6 +508,10 @@
 									idSanPham +
 									"&action=xoa");
 							});
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 				});
 	</script>
 </body>

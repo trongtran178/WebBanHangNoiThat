@@ -127,6 +127,9 @@ label.error {
 								<div class="row form-group text-center">
 									<input type="submit" value="Xác nhận" class="btn btn-success">
 								</div>
+								<input type="hidden" id="email" name="email"
+									class="form-control" value="${emailKhoiPhuc}">
+
 							</form>
 						</div>
 					</div>

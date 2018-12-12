@@ -116,20 +116,12 @@
                             <!-- ============================================================== -->
                             <!-- User profile and search -->
                             <!-- ============================================================== -->
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    <img src="static/admin/assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31">
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right user-dd animated">
-                                    <a class="dropdown-item" href="javascript:void(0)">
-                                        <i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
-                                    <a class="dropdown-item" href="javascript:void(0)">
-                                        <i class="ti-wallet m-r-5 m-l-5"></i> My Balance</a>
-                                    <a class="dropdown-item" href="javascript:void(0)">
-                                        <i class="ti-email m-r-5 m-l-5"></i> Inbox</a>
-                                </div>
-                            </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="static/admin/assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31"></a>
+                  <div class="dropdown-menu dropdown-menu-right user-dd animated">
+                      <a class="dropdown-item" href="admincapnhatthongtin"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
+                  </div>
+              </li>
                             <!-- ============================================================== -->
                             <!-- User profile and search -->
                             <!-- ============================================================== -->
@@ -143,60 +135,7 @@
             <!-- ============================================================== -->
             <!-- Left Sidebar - style you can find in sidebar.scss  -->
             <!-- ============================================================== -->
-            <aside class="left-sidebar" data-sidebarbg="skin5">
-                <!-- Sidebar scroll-->
-                <div class="scroll-sidebar">
-                    <!-- Sidebar navigation-->
-                    <nav class="sidebar-nav">
-                        <ul id="sidebarnav">
-                            <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.html" aria-expanded="false">
-                                    <i class="mdi mdi-av-timer"></i>
-                                    <span class="hide-menu">Dashboard</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="pages-profile.html" aria-expanded="false">
-                                    <i class="mdi mdi-account-network"></i>
-                                    <span class="hide-menu">Profile</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="form-basic.html" aria-expanded="false">
-                                    <i class="mdi mdi-arrange-bring-forward"></i>
-                                    <span class="hide-menu">Form Basic</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="table-basic.html" aria-expanded="false">
-                                    <i class="mdi mdi-border-none"></i>
-                                    <span class="hide-menu">Table</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="icon-material.html" aria-expanded="false">
-                                    <i class="mdi mdi-face"></i>
-                                    <span class="hide-menu">Icon</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="starter-kit.html" aria-expanded="false">
-                                    <i class="mdi mdi-file"></i>
-                                    <span class="hide-menu">Blank</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="error-404.html" aria-expanded="false">
-                                    <i class="mdi mdi-alert-outline"></i>
-                                    <span class="hide-menu">404</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                    <!-- End Sidebar navigation -->
-                </div>
-                <!-- End Sidebar scroll-->
-            </aside>
+            <jsp:include page="_admin_pageleft.jsp"></jsp:include>
             <!-- ============================================================== -->
             <!-- End Left Sidebar - style you can find in sidebar.scss  -->
             <!-- ============================================================== -->

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import com.noithatchatluong.model.KhachHang;
+import com.noithatchatluong.model.KhachHang;
 import com.noithatchatluong.utils.BCryptUtils;
  
 public class KhachHangDAO {
@@ -21,6 +22,7 @@ public class KhachHangDAO {
 		
 		String sql = "SELECT * FROM khachhang";
 		
+		this.dataProvider = new DataProvider();
 		this.dataProvider.connect();
 		
 		Statement statement = this.dataProvider.jdbcConnection.createStatement();
@@ -45,6 +47,8 @@ public class KhachHangDAO {
 	public boolean updateKhachHang(KhachHang khachhang) throws SQLException {
 		String sql = "UPDATE khachhang SET HoTen = ?, SDT = ?, DIaChi = ?, Password = ?";
 		sql += " WHERE MaKhachHang = ?";
+		
+		this.dataProvider = new DataProvider();
 		this.dataProvider.connect();
 		
 		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);
@@ -64,6 +68,7 @@ public class KhachHangDAO {
 		KhachHang khachhang = null;
 		String sql = "SELECT * FROM khachhang WHERE MaKhachHang = ?";
 		
+		this.dataProvider = new DataProvider();
 		this.dataProvider.connect();
 		
 		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);
@@ -88,12 +93,14 @@ public class KhachHangDAO {
 		
 		resultSet.close();
 		statement.close();
+		this.dataProvider.disconnect();
 		
 		return khachhang;
 	}
 	
 	public boolean checkPassword(KhachHang khachHang) throws SQLException {
 		String sql = "SELECT * from KhachHang where email = ? AND DangHoatDong = 1";
+		
 		this.dataProvider = new DataProvider();
 		this.dataProvider.connect();
 		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);
@@ -136,7 +143,11 @@ public class KhachHangDAO {
 	public boolean checkEmailTonTai(String email) throws SQLException {
 		String sql = "SELECT COUNT(*) as count FROM KhachHang WHERE Email = ? AND  DangHoatDong = 1;";
 		boolean isSuccess = false;
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> master
 		this.dataProvider = new DataProvider();
 		this.dataProvider.connect();
 		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);
@@ -144,7 +155,11 @@ public class KhachHangDAO {
 		statement.setString(1, email);
 		
 		ResultSet resultSet = statement.executeQuery();
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> master
 		if (resultSet.next()) {
 			int count = resultSet.getInt("count");
 			if (count > 0) {
@@ -189,7 +204,11 @@ public class KhachHangDAO {
 		ResultSet resultSet = statement.executeQuery();
 		
 		if (resultSet.next()) {
+<<<<<<< HEAD
 			int iD = resultSet.getInt("ID");
+=======
+			int iD = resultSet.getInt("id");
+>>>>>>> master
 			String maKhachHang = resultSet.getString("MaKhachHang");	
 			String hoTen = resultSet.getString("HoTen");
 			String sdt = resultSet.getString("SDT");
@@ -199,15 +218,29 @@ public class KhachHangDAO {
 			int daDangKy = resultSet.getInt("DaDangKy");
 			int soNguoiDaGioiThieu = resultSet.getInt("SoNguoiDaGioiThieu");
 			int dangHoatDong = resultSet.getInt("DangHoatDong");
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> master
 			khachhang = new KhachHang(iD, maKhachHang, email, hoTen, sdt, diaChi, password, ngayDangKy, daDangKy, soNguoiDaGioiThieu, dangHoatDong);
 		}
 		
 		resultSet.close();
 		statement.close();
+<<<<<<< HEAD
 		
 		return khachhang;
 	}
  
 	
 }
+=======
+		this.dataProvider.disconnect();
+
+		return khachhang;
+	}
+
+	
+}
+>>>>>>> master

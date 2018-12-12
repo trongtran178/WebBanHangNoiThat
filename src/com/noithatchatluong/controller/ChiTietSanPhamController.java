@@ -79,7 +79,12 @@ public class ChiTietSanPhamController extends HttpServlet {
 		BinhLuan binhLuan = new BinhLuan(iD, maSanPham, email, noiDung, thoiGian);
 		
 		try {
-			binhLuanDAO.insertBinhLuan(binhLuan);
+			if (binhLuanDAO.insertBinhLuan(binhLuan)) {
+				System.out.println("Them binh luan thanh cong");
+			} else {
+				System.out.println("Them binh luan that bai");
+			}
+			
 			response.getWriter().write("1");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
