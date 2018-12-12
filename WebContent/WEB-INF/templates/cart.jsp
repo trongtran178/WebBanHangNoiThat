@@ -227,11 +227,8 @@
 								<div class="total-wrap">
 									<div class="row">
 										<a href="products">
-<<<<<<< HEAD
-											<div class="col-md-3 editSpaceOfMuaThemButton" >
-=======
+
 											<div class="col-md-3 editSpaceOfMuaThemButton">
->>>>>>> master
 												<button style="border-radius: 7px;" type="button" class="btn btn-info">Mua thêm</button>
 											</div>
 										</a>
