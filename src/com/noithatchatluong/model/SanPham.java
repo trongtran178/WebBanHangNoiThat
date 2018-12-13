@@ -28,7 +28,6 @@ public class SanPham {
 	private int dangHoatDong;
 	private List<String> danhSachHinhAnh;
 
-	
 	public List<String> getDanhSachHinhAnh() {
 		return danhSachHinhAnh;
 	}
