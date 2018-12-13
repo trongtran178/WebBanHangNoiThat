@@ -17,7 +17,7 @@ public class SanPham {
 	private String chatLieu;
 	private String xuatXu;
 	private String mauSac;
-	private String maHinhAnh;
+	private String HinhAnh;
 	private int soLuongDaBan;
 	private Date ngayNhap;
 	private int dangHoatDong;
@@ -104,11 +104,11 @@ public class SanPham {
 	public void setMauSac(String mauSac) {
 		this.mauSac = mauSac;
 	}
-	public String getMaHinhAnh() {
-		return maHinhAnh;
+	public String getHinhAnh() {
+		return HinhAnh;
 	}
 	public void setHinhAnh(String hinhAnh) {
-		this.maHinhAnh = hinhAnh;
+		this.HinhAnh = hinhAnh;
 	}
 	public int getSoLuongDaBan() {
 		return soLuongDaBan;
@@ -151,12 +151,34 @@ public class SanPham {
 		this.chatLieu = chatLieu;
 		this.xuatXu = xuatXu;
 		this.mauSac = mauSac;
-		this.maHinhAnh = hinhAnh;
+		this.HinhAnh = hinhAnh;
 		this.soLuongDaBan = soLuongDaBan;
 		this.ngayNhap = ngayNhap;
 		this.dangHoatDong = dangHoatDong;
 	}
+	public SanPham(String maHangMuc,  String tenSanPham, double donGia, String moTa,
+			double khuyenMai, float cao, float dai, float rong, String chatLieu, String xuatXu, String mauSac
+			, int soLuongDaBan, int dangHoatDong,int id) {
+		super();
 	
+		this.maSanPham = "SP" + Integer.toString(id);
+		this.maHangMuc = maHangMuc;
+		this.tenSanPham = tenSanPham;
+		this.donGia = donGia;
+		this.moTa = moTa;
+		this.khuyenMai = khuyenMai;
+		this.cao = cao;
+		this.dai = dai;
+		this.rong = rong;
+		this.chatLieu = chatLieu;
+		this.xuatXu = xuatXu;
+		this.mauSac = mauSac;
+
+		this.soLuongDaBan = soLuongDaBan;
+
+		this.dangHoatDong = dangHoatDong;
+		this.id=id;
+	}
 	
 	
 	

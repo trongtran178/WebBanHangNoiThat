@@ -25,39 +25,16 @@ public class AdminQuanLySanPham extends HttpServlet {
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	String action = request.getServletPath();
-    	
     	System.out.println(action);
-        try {
-            switch (action) {
-            case "/new":
-                //showNewForm(request, response);
-                break;
-            case "/insert":
-                //insertBook(request, response);
-                break;
-            case "/adminquanlysanpham/delete":
-            {
-            	System.out.println("delete");
-                deleteSP(request, response);
-                break;
-            }
-            case "/edit":
-                //showEditForm(request, response);
-                break;
-            case "/update":
-                //updateBook(request, response);
-                break;
-            default:
-            {
-            	System.out.println("đã vào");
-                listSP(request, response);
-                break;
-            }
-                
-            }
-        } catch (SQLException ex) {
-            throw new ServletException(ex);
-        }
+    	
+    	
+    	try {
+			listSP(request, response);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -66,12 +43,14 @@ public class AdminQuanLySanPham extends HttpServlet {
 	
 	protected void listSP(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
+
 		sanPhamDAO = new SanPhamDAO();
+		
         List<SanPham> listSP =sanPhamDAO.getSanPham();
-        
+        		
         
         for(SanPham sp : listSP) {
-        	System.out.println(sp.getMaHinhAnh());
+        	System.out.println(sp.getHinhAnh());
         }
         request.setAttribute("listSP", listSP);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/templates/admin_quanlysanpham.jsp");
@@ -82,11 +61,19 @@ public class AdminQuanLySanPham extends HttpServlet {
 		sanPhamDAO = new SanPhamDAO();
         int id = Integer.parseInt(request.getParameter("id"));
         System.out.println(id);
-        SanPham sanPham = new SanPham(id);
-        //sanPhamDAO.deleteSP(sanPham);
+        sanPhamDAO.DeleteSP(id);
         response.sendRedirect("/WEB-INF/templates/admin_quanlysanpham.jsp");
- 
-    }
+     }
+	private void updateSP(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException {
+		sanPhamDAO =new SanPhamDAO();
+        int id = Integer.parseInt(request.getParameter("id"));
+        System.out.println(id);
+        SanPham sanpham=sanPhamDAO.getSanPhambyID(id);
+        request.setAttribute("id", id);
+        response.sendRedirect("/WEB-INF/templates/admin_quanlysanpham.jsp");
+     }
+	
 	
 	
 }

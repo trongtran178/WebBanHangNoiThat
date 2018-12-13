@@ -36,14 +36,14 @@ public class DeleteAdminQuanLySanPham extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         System.out.println(id);
     
-//        try {
-//			sanPhamDAO.deleteSP1(id);
-//			 response.sendRedirect("/WebBanHangNoiThat/adminquanlysanpham");
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-       
+       try {
+		sanPhamDAO.DeleteSP(id);
+			 response.sendRedirect("adminquanlysanpham");
+		} catch (SQLException e) {
+		// TODO Auto-generated catch block
+			e.printStackTrace();
+	}
+      
  
 	}
 

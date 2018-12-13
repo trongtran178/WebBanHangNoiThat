@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-
     <!DOCTYPE html>
     <html dir="ltr" lang="en">
     
@@ -287,12 +285,12 @@
 												<td><c:out value="${SanPham.getChatLieu()}" /></td>
 												<td><c:out value="${SanPham.getXuatXu()}" /></td>
 												<td><c:out value="${SanPham.getMauSac()}" /></td>
-												<td><img src="static/images/${SanPham.maHinhAnh}" width="100dp" height="100dp"></td>
+												<td><img src="static/images/${SanPham.getHinhAnh()}" width="100dp" height="100dp"></td>
 												<td><c:out value="${SanPham.getSoLuongDaBan()}" /></td>
 												<td><c:out value="${SanPham.getNgayNhap()}" /></td>
 												<td><c:out value="${SanPham.getDangHoatDong()}" /></td>
 												<td style="text-align: center;"><button class = "btn btn-danger" onclick="return confirmDelete()"><a href="DeleteAdminQuanLySanPham?id=<c:out value='${SanPham.getId()}' />">Delete</a></button></td>
-                                                <td style="text-align: center;"><button class = "btn btn-danger"><a href="/WEB-INF/templates/AddSanPham.jsp/>">Add</a></button></td>
+                                                <td style="text-align: center;"><button class = "btn btn-danger"><a href="UpdateSP?id=<c:out value='${SanPham.getId()}' />">Edit</a></button></td>
 												
 											</tr>
 										</c:forEach>
@@ -527,7 +525,7 @@
             <script>
             	
             	function confirmDelete() {
-            		var res = confirm("Bạn có chắc chắn muốn xóa bài viết này ? ");
+            		var res = confirm("Bạn có chắc chắn muốn xóa sản phẩm này ? ");
             		if(res == false) {
             			//this.preventDefault();
                 		return false;

@@ -21,16 +21,22 @@ public class DataProvider {
 		this.jdbcUsername = "root";
 		this.jdbcPassword = "hoanhtu1998";
 		this.jdbcConnection = null;
+		System.out.println("ok");
 	}
 	protected void connect() throws SQLException {
+	
 		if (jdbcConnection == null || jdbcConnection.isClosed()) {
 			try {
+	
 				Class.forName("com.mysql.cj.jdbc.Driver");
+			
 			} catch (ClassNotFoundException e) {
+				
 				throw new SQLException(e);
 			}
 			jdbcConnection = DriverManager.getConnection(
 										jdbcURL, jdbcUsername, jdbcPassword);
+			
 		}
 	}
 	

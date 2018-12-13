@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 
 public class UploadFileUtils {
-	private String SAVE_DIRECTORY = "G:\\webproejct\\WebBanHangNoiThat - Copy\\WebContent\\static\\hinhdaidientintuc";
+	private String SAVE_DIRECTORY = "D:\\javaWeb\\WebBanHangNoiThat\\WebContent\\static\\images";
 	private String fileName = null;
 
 	public String getFileName() {
@@ -37,8 +37,8 @@ public class UploadFileUtils {
 				
 				part.write(SAVE_DIRECTORY + File.separator + fileName);
 				part.write(request.getServletContext().getRealPath("") + "static\\images\\" +  File.separator + this.getFileName());
-				System.out.println(request.getServletContext().getRealPath("") + "static\\images\\" +  File.separator + this.getFileName());
-				System.out.println(SAVE_DIRECTORY + File.separator + fileName);
+				//System.out.println(request.getServletContext().getRealPath("") + "static\\images\\" +  File.separator + this.getFileName());
+				//System.out.println(SAVE_DIRECTORY + File.separator + fileName);
 				return true;
 			}
 		}

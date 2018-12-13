@@ -1,19 +1,19 @@
 package com.noithatchatluong.model;
 
 public class HangMuc {
-	protected String iDHangMuc;
+	protected int iDHangMuc;
 	protected String tenHangMuc;
 	protected String iDHangMucCha;
-	public HangMuc( String iDHangMuc,String tenHangMuc) {
+	public HangMuc( int iDHangMuc,String tenHangMuc) {
 		super();
 		this.iDHangMuc=iDHangMuc;
 		this.tenHangMuc = tenHangMuc;
 		
 	}
-	public String getiDHangMuc() {
+	public int getiDHangMuc() {
 		return iDHangMuc;
 	}
-	public void setiDHangMuc(String iDHangMuc) {
+	public void setiDHangMuc(int iDHangMuc) {
 		this.iDHangMuc = iDHangMuc;
 	}
 	public String getTenHangMuc() {
