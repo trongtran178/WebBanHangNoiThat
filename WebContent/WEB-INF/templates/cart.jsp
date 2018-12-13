@@ -449,45 +449,46 @@
 			xhr.send("maSanPham=" + idSanPham + "&action=sua&soLuong=" +
 				soLuong);
 		}
-		$(document).ready(
-			function () {
-				$(".button-xoa")
-					.click(
-						function (e) {
-							var parentid = e.target
-								.getAttribute("data-parent-id");
-							$("#" + parentid).remove();
-							let idSanPham = parentid
-								.substring(2);
-							let xhr = new XMLHttpRequest();
-							xhr.onreadystatechange = function () {
-								if (this.readyState == 4 &&
-									this.status == 200) {
-									let chuoi = this.responseText;
-									let mangGia = chuoi
-										.split("-");
-									document
-										.getElementById("tongTienChuaKhuyenMai").innerHTML = mangGia[0];
-									document
-										.getElementById("tongTienKhuyenMai").innerHTML = mangGia[1];
-									document
-										.getElementById("tongTienPhaiTra").innerHTML = mangGia[2];
-									
-									if (mangGia[0] < 1){
-										window.location.href = "cart";
+		$(document)
+			.ready(
+				function () {
+					$(".button-xoa")
+						.click(
+							function (e) {
+
+								var parentid = e.target
+									.getAttribute("data-parent-id");
+
+								$("#" + parentid).remove();
+
+								let idSanPham = parentid
+									.substring(2);
+								let xhr = new XMLHttpRequest();
+								xhr.onreadystatechange = function () {
+									if (this.readyState == 4 &&
+										this.status == 200) {
+										let chuoi = this.responseText;
+										let mangGia = chuoi
+											.split("-");
+										document
+											.getElementById("tongTienChuaKhuyenMai").innerHTML = mangGia[0];
+										document
+											.getElementById("tongTienKhuyenMai").innerHTML = mangGia[1];
+										document
+											.getElementById("tongTienPhaiTra").innerHTML = mangGia[2];
 									}
 								}
-							}
-							xhr.open("POST", "cart", true);
-							xhr
-								.setRequestHeader(
-									"Content-type",
-									"application/x-www-form-urlencoded")
-							xhr.send("maSanPham=" +
-								idSanPham +
-								"&action=xoa");
-						});
-			});
+								xhr.open("POST", "cart", true);
+								xhr
+									.setRequestHeader(
+										"Content-type",
+										"application/x-www-form-urlencoded")
+								xhr.send("maSanPham=" +
+									idSanPham +
+									"&action=xoa");
+							});
+				});
+
 	</script>
 </body>
 

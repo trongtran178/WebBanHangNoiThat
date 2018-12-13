@@ -42,12 +42,12 @@ public class Test {
 		session.getTransaction().commit();*/
 		
 		
-		KhachHangDAO khd = new KhachHangDAO();
+		/*
 		KhachHang kh = khd.getKhachHangByEmail("123asd@gmail.com");
-		System.out.println(kh.getHoTen());
+		System.out.println(kh.getHoTen());*/
 		/*com.noithatchatluong.model.KhachHang kh = khd.getKhachHangByEmail("123asd@gmail.com");
 		System.out.println(kh.getHoTen());*/
-		
-		
+		KhachHangDAO khd = new KhachHangDAO();
+		khd.tangSoNguoiGioiThieu("123asd@gmail.com");
 	}
 }

@@ -512,7 +512,7 @@
 		src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
 	<!-- jQuery -->
 	<script src="static/js/jquery.min.js"></script>
-	>
+	
 	<!-- jQuery Easing -->
 	<script src="static/js/jquery.easing.1.3.js"></script>
 	<!-- Bootstrap -->
