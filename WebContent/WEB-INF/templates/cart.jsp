@@ -452,23 +452,11 @@
 				"application/x-www-form-urlencoded")
 			xhr.send("maSanPham=" + idSanPham + "&action=sua&soLuong=" +
 				soLuong);
-<<<<<<< HEAD
-=======
 
->>>>>>> master
 		}
 		$(document)
 			.ready(
 				function () {
-<<<<<<< HEAD
-					$(".button-xoa")
-						.click(
-							function (e) {
-								var parentid = e.target
-									.getAttribute("data-parent-id");
-								$("#" + parentid).remove();
-=======
-
 					$(".button-xoa")
 						.click(
 							function (e) {
@@ -478,7 +466,6 @@
 
 								$("#" + parentid).remove();
 
->>>>>>> master
 								let idSanPham = parentid
 									.substring(2);
 								let xhr = new XMLHttpRequest();
@@ -505,10 +492,6 @@
 									idSanPham +
 									"&action=xoa");
 							});
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 				});
 	</script>
 </body>
