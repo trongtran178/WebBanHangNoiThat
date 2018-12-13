@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<!-- Khai báo sử dụng JSTL Core Tags -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="com.noithatchatluong.DAO.*"%>
+<%@ page import="com.noithatchatluong.model.*"%>
+<%@ page import="com.noithatchatluong.entities.*"%>
+<%@ page import="com.noithatchatluong.controller.ProductsController"%>
+<%@ page import="javax.servlet.http.HttpServletRequest"%>
+<%@ page import="javax.servlet.http.HttpServletResponse"%>
+<%@ page import="javax.servlet.http.HttpServlet"%>
+
 	<!DOCTYPE html>
 	<html>
 	<meta charset="UTF-8">
@@ -69,6 +79,10 @@
  .css "%
 >--%>
 		</style>
+		
+		<script>
+		window.location.href = "home";
+		</script>
 	</head>
 
 	<body>
@@ -149,146 +163,54 @@
 				</div>
 			</aside>
 
+		<div class="colorlib-shop">
 
-			<div class="colorlib-shop">
-
-				<div class="container">
-					<!--  -->
-					<div class="row">
-						<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
-							<h2>
-								<span>Hàng mới về</span>
-							</h2>
-						</div>
+			<div class="container">
+				<!--  -->
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
+						<h2>
+							<span>Hàng mới về</span>
+						</h2>
 					</div>
+				</div>
 
-					<div class="row">
-						<div class="col-md-3 text-center">
-							<div class="product-entry">
-								<div class="product-img" style="background-image: url(static/images/BanLamViec.jpg);">
-									<p class="tag">
-										<span class="new">New</span>
-									</p>
-									<div class="cart">
-										<p>
-											<span class="addtocart">
-												<a href="cart.html">
-													<i class="icon-shopping-cart"></i>
+				<div class="row">
+					<c:if test="${not empty danhSachSanPhamMoi}">
+						<c:forEach items="${danhSachSanPhamMoi}" var="sanPham">
+							<div class="col-md-3 text-center">
+								<div class="product-entry">
+									<div class="product-img"
+										style="background-image: url(static/images/productimages/${sanPham.getDanhSachHinhAnh().get(0)});">
+										<p class="tag">
+											<span class="new">New</span>
+										</p>
+										<div class="cart">
+											<p>
+												<span class="addtocart"> <a
+													href="addtocart?maSanPham=${sanPham.getMaSanPhamMaHoa()}">
+														<i class="icon-shopping-cart"></i>
 												</a>
-											</span>
-											<span>
-												<a href="product-detail.html">
-													<i class="icon-eye"></i>
+												</span> <span> <a
+													href="product-detail?maSanPham=${sanPham.getMaSanPhamMaHoa()}">
+														<i class="icon-eye"></i>
 												</a>
-											</span>
+												</span>
+											</p>
+										</div>
+									</div>
+									<div class="desc">
+										<h3>
+											<a href="product-detail.html">${sanPham.getTenSanPham()}</a>
+										</h3>
+										<p class="price">
+											<span>${sanPham.getDonGia()}</span>
 										</p>
 									</div>
 								</div>
-								<div class="desc">
-									<h3>
-										<a href="product-detail.html">Bàn làm việc phổ thông</a>
-									</h3>
-									<p class="price">
-										<span>700.000 VNĐ</span>
-									</p>
-								</div>
 							</div>
-						</div>
-						<div class="col-md-3 text-center">
-							<div class="product-entry">
-								<div class="product-img" style="background-image: url(static/images/pi3.jpg);">
-									<p class="tag">
-										<span class="new">New</span>
-									</p>
-									<div class="cart">
-										<p>
-											<span class="addtocart">
-												<a href="cart.html">
-													<i class="icon-shopping-cart"></i>
-												</a>
-											</span>
-											<span>
-												<a href="product-detail.html">
-													<i class="icon-eye"></i>
-												</a>
-											</span>
-										</p>
-									</div>
-								</div>
-								<div class="desc">
-									<h3>
-										<a href="product-detail.html">Giường ngủ tinh tế</a>
-									</h3>
-									<p class="price">
-										<span>15.000.000 VNĐ</span>
-										<span class="sale">18.000.000 VNĐ</span>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 text-center">
-							<div class="product-entry">
-								<div class="product-img" style="background-image: url(static/images/giuong2.jpg);">
-									<p class="tag">
-										<span class="new">New</span>
-									</p>
-									<div class="cart">
-										<p>
-											<span class="addtocart">
-												<a href="cart.html">
-													<i class="icon-shopping-cart"></i>
-												</a>
-											</span>
-											<span>
-												<a href="product-detail.html">
-													<i class="icon-eye"></i>
-												</a>
-											</span>
-										</p>
-									</div>
-								</div>
-								<div class="desc">
-									<h3>
-										<a href="product-detail.html">Giường ngủ cơ bản</a>
-									</h3>
-									<p class="price">
-										<span>10.000.000 VNĐ/span></p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 text-center">
-							<div class="product-entry">
-								<div class="product-img" style="background-image: url(static/images/tantrachair.jpg);">
-									<p class="tag">
-										<span class="sale">Sale</span>
-									</p>
-									<div class="cart">
-										<p>
-											<span class="addtocart">
-												<a href="cart.html">
-													<i class="icon-shopping-cart"></i>
-												</a>
-											</span>
-											<span>
-												<a href="product-detail.html">
-													<i class="icon-eye"></i>
-												</a>
-											</span>
-										</p>
-									</div>
-								</div>
-								<div class="desc">
-									<h3>
-										<a href="product-detail.html">Ghế tập Yoga</a>
-									</h3>
-									<p class="price">
-										<span>15.000.000 VNĐ</span>
-										<span class="sale">$300.00</span>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
+						</c:forEach>
+					</c:if>
 
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
@@ -298,246 +220,91 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-3 text-center">
-							<div class="product-entry">
-								<div class="product-img" style="background-image: url(static/images/BanLamViec.jpg);">
-									<p class="tag">
-										<span class="new">New</span>
-									</p>
-									<div class="cart">
-										<p>
-											<span class="addtocart">
-												<a href="cart.html">
-													<i class="icon-shopping-cart"></i>
-												</a>
-											</span>
-											<span>
-												<a href="product-detail.html">
-													<i class="icon-eye"></i>
-												</a>
-											</span>
-										</p>
+						<c:if test="${not empty danhSachSanPhamKhuyenMai}">
+							<c:forEach items="${danhSachSanPhamKhuyenMai}" var="sanPham">
+								<div class="col-md-3 text-center">
+									<div class="product-entry">
+										<div class="product-img"
+											style="background-image: url(static/images/productimages/${sanPham.getDanhSachHinhAnh().get(0)});">
+											<p class="tag">
+												<span class="new">New</span>
+											</p>
+											<div class="cart">
+												<p>
+													<span class="addtocart"> <a
+														href="addtocart?maSanPham=${sanPham.getMaSanPhamMaHoa()}">
+															<i class="icon-shopping-cart"></i>
+													</a>
+													</span> <span> <a
+														href="product-detail?maSanPham=${sanPham.getMaSanPhamMaHoa()}">
+															<i class="icon-eye"></i>
+													</a>
+													</span>
+												</p>
+											</div>
+										</div>
+										<div class="desc">
+											<h3>
+												<a href="product-detail?maSanPham=${sanPham.getMaSanPhamMaHoa()}">${sanPham.getTenSanPham()}</a>
+											</h3>
+											<p class="price">
+												<span>${sanPham.getDonGia()}</span>
+											</p>
+										</div>
 									</div>
 								</div>
-								<div class="desc">
-									<h3>
-										<a href="product-detail.html">Bàn làm việc phổ thông</a>
-									</h3>
-									<p class="price">
-										<span>700.000 VNĐ</span>
-									</p>
-								</div>
+							</c:forEach>
+						</c:if>
+
+						<div class="row">
+							<div
+								class="col-md-6 col-md-offset-3 text-center colorlib-heading">
+								<h2>
+									<span>Bán chạy nhất</span>
+								</h2>
 							</div>
 						</div>
-						<div class="col-md-3 text-center">
-							<div class="product-entry">
-								<div class="product-img" style="background-image: url(static/images/pi3.jpg);">
-									<p class="tag">
-										<span class="new">New</span>
-									</p>
-									<div class="cart">
-										<p>
-											<span class="addtocart">
-												<a href="cart.html">
-													<i class="icon-shopping-cart"></i>
-												</a>
-											</span>
-											<span>
-												<a href="product-detail.html">
-													<i class="icon-eye"></i>
-												</a>
-											</span>
-										</p>
+						<c:if test="${not empty danhSachSanPhamBanChay}">
+							<c:forEach items="${danhSachSanPhamBanChay}" var="sanPham">
+								<div class="col-md-3 text-center">
+									<div class="product-entry">
+										<div class="product-img"
+											style="background-image: url(static/images/productimages/${sanPham.getDanhSachHinhAnh().get(0)});">
+											<p class="tag">
+												<span class="new">New</span>
+											</p>
+											<div class="cart">
+												<p>
+													<span class="addtocart"> <a
+														href="addtocart?maSanPham=${sanPham.getMaSanPhamMaHoa()}">
+															<i class="icon-shopping-cart"></i>
+													</a>
+													</span> <span> <a
+														href="product-detail?maSanPham=${sanPham.getMaSanPhamMaHoa()}">
+															<i class="icon-eye"></i>
+													</a>
+													</span>
+												</p>
+											</div>
+										</div>
+										<div class="desc">
+											<h3>
+												<a href="product-detail.html">${sanPham.getTenSanPham()}</a>
+											</h3>
+											<p class="price">
+												<span>${sanPham.getDonGia()}</span>
+											</p>
+										</div>
 									</div>
 								</div>
-								<div class="desc">
-									<h3>
-										<a href="product-detail.html">Giường ngủ tinh tế</a>
-									</h3>
-									<p class="price">
-										<span>15.000.000 VNĐ</span>
-										<span class="sale">18.000.000 VNĐ</span>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 text-center">
-							<div class="product-entry">
-								<div class="product-img" style="background-image: url(static/images/giuong2.jpg);">
-									<p class="tag">
-										<span class="new">New</span>
-									</p>
-									<div class="cart">
-										<p>
-											<span class="addtocart">
-												<a href="cart.html">
-													<i class="icon-shopping-cart"></i>
-												</a>
-											</span>
-											<span>
-												<a href="product-detail.html">
-													<i class="icon-eye"></i>
-												</a>
-											</span>
-										</p>
-									</div>
-								</div>
-								<div class="desc">
-									<h3>
-										<a href="product-detail.html">Giường ngủ cơ bản</a>
-									</h3>
-									<p class="price">
-										<span>10.000.000 VNĐ/span></p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 text-center">
-							<div class="product-entry">
-								<div class="product-img" style="background-image: url(static/images/tantrachair.jpg);">
-									<p class="tag">
-										<span class="sale">Sale</span>
-									</p>
-									<div class="cart">
-										<p>
-											<span class="addtocart">
-												<a href="cart.html">
-													<i class="icon-shopping-cart"></i>
-												</a>
-											</span>
-											<span>
-												<a href="product-detail.html">
-													<i class="icon-eye"></i>
-												</a>
-											</span>
-										</p>
-									</div>
-								</div>
-								<div class="desc">
-									<h3>
-										<a href="product-detail.html">Ghế tập Yoga</a>
-									</h3>
-									<p class="price">
-										<span>15.000.000 VNĐ</span>
-										<span class="sale">$300.00</span>
-									</p>
-								</div>
-							</div>
-						</div>
+							</c:forEach>
+						</c:if>
+
 					</div>
 
-					<div class="row">
-						<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
-							<h2>
-								<span>Bán chạy nhất</span>
-							</h2>
-						</div>
-					</div>
-					<div class="col-md-3 text-center">
-									<div class="product-entry">
-										<div class="product-img" style="background-image: url(static/images/ban3.jpg);">
-											<p class="tag"><span class="new">New</span></p>
-											<div class="cart">
-												<p>
-													<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-													<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-												</p>
-											</div>
-										</div>
-										<div class="desc">
-											<h3><a href="product-detail.html">Bàn cổ điển</a></h3>
-											<p class="price"><span>1.200.000 VNĐ</span></p>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-3 text-center">
-									<div class="product-entry">
-										<div class="product-img" style="background-image: url(static/images/ban4.jpg);">
-											<div class="cart">
-												<p>
-													<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-													<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-												</p>
-											</div>
-										</div>
-										<div class="desc">
-											<h3><a href="product-detail.html">Bàn phong cách ngày xửa ngày xưa</a></h3>
-											<p class="price"><span>900.000 VNĐ</span></p>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-3 text-center">
-									<div class="product-entry">
-										<div class="product-img" style="background-image: url(static/images/ban5.jpg);">
-											<p class="tag"><span class="new">New</span></p>
-											<div class="cart">
-												<p>
-													<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-													<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-												</p>
-											</div>
-										</div>
-										<div class="desc">
-											<h3><a href="product-detail.html">Bàn học sáng tạo</a></h3>
-											<p class="price"><span>800.000 VNĐ</span></p>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-3 text-center">
-									<div class="product-entry">
-										<div class="product-img" style="background-image: url(static/images/ban6.jpg);">
-											<p class="tag"><span class="new">New</span></p>
-											<div class="cart">
-												<p>
-													<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-													<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-												</p>
-											</div>
-										</div>
-										<div class="desc">
-											<h3><a href="product-detail.html">Bàn học tập trung</a></h3>
-											<p class="price"><span>1.200.000 VNĐ</span></p>
-										</div>
-									</div>
-								</div>
+					<!--  -->
 
 				</div>
-
-				<!--  -->
-
-			</div>
-
-
-
-
-			<!-- 
-		<div id="colorlib-subscribe">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2">
-						<div class="col-md-6 text-center">
-							<h2>
-								<i class="icon-paperplane"></i>Sign Up for a Newsletter
-							</h2>
-						</div>
-						<div class="col-md-6">
-							<form class="form-inline qbstp-header-subscribe">
-								<div class="row">
-									<div class="col-md-12 col-md-offset-0">
-										<div class="form-group">
-											<input type="text" class="form-control" id="email"
-												placeholder="Enter your email">
-											<button type="submit" class="btn btn-primary">Subscribe</button>
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		 -->
 			<jsp:include page="WEB-INF/templates/_footer.jsp"></jsp:include>
 		</div>
 

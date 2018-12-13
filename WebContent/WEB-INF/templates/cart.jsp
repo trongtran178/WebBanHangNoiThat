@@ -181,7 +181,7 @@
 											</div>
 											<div class="display-tc">
 												<h3>
-													<c:out value='${item.getSanPham().getTenSanPham()}' />
+												<a href="product-detail?maSanPham=${item.getSanPham().getMaSanPhamMaHoa()}">${item.getSanPham().getTenSanPham()}</a>													
 												</h3>
 											</div>
 										</div>
@@ -262,24 +262,24 @@
 														</h4>
 													</div>
 													<div class="modal-body">
-														<form>
+														<form action = "thanhtoan" method = "POST">
 															<div class="form-group">
 																<label for="TenKhachHang" class="control-label">Họ
-																	và tên:</label> <input type="text" class="form-control" id="TenKhachHang" placeholder="Nhập họ và tên...">
+																	và tên:</label> <input type="text" class="form-control" id="TenKhachHang" name="hoTen" placeholder="Nhập họ và tên...">
 															</div>
 															<div class="form-group">
-																<label for="Email" class="control-label">Email:</label> <input type="email" class="form-control" id="TenKhachHang"
+																<label for="Email" class="control-label">Email:</label> <input type="email" name = "email" class="form-control" id="TenKhachHang"
 																 placeholder="Nhập email...">
 															</div>
 															<div class="form-group">
 																<label for="Address" class="control-label">Địa
-																	chỉ:</label> <input type="email" class="form-control" id="address" placeholder="Nhập địa chỉ...">
+																	chỉ:</label> <input type="text" class="form-control" id="address" name = "diaChi" placeholder="Nhập địa chỉ...">
 															</div>
 															<div class="form-group">
 																<label for="SDT" class="control-label">Số điện
-																	thoại:</label> <input type="text" class="form-control" id="phonenumber" placeholder="Nhập số điện thoại">
+																	thoại:</label> <input type="text" class="form-control" id="phonenumber" name="soDienThoai" placeholder="Nhập số điện thoại">
 															</div>
-
+															<button style="border-radius: 7px;" type="submit" class="btn btn-info">Lưu thông tin</button>
 														</form>
 
 
@@ -287,7 +287,7 @@
 													</div>
 													<div class="modal-footer">
 														<button style="border-radius: 7px;" type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-														<button style="border-radius: 7px;" type="button" class="btn btn-info">Lưu thông tin</button>
+														
 													</div>
 												</div>
 											</div>
@@ -362,7 +362,7 @@
 										</div>
 										<div class="desc">
 											<h3>
-												<a href="product-detail.html">${sanPham.getTenSanPham()}</a>
+												<a href="product-detail?maSanPham=${sanPham.getMaSanPham()}">${sanPham.getTenSanPham()}</a>
 											</h3>
 											<p class="price">
 												<span>${sanPham.getDonGia()}</span>
@@ -387,10 +387,6 @@
 
 	</div>
 
-
-	<!--  -->
-
-	<!-- <div id="map" class="colorlib-map"></div> -->
 
 	<jsp:include page="_footer.jsp"></jsp:include>
 	</div>
@@ -452,7 +448,6 @@
 				"application/x-www-form-urlencoded")
 			xhr.send("maSanPham=" + idSanPham + "&action=sua&soLuong=" +
 				soLuong);
-
 		}
 		$(document)
 			.ready(
@@ -493,6 +488,7 @@
 									"&action=xoa");
 							});
 				});
+
 	</script>
 </body>
 

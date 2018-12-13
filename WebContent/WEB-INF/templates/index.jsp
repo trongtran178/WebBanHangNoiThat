@@ -239,7 +239,7 @@ file
 									</div>
 									<div class="desc">
 										<h3>
-											<a href="product-detail.html">${sanPham.getTenSanPham()}</a>
+											<a href="product-detail?maSanPham=${sanPham.getMaSanPhamMaHoa()}">${sanPham.getTenSanPham()}</a>
 										</h3>
 										<p class="price">
 											<span>${sanPham.getDonGia()}</span>
@@ -327,7 +327,7 @@ file
 										</div>
 										<div class="desc">
 											<h3>
-												<a href="product-detail.html">${sanPham.getTenSanPham()}</a>
+												<a href="product-detail?maSanPham=${sanPham.getMaSanPhamMaHoa()}">${sanPham.getTenSanPham()}</a>
 											</h3>
 											<p class="price">
 												<span>${sanPham.getDonGia()}</span>

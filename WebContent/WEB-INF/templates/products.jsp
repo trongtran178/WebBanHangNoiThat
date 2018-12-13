@@ -144,7 +144,7 @@
 								<div class="col-md-4 text-center">
 									<div class="product-entry">
 										<div class="product-img"
-											style="background-image: url(static/images/${thongTinSanPham.hinhDaiDien});">
+											style="background-image: url(static/images/productimages/${thongTinSanPham.hinhDaiDien});">
 											<p class="tag">
 												<span class="new">New</span>
 											</p>
@@ -165,7 +165,7 @@
 										</div>
 										<div class="desc">
 											<h3>
-												<a href="product-detail.html">${thongTinSanPham.tenSanPham}</a>
+												<a href="product-detail?maSanPham=${thongTinSanPham.maSanPham}">${thongTinSanPham.tenSanPham}</a>
 											</h3>
 											<p class="price">
 												<span>${thongTinSanPham.donGia}</span>
@@ -512,7 +512,7 @@
 		src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
 	<!-- jQuery -->
 	<script src="static/js/jquery.min.js"></script>
-	>
+	
 	<!-- jQuery Easing -->
 	<script src="static/js/jquery.easing.1.3.js"></script>
 	<!-- Bootstrap -->
