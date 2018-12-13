@@ -121,7 +121,17 @@
 										 <div id = "checkEmail" style = "color: red; font-weight: bold;"></div>
 									</div>
 								</div>
-
+								
+<!-- 								<div class="row form-group">
+									<div class="col-md-12">
+										<label for="email">Email</label>
+										 <input type="hidden" id="hidden" name = "de" class="form-control" placeholder="Nhập địa chỉ email của bạn" 
+										 <div id = "checkEmail" style = "color: red; font-weight: bold;"></div>
+									</div>
+								</div>	 -->	
+								
+								<input type = "hidden" name = "emailNguoiDaGioiThieu" value = "${emailNguoiGioiThieu}"/>														
+								
 								<div class="row form-group">
 									<div class="col-md-12">
 										<label for="password">Mật khẩu</label> 

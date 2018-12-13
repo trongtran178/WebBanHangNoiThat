@@ -36,7 +36,7 @@ public class ThanhToanController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		response.sendRedirect("/WEB-INF/templates/_404_ERROR.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

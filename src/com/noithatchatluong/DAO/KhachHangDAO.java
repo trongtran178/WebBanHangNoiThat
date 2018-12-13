@@ -95,6 +95,21 @@ public class KhachHangDAO {
 		}
 	}
 	
+/*	public void tangLuotGioiThieuChoKhachHang(String email) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		try {
+			session.getTransaction().begin();
+			
+			String sql = "update khachHang "
+			
+		} catch(Exception ex) {
+			
+		}
+		
+	}*/
+	
+	
 	public boolean kiemTraEmailTonTai(String emailCheck) {
 		boolean check;
 		Session session = sessionFactory.getCurrentSession();

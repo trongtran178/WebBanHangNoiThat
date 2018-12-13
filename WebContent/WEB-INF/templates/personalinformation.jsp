@@ -131,7 +131,7 @@
 										</div>
 										<div class="col-md-8">
 											<input type="text" id="fullname" name="fullname"
-												class="form-control" value="Mai Đức Tuấn"
+												class="form-control" value="${khachHang.hoTen}"
 												readonly="readonly">
 										</div>
 
@@ -144,7 +144,7 @@
 										</div>
 										<div class="col-md-8">
 											<input type="text" id="fullname" name="email"
-												class="form-control" value="maiductuan@gmail.com"
+												class="form-control" value="${khachHang.email}"
 												readonly="readonly">
 										</div>
 
@@ -159,7 +159,7 @@
 										</div>
 										<div class="col-md-8">
 											<input type="text" id="fullname" name="SDT"
-												class="form-control" value="0911 066 089"
+												class="form-control" value="${khachHang.soDienThoai}"
 												readonly="readonly">
 										</div>
 
@@ -171,8 +171,8 @@
 											<label for="fullname">Số người đã giới thiệu </label>
 										</div>
 										<div class="col-md-8">
-											<input type="text" id="fullname" name="DateRegister"
-												class="form-control" value="4"
+											<input type="text" id="soNguoiDaGioiThieu" name="DateRegister"
+												class="form-control" value="${khachHang.soNguoiDaGioiThieu}"
 												readonly="readonly">
 										</div>
 
@@ -186,14 +186,32 @@
 											<label for="fullname">Địa chỉ </label>
 										</div>
 										<div class="col-md-8 editSpaceAddressInput" id = "editSpaceAddressInput">
-											<input type="text" id="fullname" name="address"
-												class="form-control" value="01 Võ Văn Ngân, phường Linh Chiểu, quận Thủ Đức, TP.HCM"
+											<input type="text" id="address" name="address"
+												class="form-control" value="${khachHang.diaChi}"
 												readonly="readonly">
 										</div>
 
 									</div>								
 								</div>
 							</div>	
+							<div class = "row">
+								<div class = "col-md-12">
+									<div class="row form-group">
+										<div class="col-md-4 address">
+											<label for="linkGioiThieuBanBe">Link giới thiệu bạn bè</label>
+										</div>
+										<div class="col-md-8 editSpaceAddressInput" id = "editSpaceAddressInput">
+											<input type="text" id="linkGioiThieuBanBe" name="linkGioiThieuBanBe"
+												class="form-control" value="${linkGIoiThieuBanBe}"
+												readonly="readonly">
+										</div>
+
+									</div>								
+								</div>
+							</div>	
+							
+							
+														
 							<div class = "row">
 								<div class = "col-md-12">
 									<div class="row form-group">
