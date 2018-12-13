@@ -44,6 +44,21 @@ public class KhachHangDAO {
 	}
 	
 	
+	public boolean tangSoNguoiGioiThieu(String emailKhachHang) throws SQLException {
+		String sql = "update khachhang set songuoidagioithieu = songuoidagioithieu + 1 where email = ?";
+		this.dataProvider = new DataProvider();
+		this.dataProvider.connect();
+		
+		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);
+		statement.setString(1, emailKhachHang);
+		
+		boolean rowUpdated = statement.executeUpdate() > 0;
+		statement.close();
+		this.dataProvider.disconnect();
+		return rowUpdated;	
+	}
+	
+	
 	public boolean updateKhachHang(KhachHang khachhang) throws SQLException {
 		String sql = "UPDATE khachhang SET HoTen = ?, SDT = ?, DIaChi = ?, Password = ?";
 		sql += " WHERE MaKhachHang = ?";
