@@ -1,7 +1,4 @@
 package com.noithatchatluong.jdbc.DAO;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,12 +6,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import com.noithatchatluong.model.AdminUser;
 import com.noithatchatluong.model.KhachHang;
 import com.noithatchatluong.model.KhachHang;
 import com.noithatchatluong.utils.BCryptUtils;
-
+ 
 public class KhachHangDAO {
 	public DataProvider dataProvider;
 	
@@ -35,7 +30,7 @@ public class KhachHangDAO {
 		
 		while (resultSet.next()) {
 			String maKhachHang = resultSet.getString("MaKhachHang");
-
+ 
 			KhachHang khachhang = this.getKhachHang(maKhachHang);
 			listKhachHang.add(khachhang);
 		}
@@ -62,7 +57,7 @@ public class KhachHangDAO {
 		statement.setString(3, khachhang.getDiaChi());
 		statement.setString(4, khachhang.getPassword());
 		statement.setString(5, khachhang.getMaKhachHang());
-
+ 
 		boolean rowUpdated = statement.executeUpdate() > 0;
 		statement.close();
 		this.dataProvider.disconnect();
@@ -92,7 +87,7 @@ public class KhachHangDAO {
 			int daDangKy = resultSet.getInt("DaDangKy");
 			int soNguoiDaGioiThieu = resultSet.getInt("SoNguoiDaGioiThieu");
 			int dangHoatDong = resultSet.getInt("DangHoatDong");
-
+ 
 			khachhang = new KhachHang(iD, MaKhachHang, email, hoTen, sdt, diaChi, password, ngayDangKy, daDangKy, soNguoiDaGioiThieu, dangHoatDong);
 		}
 		
@@ -201,7 +196,9 @@ public class KhachHangDAO {
 		ResultSet resultSet = statement.executeQuery();
 		
 		if (resultSet.next()) {
-			int iD = resultSet.getInt("id");
+
+			int iD = resultSet.getInt("ID");
+
 			String maKhachHang = resultSet.getString("MaKhachHang");	
 			String hoTen = resultSet.getString("HoTen");
 			String sdt = resultSet.getString("SDT");
@@ -217,6 +214,7 @@ public class KhachHangDAO {
 		
 		resultSet.close();
 		statement.close();
+
 		this.dataProvider.disconnect();
 
 		return khachhang;
@@ -224,3 +222,4 @@ public class KhachHangDAO {
 
 	
 }
+

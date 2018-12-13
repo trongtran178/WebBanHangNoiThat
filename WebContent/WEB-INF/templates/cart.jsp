@@ -70,29 +70,24 @@
 		.labelTen {
 	width: 19.33333% !important;
 }
-
 .inputNhapTen {
 	width: 74.666667% !important;
 }
-
 #TenKhachHang {
 	margin-top: -5px;
 	border-radius: 6px;
 }
-
 @media ( min-width : 992px) {
 	.editSpaceOfMuaThemButton {
 		width: 14% !important;
 	}
 }
-
 .total-wrap .form-control {
 	height: 40px;
 	border: 1px solid #f0f0f0 !important;
 	margin-bottom: 10px;
 	text-align: left;
 }
-
 .iconThongTinKhachHang {
 	font-size: 20px;
 	color: blue;
@@ -232,6 +227,7 @@
 								<div class="total-wrap">
 									<div class="row">
 										<a href="products">
+
 											<div class="col-md-3 editSpaceOfMuaThemButton">
 												<button style="border-radius: 7px;" type="button" class="btn btn-info">Mua thêm</button>
 											</div>
@@ -439,9 +435,7 @@
 			let khuyenMai = document.getElementById("khuyenMai-" + parentid)
 				.getAttribute("data-khuyenMai");
 			let tongTien = document.getElementById("tongTien-" + parentid);
-
 			tongTien.innerHTML = donGia * soLuong * (1.0 - khuyenMai / 100.0);
-
 			let idSanPham = parentid.substring(2);
 			let xhr = new XMLHttpRequest();
 			xhr.onreadystatechange = function () {
@@ -458,12 +452,22 @@
 				"application/x-www-form-urlencoded")
 			xhr.send("maSanPham=" + idSanPham + "&action=sua&soLuong=" +
 				soLuong);
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
 		}
-
 		$(document)
 			.ready(
 				function () {
+<<<<<<< HEAD
+					$(".button-xoa")
+						.click(
+							function (e) {
+								var parentid = e.target
+									.getAttribute("data-parent-id");
+								$("#" + parentid).remove();
+=======
 
 					$(".button-xoa")
 						.click(
@@ -474,6 +478,7 @@
 
 								$("#" + parentid).remove();
 
+>>>>>>> master
 								let idSanPham = parentid
 									.substring(2);
 								let xhr = new XMLHttpRequest();
@@ -500,7 +505,10 @@
 									idSanPham +
 									"&action=xoa");
 							});
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
 				});
 	</script>
 </body>

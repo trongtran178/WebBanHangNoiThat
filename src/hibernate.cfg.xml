@@ -10,7 +10,7 @@
       <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
       <property name="connection.url">jdbc:mysql://localhost:3306/webbanhangnoithat</property>
       <property name="connection.username">root</property>
-      <property name="connection.password">123456</property>
+      <property name="connection.password">endless203</property>
  
       <property name="connection.pool_size">1</property>
  	  <property name="hibernate.jdbc.time_zone">Asia/Ho_Chi_Minh</property>
@@ -32,7 +32,9 @@
       <mapping class="com.noithatchatluong.entities.HangMucSanPham" />
       <mapping class="com.noithatchatluong.entities.HinhAnh" />
       <mapping class="com.noithatchatluong.entities.TinTuc" />
-      
+      <mapping class="com.noithatchatluong.entities.HoaDon" />
+      <mapping class="com.noithatchatluong.entities.ChiTietHoaDon" />      
+      <mapping class="com.noithatchatluong.entities.ChiTietHoaDonID" /> 
   </session-factory>
  
 </hibernate-configuration>

@@ -1,21 +1,31 @@
 package com.noithatchatluong.entities;
 
 import java.util.Date;
-
+import java.util.HashSet;
+import java.util.Set;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.Type;
 
 @Entity
-@Table(name = "KhachHang")
-public class KhachHang {
+@Table(name = "KhachHang", uniqueConstraints = @UniqueConstraint(columnNames = "MaKhachHang"))
+public class KhachHang implements java.io.Serializable{
 
-	private int ID;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer ID;
 	private String maKhachHang;
 	private String email;
 	private String hoTen;
@@ -26,6 +36,11 @@ public class KhachHang {
 	private boolean daDangKy;
 	private int soNguoiDaGioiThieu;
 	private boolean dangHoatDong;
+	/*private Set<DanhGia> danhgias = new HashSet<Danhgia>(0);*/
+	private Set<HoaDon> hoaDons = new HashSet<HoaDon>(0);
+	
+	
+
 
 	public KhachHang() {
 
@@ -48,7 +63,7 @@ public class KhachHang {
 	}
 
 	@Id
-	@Column(name = "ID")
+	@Column(name = "ID", unique = true, nullable = false)
 	public int getID() {
 		return ID;
 	}
@@ -57,7 +72,7 @@ public class KhachHang {
 		ID = iD;
 	}
 
-	@Column(name = "MaKhachHang")
+	@Column(name = "MaKhachHang", unique = true, nullable = false, length = 10)
 	public String getMaKhachHang() {
 		return maKhachHang;
 	}
@@ -148,5 +163,16 @@ public class KhachHang {
 	public void setDangHoatDong(boolean dangHoatDong) {
 		this.dangHoatDong = dangHoatDong;
 	}
+	
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "khachHang")
+	public Set<HoaDon> getHoaDons() {
+		return hoaDons;
+	}
+
+	public void setHoaDons(Set<HoaDon> hoaDons) {
+		this.hoaDons = hoaDons;
+	}
+	
 
 }

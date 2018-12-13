@@ -28,8 +28,10 @@ public class AddToCartController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String maSanPham = request.getParameter("maSanPham");
+		System.out.println(maSanPham);
 		if (maSanPham != null) {
 			maSanPham = AESUtils.decrypt(maSanPham);
+			System.out.println(maSanPham);
 			SanPhamDAO sanPhamDAO = new SanPhamDAO();
 			SanPham sanPham = new SanPham();
 

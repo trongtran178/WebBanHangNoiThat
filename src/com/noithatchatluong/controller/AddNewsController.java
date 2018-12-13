@@ -60,6 +60,6 @@ public class AddNewsController extends HttpServlet {
 		System.out.println(tinTuc.getNoiDung());
 		tinTucDAO.themTinTuc(tinTuc);
 		
-        response.sendRedirect(request.getContextPath() + "/	");
+        response.sendRedirect(request.getContextPath() + "/adminvietbaidangtin");
 	}
 }
