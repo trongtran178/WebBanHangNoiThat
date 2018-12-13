@@ -389,8 +389,6 @@
 
 	<!--  -->
 
-	<div id="map" class="colorlib-map"></div>
-
 	<jsp:include page="_footer.jsp"></jsp:include>
 	</div>
 

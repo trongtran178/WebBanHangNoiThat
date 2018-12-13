@@ -181,7 +181,7 @@
 											</div>
 											<div class="display-tc">
 												<h3>
-													<c:out value='${item.getSanPham().getTenSanPham()}' />
+												<a href="product-detail?maSanPham=${item.getSanPham().getMaSanPhamMaHoa()}">${item.getSanPham().getTenSanPham()}</a>													
 												</h3>
 											</div>
 										</div>
@@ -362,7 +362,7 @@
 										</div>
 										<div class="desc">
 											<h3>
-												<a href="product-detail.html">${sanPham.getTenSanPham()}</a>
+												<a href="product-detail?maSanPham=${sanPham.getMaSanPham()}">${sanPham.getTenSanPham()}</a>
 											</h3>
 											<p class="price">
 												<span>${sanPham.getDonGia()}</span>
@@ -387,10 +387,6 @@
 
 	</div>
 
-
-	<!--  -->
-
-	<!-- <div id="map" class="colorlib-map"></div> -->
 
 	<jsp:include page="_footer.jsp"></jsp:include>
 	</div>
@@ -452,64 +448,46 @@
 				"application/x-www-form-urlencoded")
 			xhr.send("maSanPham=" + idSanPham + "&action=sua&soLuong=" +
 				soLuong);
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 		}
-		$(document)
-			.ready(
-				function () {
-<<<<<<< HEAD
-					$(".button-xoa")
-						.click(
-							function (e) {
-								var parentid = e.target
-									.getAttribute("data-parent-id");
-								$("#" + parentid).remove();
-=======
-
-					$(".button-xoa")
-						.click(
-							function (e) {
-
-								var parentid = e.target
-									.getAttribute("data-parent-id");
-
-								$("#" + parentid).remove();
-
->>>>>>> master
-								let idSanPham = parentid
-									.substring(2);
-								let xhr = new XMLHttpRequest();
-								xhr.onreadystatechange = function () {
-									if (this.readyState == 4 &&
-										this.status == 200) {
-										let chuoi = this.responseText;
-										let mangGia = chuoi
-											.split("-");
-										document
-											.getElementById("tongTienChuaKhuyenMai").innerHTML = mangGia[0];
-										document
-											.getElementById("tongTienKhuyenMai").innerHTML = mangGia[1];
-										document
-											.getElementById("tongTienPhaiTra").innerHTML = mangGia[2];
+		$(document).ready(
+			function () {
+				$(".button-xoa")
+					.click(
+						function (e) {
+							var parentid = e.target
+								.getAttribute("data-parent-id");
+							$("#" + parentid).remove();
+							let idSanPham = parentid
+								.substring(2);
+							let xhr = new XMLHttpRequest();
+							xhr.onreadystatechange = function () {
+								if (this.readyState == 4 &&
+									this.status == 200) {
+									let chuoi = this.responseText;
+									let mangGia = chuoi
+										.split("-");
+									document
+										.getElementById("tongTienChuaKhuyenMai").innerHTML = mangGia[0];
+									document
+										.getElementById("tongTienKhuyenMai").innerHTML = mangGia[1];
+									document
+										.getElementById("tongTienPhaiTra").innerHTML = mangGia[2];
+									
+									if (mangGia[0] < 1){
+										window.location.href = "cart";
 									}
 								}
-								xhr.open("POST", "cart", true);
-								xhr
-									.setRequestHeader(
-										"Content-type",
-										"application/x-www-form-urlencoded")
-								xhr.send("maSanPham=" +
-									idSanPham +
-									"&action=xoa");
-							});
-<<<<<<< HEAD
-=======
-
->>>>>>> master
-				});
+							}
+							xhr.open("POST", "cart", true);
+							xhr
+								.setRequestHeader(
+									"Content-type",
+									"application/x-www-form-urlencoded")
+							xhr.send("maSanPham=" +
+								idSanPham +
+								"&action=xoa");
+						});
+			});
 	</script>
 </body>
 
