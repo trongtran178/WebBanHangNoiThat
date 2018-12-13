@@ -1,4 +1,4 @@
-	package com.noithatchatluong.DAO;
+package com.noithatchatluong.DAO;
 
 import java.util.List;
 import org.hibernate.query.Query;
@@ -25,7 +25,7 @@ public class SanPhamDAO {
 	public List<SanPham> layTatCaSanPham() {
 
 		Session session = sessionFactory.getCurrentSession();
-		
+
 		try {
 			session.getTransaction().begin();
 			Query<SanPham> query = session.createQuery("from SanPham order by date(NgayNhap) desc", SanPham.class);
@@ -61,18 +61,10 @@ public class SanPhamDAO {
 		Session session = sessionFactory.getCurrentSession();
 		try {
 			session.getTransaction().begin();
-			String sql = "select new " + ThongTinSanPham.class.getName() 
-					+ "(sanPham.id, " 
-					+ "sanPham.maSanPham, "
-					+ "sanPham.tenSanPham, " 
-					+ "sanPham.donGia, " 
-					+ "sanPham.mauSac, " 
-					+ "sanPham.cao, "
-					+ "sanPham.dai, " 
-					+ "sanPham.rong, " 
-					+ "sanPham.hangMucSanPham, " 
-					+ "sanPham.maHinhAnh)" 
-					+ " from " + SanPham.class.getName() + " sanPham " + " order by sanPham.ngayNhap desc";
+			String sql = "select new " + ThongTinSanPham.class.getName() + "(sanPham.id, " + "sanPham.maSanPham, "
+					+ "sanPham.tenSanPham, " + "sanPham.donGia, " + "sanPham.mauSac, " + "sanPham.cao, "
+					+ "sanPham.dai, " + "sanPham.rong, " + "sanPham.hangMucSanPham, " + "sanPham.maHinhAnh)" + " from "
+					+ SanPham.class.getName() + " sanPham " + " order by sanPham.ngayNhap desc";
 			SanPhamDAO sanphamDAO = new SanPhamDAO();
 			Query<ThongTinSanPham> query = session.createQuery(sql, ThongTinSanPham.class);
 			List<ThongTinSanPham> listThongTinSanPham = query.getResultList();
@@ -90,142 +82,122 @@ public class SanPhamDAO {
 		return null;
 	}
 
-	//Lấy kết quả phân trang sản phẩm
+	// Lấy kết quả phân trang sản phẩm
 	public PaginationResult<ThongTinSanPham> layTatCaThongTinSanPham(int page, int maxResult, int maxNavigationPage,
 			double giaTu, double giaDen, String mauSac) {
 		Session session = sessionFactory.getCurrentSession();
 		try {
 			SanPhamDAO sanphamDAO = new SanPhamDAO();
 			session.getTransaction().begin();
-		String sql = "select new " + ThongTinSanPham.class.getName() + 
-				"(sanPham.id, " 
-				+ "sanPham.maSanPham, "
-				+ "sanPham.tenSanPham, " 
-				+ "sanPham.donGia, " 
-				+ "sanPham.mauSac, " 
-				+ "sanPham.cao, " 
-				+ "sanPham.dai, "
-				+ "sanPham.rong, " 
-				+ "sanPham.hangMucSanPham, " 
-				+ "sanPham.maHinhAnh)" + " from "
-				+ SanPham.class.getName() + " sanPham "
-				+ "";
-		if (giaTu != -1 && giaDen != -1) {
-			sql += " where sanPham.donGia between :giaTu AND :giaDen ";
-			if (mauSac != null) {
-				sql += " and lower(sanPham.mauSac) like :mauSac";
+			String sql = "select new " + ThongTinSanPham.class.getName() + "(sanPham.id, " + "sanPham.maSanPham, "
+					+ "sanPham.tenSanPham, " + "sanPham.donGia, " + "sanPham.mauSac, " + "sanPham.cao, "
+					+ "sanPham.dai, " + "sanPham.rong, " + "sanPham.hangMucSanPham, " + "sanPham.maHinhAnh)" + " from "
+					+ SanPham.class.getName() + " sanPham " + "";
+			if (giaTu != -1 && giaDen != -1) {
+				sql += " where sanPham.donGia between :giaTu AND :giaDen ";
+				if (mauSac != null) {
+					sql += " and lower(sanPham.mauSac) like :mauSac";
+					System.out.println(mauSac);
+
+				}
+
+			} else if (mauSac != null) {
+				sql += " where lower(sanPham.mauSac) LIKE :mauSac ";
 				System.out.println(mauSac);
-
 			}
-			
-		} else if (mauSac != null) {
-			sql += " where lower(sanPham.mauSac) LIKE :mauSac ";
-			System.out.println(mauSac);
-		}
-		sql += " order by sanPham.ngayNhap desc ";
+			sql += " order by sanPham.ngayNhap desc ";
 
-	
-		
-		Query<ThongTinSanPham> queryThongTinSanPham = session.createQuery(sql, ThongTinSanPham.class);
-		if (giaTu != -1 && giaDen != -1) {
-			queryThongTinSanPham.setParameter("giaTu", giaTu);
-			System.out.println(giaTu);
-			System.out.println(giaDen);
-			queryThongTinSanPham.setParameter("giaDen", giaDen);
-			if(mauSac != null) {
-				queryThongTinSanPham.setParameter("mauSac",  "%" + mauSac.toLowerCase() + "%");
+			Query<ThongTinSanPham> queryThongTinSanPham = session.createQuery(sql, ThongTinSanPham.class);
+			if (giaTu != -1 && giaDen != -1) {
+				queryThongTinSanPham.setParameter("giaTu", giaTu);
+				System.out.println(giaTu);
+				System.out.println(giaDen);
+				queryThongTinSanPham.setParameter("giaDen", giaDen);
+				if (mauSac != null) {
+					queryThongTinSanPham.setParameter("mauSac", "%" + mauSac.toLowerCase() + "%");
 
+				}
+			} else if (mauSac != null) {
+				queryThongTinSanPham.setParameter("mauSac", "%" + mauSac.toLowerCase() + "%");
 			}
-		}
-		else if (mauSac != null) {
-			queryThongTinSanPham.setParameter("mauSac", "%" + mauSac.toLowerCase() + "%");
-		}
-		//session.getTransaction().commit();
-		PaginationResult<ThongTinSanPham> paginationThongTinSanPham = new PaginationResult<>(queryThongTinSanPham, page, maxResult, maxNavigationPage);
-		for(ThongTinSanPham thongTinSanPham : paginationThongTinSanPham.getList()) {
-			List<HinhAnh> listHinhAnh = sanphamDAO.layDuongDanSanPham(thongTinSanPham.getHinhDaiDien());
-			thongTinSanPham.setHinhDaiDien(listHinhAnh.get(0).getHinhCha());
-			thongTinSanPham.setHinhAnh(listHinhAnh);
-		}
-		
-		//session.flush();
-		//session.getTransaction().commit();
-		session.close();
-		return paginationThongTinSanPham;
-		
-		//return new PaginationResult<ThongTinSanPham>(queryThongTinSanPham, page, maxResult, maxNavigationPage);
-		} catch(Exception ex) {
+			// session.getTransaction().commit();
+			PaginationResult<ThongTinSanPham> paginationThongTinSanPham = new PaginationResult<>(queryThongTinSanPham,
+					page, maxResult, maxNavigationPage);
+			for (ThongTinSanPham thongTinSanPham : paginationThongTinSanPham.getList()) {
+				List<HinhAnh> listHinhAnh = sanphamDAO.layDuongDanSanPham(thongTinSanPham.getHinhDaiDien());
+				thongTinSanPham.setHinhDaiDien(listHinhAnh.get(0).getHinhCha());
+				thongTinSanPham.setHinhAnh(listHinhAnh);
+			}
+
+			// session.flush();
+			// session.getTransaction().commit();
+			session.close();
+			return paginationThongTinSanPham;
+
+			// return new PaginationResult<ThongTinSanPham>(queryThongTinSanPham, page,
+			// maxResult, maxNavigationPage);
+		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 			session.getTransaction().rollback();
-			
+
 		}
 		return null;
 	}
 
-	
-	//Lấy kết quả phân trang sản phẩm
+	// Lấy kết quả phân trang sản phẩm
 	public PaginationResult<ThongTinSanPham> layTatCaThongTinSanPham(int page, int maxResult, int maxNavigationPage,
 			double giaTu, double giaDen, String mauSac, String tenHangMuc) {
 		Session session = sessionFactory.getCurrentSession();
 		try {
 			SanPhamDAO sanPhamDAO = new SanPhamDAO();
 			session.getTransaction().begin();
-		String sql = "select new " + ThongTinSanPham.class.getName() + 
-				"(sanPham.id, " 
-				+ "sanPham.maSanPham, "
-				+ "sanPham.tenSanPham, " 
-				+ "sanPham.donGia, " 
-				+ "sanPham.mauSac, " 
-				+ "sanPham.cao, " 
-				+ "sanPham.dai, "
-				+ "sanPham.rong, " 
-				+ "sanPham.hangMucSanPham, " 
-				+ "sanPham.maHinhAnh)" + " from "
-				+ SanPham.class.getName() + " sanPham "
-				+ " where (:mauSac is null OR sanPham.mauSac like :mauSac) "
-				+ " and (:tenHangMuc is null OR sanPham.hangMucSanPham.tenHangMuc like :tenHangMuc)";
-		if(giaTu != -1 && giaDen != -1) {
-			sql += " and (sanPham.donGia between :giaTu AND :giaDen) ";
+			String sql = "select new " + ThongTinSanPham.class.getName() + "(sanPham.id, " + "sanPham.maSanPham, "
+					+ "sanPham.tenSanPham, " + "sanPham.donGia, " + "sanPham.mauSac, " + "sanPham.cao, "
+					+ "sanPham.dai, " + "sanPham.rong, " + "sanPham.hangMucSanPham, " + "sanPham.maHinhAnh)" + " from "
+					+ SanPham.class.getName() + " sanPham " + " where (:mauSac is null OR sanPham.mauSac like :mauSac) "
+					+ " and (:tenHangMuc is null OR sanPham.hangMucSanPham.tenHangMuc like :tenHangMuc)";
+			if (giaTu != -1 && giaDen != -1) {
+				sql += " and (sanPham.donGia between :giaTu AND :giaDen) ";
 
-		}
-		sql += " order by sanPham.ngayNhap desc ";
+			}
+			sql += " order by sanPham.ngayNhap desc ";
 
-		Query<ThongTinSanPham> queryThongTinSanPham = session.createQuery(sql, ThongTinSanPham.class);
-		if(mauSac != null)
-			queryThongTinSanPham.setParameter("mauSac", "%" + mauSac.toLowerCase() + "%");
-		else 
-			queryThongTinSanPham.setParameter("mauSac", mauSac);
-		if(tenHangMuc != null)	
-			queryThongTinSanPham.setParameter("tenHangMuc", "%" + tenHangMuc.toLowerCase() + "%");
-		else 
-			queryThongTinSanPham.setParameter("tenHangMuc", tenHangMuc);
-		if(giaTu != -1 && giaDen != -1) {
-			queryThongTinSanPham.setParameter("giaTu", giaTu);
-			queryThongTinSanPham.setParameter("giaDen", giaDen);
-		}
-		//System.out.println(queryThongTinSanPham.getQueryString());
-		
-		PaginationResult<ThongTinSanPham> paginationThongTinSanPham = new PaginationResult<>(queryThongTinSanPham, page, maxResult, maxNavigationPage);
-		for(ThongTinSanPham thongTinSanPham : paginationThongTinSanPham.getList()) {
-			List<HinhAnh> listHinhAnh = sanPhamDAO.layDuongDanSanPham(thongTinSanPham.getHinhDaiDien());
-			thongTinSanPham.setHinhDaiDien(listHinhAnh.get(0).getHinhCha());
-			thongTinSanPham.setHinhAnh(listHinhAnh);
-		}
-		
-		session.close();
-		return paginationThongTinSanPham;
+			Query<ThongTinSanPham> queryThongTinSanPham = session.createQuery(sql, ThongTinSanPham.class);
+			if (mauSac != null)
+				queryThongTinSanPham.setParameter("mauSac", "%" + mauSac.toLowerCase() + "%");
+			else
+				queryThongTinSanPham.setParameter("mauSac", mauSac);
+			if (tenHangMuc != null)
+				queryThongTinSanPham.setParameter("tenHangMuc", "%" + tenHangMuc.toLowerCase() + "%");
+			else
+				queryThongTinSanPham.setParameter("tenHangMuc", tenHangMuc);
+			if (giaTu != -1 && giaDen != -1) {
+				queryThongTinSanPham.setParameter("giaTu", giaTu);
+				queryThongTinSanPham.setParameter("giaDen", giaDen);
+			}
+			// System.out.println(queryThongTinSanPham.getQueryString());
 
-			
-	
-		
-		//return new PaginationResult<ThongTinSanPham>(queryThongTinSanPham, page, maxResult, maxNavigationPage);
-		} catch(Exception ex) {
+			PaginationResult<ThongTinSanPham> paginationThongTinSanPham = new PaginationResult<>(queryThongTinSanPham,
+					page, maxResult, maxNavigationPage);
+			for (ThongTinSanPham thongTinSanPham : paginationThongTinSanPham.getList()) {
+				List<HinhAnh> listHinhAnh = sanPhamDAO.layDuongDanSanPham(thongTinSanPham.getHinhDaiDien());
+				thongTinSanPham.setHinhDaiDien(listHinhAnh.get(0).getHinhCha());
+				thongTinSanPham.setHinhAnh(listHinhAnh);
+			}
+
+			session.close();
+			return paginationThongTinSanPham;
+
+			// return new PaginationResult<ThongTinSanPham>(queryThongTinSanPham, page,
+			// maxResult, maxNavigationPage);
+		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 			session.getTransaction().rollback();
-			
+
 		}
 		return null;
 	}
+
 	public PaginationResult<ThongTinSanPham> queryProducts(int page, int maxResult, int maxNavigationPage) {
 		return layTatCaThongTinSanPham(page, maxResult, maxNavigationPage, -1, -1, null);
 	}

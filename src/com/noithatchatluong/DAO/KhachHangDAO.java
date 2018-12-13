@@ -80,7 +80,7 @@ public class KhachHangDAO {
 			session.getTransaction().begin();
 			int IDKhachHang = getMaxID(session) + 1;
 			Integer.toString(IDKhachHang);
-			khachHang.setMaKhachHang("KH0" + Integer.toString(IDKhachHang));
+			khachHang.setMaKhachHang("KH" + Integer.toString(IDKhachHang));
 			khachHang.setID(IDKhachHang);
 
 			session.persist(khachHang);
