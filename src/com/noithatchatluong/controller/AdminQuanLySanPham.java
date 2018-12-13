@@ -2,6 +2,7 @@ package com.noithatchatluong.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -43,6 +44,11 @@ public class AdminQuanLySanPham extends HttpServlet {
 	
 	protected void listSP(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
+	private void listSP(HttpServletRequest request, HttpServletResponse response)
+	{
+		List<SanPham>listSP=(list)sanPhamDAO.loadData();
+		
+	}
 
 		sanPhamDAO = new SanPhamDAO();
 		

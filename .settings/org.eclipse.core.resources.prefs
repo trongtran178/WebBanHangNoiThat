@@ -6,5 +6,10 @@ encoding//src/com/noithatchatluong/DAO/SanPhamDAO.java=UTF-8
 encoding//src/com/noithatchatluong/controller/AdminQuanLySanPham.java=UTF-8
 encoding//src/com/noithatchatluong/controller/ConfirmAccountController.java=UTF-8
 encoding//src/com/noithatchatluong/controller/HomeController.java=UTF-8
+<<<<<<< HEAD
 encoding//src/com/noithatchatluong/controller/ProductsController.java=UTF-8
 encoding//src/com/noithatchatluong/utils/UploadFileUtils.java=UTF-8
+=======
+encoding//src/com/noithatchatluong/jdbc/DAO/DataProvider.java=UTF-8
+encoding//src/com/noithatchatluong/utils/SendConfirmInformationAccountCustomerUtils.java=UTF-8
+>>>>>>> test2
