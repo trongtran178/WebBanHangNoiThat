@@ -29,7 +29,7 @@ public class HibernateUtils {
 	}
 
 	public static void shutdown() {
-		// Giải phóng cache và Connection Pools.
+		// Giáº£i phÃ³ng cache vÃ  Connection Pools.
 		getSessionFactory().close();
 	}
 }
