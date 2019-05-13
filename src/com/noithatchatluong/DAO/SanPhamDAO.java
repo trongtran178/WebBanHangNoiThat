@@ -121,8 +121,8 @@ public class SanPhamDAO {
 				queryThongTinSanPham.setParameter("mauSac", "%" + mauSac.toLowerCase() + "%");
 			}
 			// session.getTransaction().commit();
-			PaginationResult<ThongTinSanPham> paginationThongTinSanPham = new PaginationResult<>(queryThongTinSanPham,
-					page, maxResult, maxNavigationPage);
+			PaginationResult<ThongTinSanPham> paginationThongTinSanPham = new PaginationResult<ThongTinSanPham>(
+					queryThongTinSanPham, page, maxResult, maxNavigationPage);
 			for (ThongTinSanPham thongTinSanPham : paginationThongTinSanPham.getList()) {
 				List<HinhAnh> listHinhAnh = sanphamDAO.layDuongDanSanPham(thongTinSanPham.getHinhDaiDien());
 				thongTinSanPham.setHinhDaiDien(listHinhAnh.get(0).getHinhCha());
@@ -177,8 +177,8 @@ public class SanPhamDAO {
 			}
 			// System.out.println(queryThongTinSanPham.getQueryString());
 
-			PaginationResult<ThongTinSanPham> paginationThongTinSanPham = new PaginationResult<>(queryThongTinSanPham,
-					page, maxResult, maxNavigationPage);
+			PaginationResult<ThongTinSanPham> paginationThongTinSanPham = new PaginationResult<ThongTinSanPham>(
+					queryThongTinSanPham, page, maxResult, maxNavigationPage);
 			for (ThongTinSanPham thongTinSanPham : paginationThongTinSanPham.getList()) {
 				List<HinhAnh> listHinhAnh = sanPhamDAO.layDuongDanSanPham(thongTinSanPham.getHinhDaiDien());
 				thongTinSanPham.setHinhDaiDien(listHinhAnh.get(0).getHinhCha());

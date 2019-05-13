@@ -101,7 +101,7 @@ public class TinTucDAO {
 				queryTinTuc.setParameter("tieuDe", "%" + tieuDe.toLowerCase() + "%");
 			}
 			queryTinTuc.setParameter("tieuDe", tieuDe);
-			PaginationResult<TinTuc> paginationTinTuc = new PaginationResult<>(queryTinTuc, page, maxResult, maxNavigationPage);
+			PaginationResult<TinTuc> paginationTinTuc = new PaginationResult<TinTuc>(queryTinTuc, page, maxResult, maxNavigationPage);
 			
 			session.close();
 			return paginationTinTuc;

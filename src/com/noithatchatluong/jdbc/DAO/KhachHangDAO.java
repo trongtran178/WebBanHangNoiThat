@@ -18,7 +18,7 @@ public class KhachHangDAO {
 	
 	
 	public List<KhachHang> listAllKhachHangs() throws SQLException {
-		List<KhachHang> listKhachHang = new ArrayList<>();
+		List<KhachHang> listKhachHang = new ArrayList<KhachHang>();
 		
 		String sql = "SELECT * FROM khachhang";
 		

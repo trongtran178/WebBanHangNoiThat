@@ -81,7 +81,7 @@ public class SanPhamDAO {
 	}
 	
 	public List<SanPham> getDanhSachSanPhamTheoQuery(String sql) throws SQLException {
-		List<SanPham> listSanPham = new ArrayList<>();
+		List<SanPham> listSanPham = new ArrayList<SanPham>();
 		this.dataProvider = new DataProvider();
 		this.dataProvider.connect();
 		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);
@@ -123,7 +123,7 @@ public class SanPhamDAO {
 	public List<SanPham> getDanhSachSanPhamLienQuan(int maHangMuc) throws SQLException {
 		
 		String sql = "SELECT * FROM SanPham WHERE MaHangMuc > ? AND MaHangMuc < ? LIMIT 4";
-		List<SanPham> listSanPham = new ArrayList<>();
+		List<SanPham> listSanPham = new ArrayList<SanPham>();
 		this.dataProvider = new DataProvider();
 		this.dataProvider.connect();
 		PreparedStatement statement = this.dataProvider.jdbcConnection.prepareStatement(sql);

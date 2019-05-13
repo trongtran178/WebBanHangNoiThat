@@ -40,7 +40,7 @@ public class BinhLuanDAO {
 	
 	public List<BinhLuan> getDanhSachBinhLuan(String maSanPham) throws SQLException {
 	
-		List<BinhLuan> listBinhLuan = new ArrayList<>();
+		List<BinhLuan> listBinhLuan = new ArrayList<BinhLuan>();
 		String sql = "SELECT * FROM BinhLuan WHERE MaSanPham = ?";
 		
 		this.dataProvider = new DataProvider();
