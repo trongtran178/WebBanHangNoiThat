@@ -17,15 +17,15 @@ public class DataProvider {
 	
 	public DataProvider()
 	{
-		this.jdbcURL = "jdbc:mysql://localhost:3306/webbanhangnoithat";
-		this.jdbcUsername = "root";
-		this.jdbcPassword = "endless203";
+		this.jdbcURL = "jdbc:mysql://den1.mysql3.gear.host:3306/webnoithat";
+		this.jdbcUsername = "webnoithat";
+		this.jdbcPassword = "Tj33~v1T_5RX";
 		this.jdbcConnection = null;
 	}
 	protected void connect() throws SQLException {
 		if (jdbcConnection == null || jdbcConnection.isClosed()) {
 			try {
-				Class.forName("com.mysql.cj.jdbc.Driver");
+				Class.forName("com.mysql.jdbc.Driver");
 			} catch (ClassNotFoundException e) {
 				throw new SQLException(e);
 			}
